@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Viewer
+name: viewer.html
 ---
 
 <script type="text/javascript">
@@ -42,7 +43,7 @@ title: Viewer
             KanjiViewer.setStrokeOrdersVisible(jQuery('#displayOrders:checked').val());
             KanjiViewer.setColorGroups(jQuery('#colorGroups:checked').val());
             KanjiViewer.setKanji(jQuery('#kanji').val());
-            KanjiViewer.draw();
+            KanjiViewer.refreshKanji();
             return false;
         });
     });
