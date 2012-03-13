@@ -34,7 +34,7 @@ name: incorrect-kanjis.html
 
         jQuery('#incorrect-kanji-reporter').attr('href', '#incorrect-kanji-modal');
 
-        jQuery.getJSON('https://api.github.com/repos/Gnurou/kanjivg/issues?callback=?', function (results) {
+        jQuery.getJSON('https://api.github.com/repos/KanjiVG/kanjivg/issues?callback=?', function (results) {
             var issues = results.data;
             var entries = [];
             var len = issues.length;
@@ -76,7 +76,7 @@ name: incorrect-kanjis.html
 
             $.ajax({
                 type:'POST',
-                url:'https://api.github.com/repos/Gnurou/kanjivg/issues',
+                url:'https://api.github.com/repos/KanjiVG/kanjivg/issues',
                 data:JSON.stringify(data),
                 dataType:'json',
                 contentType:'application/x-www-form-urlencoded',
@@ -105,12 +105,12 @@ name: incorrect-kanjis.html
 
 <p>
     Here is a list of currently known kanji with errors or to be checked. Please see the
-    <a href="https://github.com/Gnurou/kanjivg/issues">Github issues</a> page for more details. Errors can be reported
+    <a href="https://github.com/KanjiVG/kanjivg/issues">Github issues</a> page for more details. Errors can be reported
     from there or using the following form, which will require your Github credentials.
 </p>
 
 <p>
-    <a id="incorrect-kanji-reporter" class="btn btn-danger" data-toggle="modal" href="https://github.com/Gnurou/kanjivg/issues">Report incorrect kanjis</a>
+    <a id="incorrect-kanji-reporter" class="btn btn-danger" data-toggle="modal" href="https://github.com/KanjiVG/kanjivg/issues">Report incorrect kanjis</a>
 </p>
 
 <div id="issue-listing">

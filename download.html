@@ -26,7 +26,7 @@ name: download.html
             });
         }
 
-        jQuery.getJSON("https://api.github.com/repos/Gnurou/kanjivg/downloads?callback=?", function (downloads) {
+        jQuery.getJSON("https://api.github.com/repos/KanjiVG/kanjivg/downloads?callback=?", function (downloads) {
             makePopover('separate', downloads.data[0]);
             makePopover('bundle', downloads.data[1]);
         })
@@ -39,22 +39,22 @@ name: download.html
 
 <p>
     Here is the latest version of KanjiVG. This file is generated every day, provided a change has been commited to the
-    <a href="https://github.com/Gnurou/kanjivg">git repository</a>. Please be aware that it may still contains errors.
-    We would appreciate to <a href="https://github.com/Gnurou/kanjivg/issues">receive corrections</a> if you
+    <a href="https://github.com/KanjiVG/kanjivg">git repository</a>. Please be aware that it may still contains errors.
+    We would appreciate to <a href="https://github.com/KanjiVG/kanjivg/issues">receive corrections</a> if you
     discover a mistake.
 </p>
 
 <div class="row-fluid">
     <div class="span5">
         <p>
-            <a id="bundle-url" class="btn btn-primary" href="https://github.com/Gnurou/kanjivg/downloads" rel="popover">
+            <a id="bundle-url" class="btn btn-primary" href="https://github.com/KanjiVG/kanjivg/downloads" rel="popover">
                 Download bundle »
             </a>
         </p>
     </div>
     <div class="span5">
         <p>
-            <a id="separate-url" class="btn btn-primary" href="https://github.com/Gnurou/kanjivg/downloads" rel="popover">
+            <a id="separate-url" class="btn btn-primary" href="https://github.com/KanjiVG/kanjivg/downloads" rel="popover">
                 Download separate »
             </a>
         </p>

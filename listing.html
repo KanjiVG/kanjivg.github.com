@@ -19,9 +19,9 @@ name: listing.html
         jQuery("#load-kanji-listing").click(function () {
             var btn = jQuery(this);
             btn.button('loading');
-            jQuery.getJSON("https://api.github.com/repos/Gnurou/kanjivg/git/refs/heads/master?callback=?", function (refs) {
+            jQuery.getJSON("https://api.github.com/repos/KanjiVG/kanjivg/git/refs/heads/master?callback=?", function (refs) {
                 var sha = refs.data.object.sha;
-                jQuery.getJSON("https://api.github.com/repos/Gnurou/kanjivg/git/trees/" + sha + "?callback=?", function (results) {
+                jQuery.getJSON("https://api.github.com/repos/KanjiVG/kanjivg/git/trees/" + sha + "?callback=?", function (results) {
                     var trees = results.data.tree;
                     jQuery.each(trees, function (i, value) {
                         if (value.path == "kanji") {
@@ -59,7 +59,7 @@ name: listing.html
 </p>
 
 <p>
-    <a id="load-kanji-listing" href="https://github.com/Gnurou/kanjivg/tree/master/kanji" class="btn btn-warning" data-loading-text="Fetching..." autocomplete="off">Display all kanjis</a>
+    <a id="load-kanji-listing" href="https://github.com/KanjiVG/kanjivg/tree/master/kanji" class="btn btn-warning" data-loading-text="Fetching..." autocomplete="off">Display all kanjis</a>
 </p>
 
 <div id="kanji-listing">
