@@ -6,7 +6,7 @@ project-links:
   url: index.html
   icon: home
 - text: Download
-  url: download.html
+  url: https://github.com/KanjiVG/kanjivg/releases
   icon: download
 - text: Format
   url: format.html
