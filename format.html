@@ -38,8 +38,14 @@ name: format.html
 <p>
     There are two root SVG groups. The <strong>StrokePaths</strong> group is a set of standard SVG paths that
     gives the strokes of the kanji in the right order, and describes the structure of the kanji as explained above with
-    extra attributes. The <strong>StrokeNumbers</strong> group is an optional group that gives a convenient position
-    for stroke-order numbers, useful for displaying in printed material for instance. The rest of this page explains the
+    extra attributes.
+</p>
+<p>
+ The <strong>StrokeNumbers</strong> group is an optional group that gives a convenient position
+    for stroke-order numbers, useful for displaying in printed material for instance. The stroke numbers are positioned near their corresponding strokes, at their starting points.
+</p>
+<p>
+ The rest of this page explains the
     additional SVG attributes used in <strong>StrokePaths</strong> that describe the kanji structure.
 </p>
 
@@ -98,7 +104,7 @@ name: format.html
     </dd>
     <dt>number</dt>
     <dd>
-        Allows to identify a group if the element it includes is represented several times in the kanji. For instance,
+        Allows identifying a group if the element it includes is represented several times in the kanji.
     </dd>
     <dt>radical</dt>
     <dd>
