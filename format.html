@@ -138,10 +138,11 @@ Illustration of the structure of the KanjiVG file for 仮 (U+4EEE).
 <h3 id="part">part</h3>
 
 <p>
-  Is used if all the strokes of a component do not all come in a
-  row. In this case, two or more identical groups need to be defined,
-  and the <strong>part</strong> attribute allows numbering these
-  groups and defined them as being part of the same component.
+  When the elements of a group of kanji strokes which forms a larger
+  unit are not consecutive strokes, the group of strokes may be spread
+  over several groups of paths in the file. The <strong>part</strong>
+  attribute allows numbering these groups and defined them as being
+  part of the same component.
 </p>
 
 <h3 id="partial">partial</h3>
