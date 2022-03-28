@@ -5,137 +5,236 @@ name: format.html
 ---
 
 <div class="page-header">
-    <h1>KanjiVG file format</h1>
+  <h1>KanjiVG file format</h1>
 </div>
 
 <p>
-    <strong>This page is still under construction an@d describes the KanjiVG's new format</strong>
+  KanjiVG is designed as an extension of SVG. All KanjiVG files are
+  100% SVG-compliant and can be opened by any SVG viewer or editor
+  as-is. The shape of each kanji stroke (an individual line) is
+  described as an
+  <a href="http://www.w3.org/TR/SVG/paths.html#PathData">SVG path</a>
+  on an area of size 109x109.
 </p>
 
 <p>
-    The KanjiVG is designed as an extension of SVG. This means that any KanjiVG file is 100% SVG-compliant and can be
-    opened by one's favorite SVG viewer/editor to be seen as-is.
-</p>
-
-<p>
-    However, the SVG file is organized in such a way that it reflects the structure and stroke order of the kanji.
-    Furthermore, several additional attributes are added in order to provide extra information about the kanji's
-    structure.
+  The SVG file is organized in such a way that it reflects the
+  structure and stroke order of the kanji.  Furthermore, several
+  additional attributes are added in order to provide extra
+  information about the kanji's structure.
 </p>
 
 
 <h2>Groups</h2>
 
 <p>
-    Kanji are often made of several components, and KanjiVG uses
-    <a href="http://www.w3.org/TR/SVG/struct.html#Groups">SVG groups</a> to reflect this organization. For instance,
-    <a href="viewer.html?kanji=頑">頑</a> can be seen as a combination of
-    <a href="viewer.html?kanji=元">元</a> on its left and
-    <a href="viewer.html?kanji=頁">頁</a> on its right. SVG groups provide an elegant way to bind strokes to a given
-    group.
+  Kanji are often made of several components, and KanjiVG uses
+  <a href="http://www.w3.org/TR/SVG/struct.html#Groups">SVG groups</a>
+  to reflect this organization. For instance,
+  <a href="viewer.html?kanji=頑">頑</a> can be seen as a combination of
+  <a href="viewer.html?kanji=元">元</a> on its left and
+  <a href="viewer.html?kanji=頁">頁</a> on its right. SVG groups
+  provide an elegant way to bind strokes to a given group.
 </p>
 
 <p>
-    There are two root SVG groups. The <strong>StrokePaths</strong> group is a set of standard SVG paths that
-    gives the strokes of the kanji in the right order, and describes the structure of the kanji as explained above with
-    extra attributes.
+  There are two root SVG groups. The <strong>StrokePaths</strong>
+  group is a set of standard SVG paths that gives the strokes of the
+  kanji in the right order, and describes the structure of the kanji
+  as explained above with extra attributes.
 </p>
 <p>
- The <strong>StrokeNumbers</strong> group is an optional group that gives a convenient position
-    for stroke-order numbers, useful for displaying in printed material for instance. The stroke numbers are positioned near their corresponding strokes, at their starting points.
+  The <strong>StrokeNumbers</strong> group is an optional group that
+  gives a convenient position for stroke-order numbers, useful for
+  displaying in printed material for instance. The stroke numbers are
+  positioned near their corresponding strokes, at their starting
+  points.
 </p>
 <p>
- The rest of this page explains the
-    additional SVG attributes used in <strong>StrokePaths</strong> that describe the kanji structure.
+  The rest of this page explains the additional SVG attributes used
+  in <strong>StrokePaths</strong> that describe the kanji structure.
 </p>
 
-<h3>Additional group attributes</h3>
+<h2>Group attributes</h2>
 
 <p>
-    All these attributes are placed under the <strong>kvg</strong> namespace.
+  All these attributes are placed under the <strong>kvg</strong> namespace.
 </p>
 
 
+<h3>element</h3>
+<p>
+  This attribute specifies which kanji best represents the group
+  physically. It should be the Unicode character that resembles the
+  group as much as possible.
+</p>
+
+<h3>id</h3>
+
+<p>
+The KanjiVG identification number for this group. It contains the
+Unicode value of the kanji as a five-digit lower-case hexadecimal
+number, followed by a hyphen and the letter "g", followed by a digit
+from one to the total number of groups.
+</p>
+
+<h3>number</h3>
+<p>
+  This attribute allows a group to be identified if its element is
+  represented several times in the kanji.
+</p>
+
+<h3>original</h3>
+<p>
+  This attribute specifies which kanji represents the group from a
+  semantic point of view. For instance, the <em>ninben</em>
+  (<a href="viewer.html?kanji=亻">亻</a>) component is a variation
+  of <a href="viewer.html?kanji=人">人</a>. This attribute only
+  needs to be present if there is a difference between the semantic
+  and physical representation of the group.
+</p>
+
+<p>
+  For example, <a href="viewer.html?kanji=仮">仮</a> has two groups:
+  the left one has <a href="viewer.html?kanji=亻">亻</a> for element
+  attribute, and
+  <a href="viewer.html?kanji=人">人</a> for original attribute, and
+  the right one has
+  <a href="viewer.html?kanji=反">反</a> for element, and no original
+  attribute.
+</p>
+
+<figure>
+<pre>
+&lt;g id="kvg:StrokePaths_04eee" style="fill:none;stroke:#000000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;"&gt;
+&lt;g id="kvg:04eee" kvg:element="仮"&gt;
+	&lt;g id="kvg:04eee-g1" <span style='color:red'>kvg:element="亻"</span> kvg:variant="true" <span style='color:red'>kvg:original="人"</span> kvg:position="left" kvg:radical="general"&gt;
+		&lt;path id="kvg:04eee-s1" kvg:type="㇒" d="M32.01,17c0.22,1.93-0.31,3.72-1.02,5.37C26.5,32.93,20.8,42.85,10.5,55.7"/&gt;
+		&lt;path id="kvg:04eee-s2" kvg:type="㇑" d="M25.48,37.5c0.57,0.57,1,1.69,1,3.24c0,11.3,0,33.32,0,46.02c0,3.05,0,5.56,0,7.25"/&gt;
+	&lt;/g&gt;
+	&lt;g id="kvg:04eee-g2" <span style='color:red'>kvg:element="反"</span> kvg:position="right" kvg:phon="叚V/反"&gt;
+		&lt;g id="kvg:04eee-g3" kvg:element="厂"&gt;
+			&lt;path id="kvg:04eee-s3" kvg:type="㇐" d="M47.34,22.01c1.27,0.33,3.61,0.53,4.86,0.33c11.42-1.84,23.3-4.59,32.75-5.84c2.08-0.27,3.38,0.16,4.44,0.32"/&gt;
+			&lt;path id="kvg:04eee-s4" kvg:type="㇒" d="M52.65,23.81c1.14,1.14,1.49,2.48,1.42,4.7c-0.74,22.33-5.06,47.31-16.01,61.4"/&gt;
+		&lt;/g&gt;
+		&lt;g id="kvg:04eee-g4" kvg:element="又"&gt;
+			&lt;path id="kvg:04eee-s5" kvg:type="㇇" d="M56.7,41.74c1.51,0.37,2.95,0.43,5.97-0.13c3.02-0.56,15.29-4.17,17.37-4.71c2.97-0.77,4.79,1.08,3.83,4.1c-6.62,20.75-11.62,38.63-36.26,53.52"/&gt;
+			&lt;path id="kvg:04eee-s6" kvg:type="㇏" d="M56.12,52.12c5.64,0.81,18.99,22.02,31.03,33.71c2.35,2.29,5.22,4.66,7.84,6.11"/&gt;
+		&lt;/g&gt;
+	&lt;/g&gt;
+&lt;/g&gt;
+&lt;/g&gt;
+</pre>
+<figcaption>
+Illustration of the structure of the KanjiVG file for 仮 (U+4EEE).
+</figcaption>
+</figure>
+
+<h3>part</h3>
+<p>
+  Is used if all the strokes of a component do not all come in a row. In this case, two or more identical groups
+  need to be defined, and the <strong>part</strong> attribute allows to number these groups and defined
+  them as being part of the same component. <strong>TODO: remove as it is redundant with the number
+    attribute</strong>
+</p>
+
+<h3>partial</h3>
+<p>
+  Should be present and set to <strong>true</strong> if the group only represents the
+  <strong>element</strong> attribute partially, i.e. if not all its strokes are present.
+</p>
+<h3>phon</h3>
+
+<p>
+  A big number of kanji consists of a radical and a phoneticum. phon should mark the part indicating the Sino-Japanese pronunciation. 
+</p>
+
+<h3>position</h3>
+<p>
+  Defines where this groups is located with respect to the other groups with the same parent. Possible values are
+</p>
 <dl>
-    <dt>element</dt>
-    <dd>
-        Specifies which kanji best represents the group <em>physically</em>. It should be the unicode character
-        that resembles the group as much as possible.
-    </dd>
-    <dt>original</dt>
-    <dd>
-        Specifies which kanji represents the group from a semantic point of view. For instance, the <em>ninben</em>
-        (<a href="viewer.html?kanji=亻">亻</a>) component is a variation of <a href="viewer.html?kanji=人">人</a> when
-        in some kanji. This attribute only needs to be present if there is a difference between the semantic and
-        physical representation of the group.
-    </dd>
+<dt>bottom
+<dd>
+This part is under another part
+<dt>kamae
+<dd>
+This part is wrapped around another part, such as 門.
+<dt>kamae1
+<dd>
+<dt>kamae2
+<dd>
+<dt>left
+<dd>
+This part is left of another part
+<dt>nyo
+<dd>
+This part is left and under another part, such as 辶.
+<dt>right
+<dd>
+This part is right of another part
+<dt>tare
+<dd>
+This part is left and above another part, such as 广.
+<dt>top
+<dd>
+This part is above another part.
 </dl>
+
+<h3>radical</h3>
 <p>
-    It can therefore be guessed that the kanji <a href="viewer.html?kanji=仮">仮</a> will be defined by two groups: the
-    left one will have <a href="viewer.html?kanji=亻">亻</a> for element attribute, and
-    <a href="viewer.html?kanji=人">人</a> for original attribute, whereas the right one will have
-    <a href="viewer.html?kanji=反">反</a> for element and no original attribute.
+  Defines if this group is considered as a radical of the kanji, and by which reference. Possible values:
+  <strong>general</strong>, <strong>nelson</strong>, <strong>tradit</strong>.
 </p>
 
-<dl>
-    <dt>position</dt>
-    <dd>
-        Defines where this groups is located with respect to the other groups with the same parent. Possible values are
-        <strong>left</strong>, <strong>right</strong>, <strong>top</strong>, <strong>bottom</strong>,
-        <strong>nyo</strong>, <strong>tare</strong>, <strong>kamae</strong>, <strong>kamae1</strong>,
-        <strong>kamae2</strong>.
-    </dd>
-    <dt>variant</dt>
-    <dd>
-        Should be present and set to <strong>true</strong> if the group is actually slightly different from the
-        <strong>element</strong> attribute.
-    </dd>
-    <dt>partial</dt>
-    <dd>
-        Should be present and set to <strong>true</strong> if the group only represents the
-        <strong>element</strong> attribute partially, i.e. if not all its strokes are present.
-    </dd>
-    <dt>part</dt>
-    <dd>
-        Is used if all the strokes of a component do not all come in a row. In this case, two or more identical groups
-        need to be defined, and the <strong>part</strong> attribute allows to number these groups and defined
-        them as being part of the same component. <strong>TODO: remove as it is redundant with the number
-        attribute</strong>
-    </dd>
-    <dt>number</dt>
-    <dd>
-        Allows identifying a group if the element it includes is represented several times in the kanji.
-    </dd>
-    <dt>radical</dt>
-    <dd>
-        Defines if this group is considered as a radical of the kanji, and by which reference. Possible values:
-        <strong>general</strong>, <strong>nelson</strong>, <strong>tradit</strong>.
-    </dd>
-    <dt>phon</dt>
-    <dd>
-A big number of kanji consists of a radical and a phoneticum. phon should mark the part indicating the Sino-Japanese pronunciation. 
-    </dd>
-    <dt>tradForm</dt>
-    <dd>
-The Kanjidic file with which I worked in the beginning favored the radicals given in the Nelson character dictionary, which sometimes differ from the radicals given in "traditional" Japanese dictionaries and have mark-up as well.
-    </dd>
-    <dt>radicalForm</dt>
-    <dd>
-        TBD
-    </dd>
-</dl>
+<h3>radicalForm</h3>
+
+<p>
+  TBD
+</p>
+
+<h3>tradForm</h3>
+
+<p>
+  The Kanjidic file with which Ulrich Apel worked in the beginning
+  favored the radicals given in the Nelson character dictionary, which
+  sometimes differ from the radicals given in "traditional" Japanese
+  dictionaries and have mark-up as well.
+</p>
+
+<h3>variant</h3>
+<p>
+  Should be present and set to <strong>true</strong> if the group is
+  from the
+  <strong>element</strong> attribute.
+</p>
 
 <h2>Strokes</h2>
 
 <p>
-    KanjiVG is designed to be easily parsed, and uses XML to achieve this. The properties and shape of every kanji is
-    hierarchically described by XML attributes. The shape of each stroke is described as a
-    <a href="http://www.w3.org/TR/SVG/paths.html#PathData">SVG path</a> on an area of size 109x109.
+  Kanji strokes are represented by the SVG &lt;path&gt; element.
 </p>
 
 
-<h3>Additional stroke attributes</h3>
-<dl>
-    <dt>type</dt>
-    <dd>The shape of the stroke. It can be used to know how the stroke should be rendered.</dd>
-</dl>
+<h2>Stroke attributes</h2>
+
+<h3>d</h3>
+<p>
+The SVG path information itself. This describes the shape of the line.
+</p>
+
+<h3>id</h3>
+
+<p>
+The KanjiVG identification number for this stroke. It contains the
+Unicode value of the kanji as a five-digit lower-case hexadecimal
+number, followed by a hyphen and the letter "s", followed by a digit
+from one to the total stroke count.
+</p>
+
+<h3>type</h3>
+
+<p>
+The shape of the stroke. It can be used to know how the stroke
+should be rendered.
+</p>
