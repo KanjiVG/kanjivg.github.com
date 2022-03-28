@@ -247,15 +247,32 @@ The SVG path information itself. This describes the shape of the line.
 <h3 id="stroke-id">id</h3>
 
 <p>
-The KanjiVG identification number for this stroke. It contains the
-Unicode value of the kanji as a five-digit lower-case hexadecimal
-number, followed by a hyphen and the letter "s", followed by a decimal
-number from one to the total stroke count.
+  The KanjiVG identification number for this stroke. It contains the
+  Unicode value of the kanji as a five-digit lower-case hexadecimal
+  number, followed by a hyphen and the letter "s", followed by a decimal
+  number from one to the total stroke count.
 </p>
 
 <h3 id="type">type</h3>
 
 <p>
-The shape of the stroke. It can be used to know how the stroke
-should be rendered.
+  The shape of the stroke. It can be used to know how the stroke
+  should be rendered.
 </p>
+
+<p>
+  The values of this attribute use the keys of
+  Unicode's <a href="https://www.unicode.org/charts/PDF/U31C0.pdf">CJK
+    Strokes</a>, which occupy code positions from U+31C0 to U+31EF, plus
+  in some cases another field consisting of alphabetical letters. These
+  letters refer to a set of stroke types which Ulrich Apel designed but
+  has not documented.
+</p>
+
+<p>
+  Where the value has two possibilities, a slash is used to separate
+  them. For example, the bottom dash in 冬 (fuyu, "winter") may slant
+  either upwards or downwards, so this is represented
+  by <code>kvg:type="㇔/㇀"</code> in the KanjiVG source file.
+</p>
+
