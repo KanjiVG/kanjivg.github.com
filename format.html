@@ -64,6 +64,7 @@ name: format.html
 </p>
 
 
+<a name="element">
 <h3>element</h3>
 
 <p>
@@ -72,6 +73,7 @@ name: format.html
   group as much as possible.
 </p>
 
+<a name="group-id">
 <h3>id</h3>
 
 <p>
@@ -81,6 +83,7 @@ number, followed by a hyphen and the letter "g", followed by a decimal
 number from one to the total number of groups.
 </p>
 
+<a name="number">
 <h3>number</h3>
 
 <p>
@@ -88,25 +91,26 @@ number from one to the total number of groups.
   represented several times in the kanji.
 </p>
 
+<a name="original">
 <h3>original</h3>
 
 <p>
   This attribute specifies which kanji represents the group from a
-  semantic point of view. For instance, the <em>ninben</em>
-  (<a href="viewer.html?kanji=亻">亻</a>) component is a variation
-  of <a href="viewer.html?kanji=人">人</a>. This attribute only
-  needs to be present if there is a difference between the semantic
-  and physical representation of the group.
+  semantic point of view.  This attribute only needs to be present if
+  there is a difference between the semantic and physical
+  representation of the group.
 </p>
 
 <p>
-  For example, <a href="viewer.html?kanji=仮">仮</a> has two groups:
-  the left one has <a href="viewer.html?kanji=亻">亻</a> for element
-  attribute, and
-  <a href="viewer.html?kanji=人">人</a> for original attribute, and
-  the right one has
-  <a href="viewer.html?kanji=反">反</a> for element, and no original
-  attribute.
+  For example, <a href="viewer.html?kanji=仮">仮</a> has two groups.
+  The left one has <a href="viewer.html?kanji=亻">亻</a>
+  (called <em>ninben</em>) for its <code>element</code> attribute, and
+  <a href="viewer.html?kanji=人">人</a>, meaning "person", for
+  its <code>original</code> attribute, because <em>ninben</em> is a
+  variation of 人.  However, the right side has
+  <a href="viewer.html?kanji=反">反</a> for <code>element</code>,
+  which is not a variation, so an <code>original</code> attribute is
+  not necessary.
 </p>
 
 <figure>
@@ -135,16 +139,17 @@ Illustration of the structure of the KanjiVG file for 仮 (U+4EEE).
 </figcaption>
 </figure>
 
+<a name="part">
 <h3>part</h3>
 
 <p>
   Is used if all the strokes of a component do not all come in a
   row. In this case, two or more identical groups need to be defined,
-  and the <strong>part</strong> attribute allows to number these
-  groups and defined them as being part of the same
-  component.
+  and the <strong>part</strong> attribute allows numbering these
+  groups and defined them as being part of the same component.
 </p>
 
+<a name="partial">
 <h3>partial</h3>
 
 <p>
@@ -153,16 +158,20 @@ Illustration of the structure of the KanjiVG file for 仮 (U+4EEE).
   not all its strokes are present.
 </p>
 
+<a name="phon">
 <h3>phon</h3>
 
 <p>
-  A big number of kanji consist of a radical and a phoneticum. phon
-  should mark the part indicating the Sino-Japanese pronunciation.
+  A large number of kanji consist of a radical and a phoneticum, the
+  Sino-Japanese pronunciation. The <code>phon</code> attribute should
+  mark the part indicating the pronunciation.
 </p>
 
+<a name="position">
 <h3>position</h3>
 <p>
-  Defines where this groups is located with respect to the other groups with the same parent. Possible values are
+  Defines where this groups is located with respect to the other
+  groups with the same parent. Possible values are
 </p>
 <dl>
 <dt>bottom
@@ -192,18 +201,29 @@ This part is left and above another part, such as 广.
 This part is above another part.
 </dl>
 
+<a name="radical">
 <h3>radical</h3>
+
 <p>
-  Defines if this group is considered as a radical of the kanji, and by which reference. Possible values:
-  <strong>general</strong>, <strong>nelson</strong>, <strong>tradit</strong>.
+  Defines if this group is considered as a radical of the kanji, and
+  by which reference. Possible values:
+  <strong>general</strong> for the generally accepted
+  radical, <strong>nelson</strong> for the original Nelson kanji
+  dictionary, or <strong>tradit</strong> where this disagrees with
+  Nelson.
 </p>
 
+<a name="radicalForm">
 <h3>radicalForm</h3>
 
 <p>
-  TBD
+  This is set to the value <strong>true</strong> for a limited number
+  of groups where a radical-like form of a character described
+  by <a href="#original">original</a> is provided as
+  the <a href="#element">element</a>.
 </p>
 
+<a name="tradForm">
 <h3>tradForm</h3>
 
 <p>
@@ -213,6 +233,7 @@ This part is above another part.
   dictionaries and have mark-up as well.
 </p>
 
+<a name="variant">
 <h3>variant</h3>
 <p>
   Should be present and set to <strong>true</strong> if the group is
@@ -229,11 +250,13 @@ This part is above another part.
 
 <h2>Stroke attributes</h2>
 
+<a name="d">
 <h3>d</h3>
 <p>
 The SVG path information itself. This describes the shape of the line.
 </p>
 
+<a name="stroke-id">
 <h3>id</h3>
 
 <p>
@@ -243,6 +266,7 @@ number, followed by a hyphen and the letter "s", followed by a decimal
 number from one to the total stroke count.
 </p>
 
+<a name="type">
 <h3>type</h3>
 
 <p>
