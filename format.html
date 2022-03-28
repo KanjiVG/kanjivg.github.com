@@ -43,6 +43,7 @@ name: format.html
   kanji in the right order, and describes the structure of the kanji
   as explained above with extra attributes.
 </p>
+
 <p>
   The <strong>StrokeNumbers</strong> group is an optional group that
   gives a convenient position for stroke-order numbers, useful for
@@ -50,6 +51,7 @@ name: format.html
   positioned near their corresponding strokes, at their starting
   points.
 </p>
+
 <p>
   The rest of this page explains the additional SVG attributes used
   in <strong>StrokePaths</strong> that describe the kanji structure.
@@ -63,6 +65,7 @@ name: format.html
 
 
 <h3>element</h3>
+
 <p>
   This attribute specifies which kanji best represents the group
   physically. It should be the Unicode character that resembles the
@@ -74,17 +77,19 @@ name: format.html
 <p>
 The KanjiVG identification number for this group. It contains the
 Unicode value of the kanji as a five-digit lower-case hexadecimal
-number, followed by a hyphen and the letter "g", followed by a digit
-from one to the total number of groups.
+number, followed by a hyphen and the letter "g", followed by a decimal
+number from one to the total number of groups.
 </p>
 
 <h3>number</h3>
+
 <p>
   This attribute allows a group to be identified if its element is
   represented several times in the kanji.
 </p>
 
 <h3>original</h3>
+
 <p>
   This attribute specifies which kanji represents the group from a
   semantic point of view. For instance, the <em>ninben</em>
@@ -131,22 +136,29 @@ Illustration of the structure of the KanjiVG file for 仮 (U+4EEE).
 </figure>
 
 <h3>part</h3>
+
 <p>
-  Is used if all the strokes of a component do not all come in a row. In this case, two or more identical groups
-  need to be defined, and the <strong>part</strong> attribute allows to number these groups and defined
-  them as being part of the same component. <strong>TODO: remove as it is redundant with the number
-    attribute</strong>
+  Is used if all the strokes of a component do not all come in a
+  row. In this case, two or more identical groups need to be defined,
+  and the <strong>part</strong> attribute allows to number these
+  groups and defined them as being part of the same
+  component. <strong>TODO: remove as it is redundant with the number
+  attribute</strong>
 </p>
 
 <h3>partial</h3>
+
 <p>
-  Should be present and set to <strong>true</strong> if the group only represents the
-  <strong>element</strong> attribute partially, i.e. if not all its strokes are present.
+  Should be present and set to <strong>true</strong> if the group only
+  represents the <strong>element</strong> attribute partially, i.e. if
+  not all its strokes are present.
 </p>
+
 <h3>phon</h3>
 
 <p>
-  A big number of kanji consists of a radical and a phoneticum. phon should mark the part indicating the Sino-Japanese pronunciation. 
+  A big number of kanji consist of a radical and a phoneticum. phon
+  should mark the part indicating the Sino-Japanese pronunciation.
 </p>
 
 <h3>position</h3>
@@ -228,8 +240,8 @@ The SVG path information itself. This describes the shape of the line.
 <p>
 The KanjiVG identification number for this stroke. It contains the
 Unicode value of the kanji as a five-digit lower-case hexadecimal
-number, followed by a hyphen and the letter "s", followed by a digit
-from one to the total stroke count.
+number, followed by a hyphen and the letter "s", followed by a decimal
+number from one to the total stroke count.
 </p>
 
 <h3>type</h3>
