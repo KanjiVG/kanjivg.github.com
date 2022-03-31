@@ -131,7 +131,7 @@ number from one to the total number of groups.
 &lt;/g&gt;
 </pre>
 <figcaption>
-Illustration of the structure of the KanjiVG file for 仮 (U+4EEE).
+  Illustration of the structure of the KanjiVG file for 仮 (U+4EEE).
 </figcaption>
 </figure>
 
@@ -166,30 +166,34 @@ Illustration of the structure of the KanjiVG file for 仮 (U+4EEE).
   Defines where this groups is located with respect to the other
   groups with the same parent. Possible values are
 </p>
+
 <dl>
-<dt>bottom
+
+<dt id="bottom">bottom
 <dd>
-This part is under another part
-<dt>kamae
+This part is under another part.
+
+<dt id="kamae">kamae
 <dd>
 This part is wrapped around another part, such as 門.
-<dt>kamae1
+
+<dt id="left">left
 <dd>
-<dt>kamae2
-<dd>
-<dt>left
-<dd>
-This part is left of another part
-<dt>nyo
+This part is left of another part.
+
+<dt id="nyo">nyo
 <dd>
 This part is left and under another part, such as 辶.
-<dt>right
+
+<dt id="right">right
 <dd>
-This part is right of another part
-<dt>tare
+This part is right of another part.
+
+<dt id="tare">tare
 <dd>
 This part is left and above another part, such as 广.
-<dt>top
+
+<dt id="top">top
 <dd>
 This part is above another part.
 </dl>
@@ -197,8 +201,8 @@ This part is above another part.
 <h3 id="radical">radical</h3>
 
 <p>
-  Defines if this group is considered as a radical of the kanji, and
-  by which reference. Possible values:
+  Defines if this group is considered as a radical (部首) of the
+  kanji, and by which reference. Possible values:
   <strong>general</strong> for the generally accepted
   radical, <strong>nelson</strong> for the radicals from the original
   Nelson kanji dictionary, or <strong>tradit</strong> where the Kangxi
