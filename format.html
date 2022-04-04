@@ -27,14 +27,91 @@ name: format.html
 <h2>Character models</h2>
 
 <p>
-  There is data for variations of characters and stroke order. The
-  main data is is based on schoolbook fonts (教科書体), which is a
-  variation of the calligraphic kaisho style (楷書). When characters
-  in schoolbook style deviate from traditional kaisho, there might be
-  an extra version for kaisho, labelled with the
+  The main graphical data is is based on schoolbook fonts
+  (<nobr><ruby>教科書体<rt>きょうかしょたい</rt></ruby></nobr>), which
+  is a variation of the calligraphic kaisho style 
+
+  (<nobr><ruby>楷書<rt>かいしょ</rt></ruby></nobr>). 
+</p>
+
+<p>
+  There is data for variations of characters and stroke order. When
+  characters in schoolbook style deviate from traditional kaisho,
+  there might be an extra version for kaisho, labelled with the
   suffix <code>-Kaisho</code>. There are also different versions for
   different stroke orders.
 </p>
+
+<h3>Variant suffixes</h3>
+
+<p>
+The following is a complete list of the file suffixes used to indicate
+variant forms. Not all of them are known.
+</p>
+
+<dl>
+<dt>Hyougai
+<dd>
+Variant forms of the character, called "hyougai"
+
+(<ruby>表外<rt>ひょうがい</rt></ruby>) in
+Japanese. <span class='undocumented'>These are often the characters
+for different Unicode code points, or otherwise inconsistent.</a>
+
+<dt>HzFst
+<dd>
+<b>H</b>ori<b>z</b>ontal <b>F</b>ir<b>st</b> stroke order
+<dt>HzFstLeRi
+<dd>
+Horizontal First, Left to Right stroke order
+<dt>HzFstRiLe
+<dd>
+Horizontal First, Right to Left stroke order
+<dt>HzFstVtLst
+<dd>
+Horizontal First, Vertical Last
+<dt>HzLst
+<dd>
+Vertical Last
+<dt>Jinmei
+<dd>
+Versions of the character used for names, which appear in the Jinmei
+(<ruby>人名<rt>じんめい</rt></ruby>)
+list. <span class='undocumented'>In practice these often refer to
+different Unicode code points than the ones given.</span>
+<dt>Kaisho
+<dd>
+<dt>LeFst
+<dd>
+Left First
+<dt>MdLst
+<dd>
+Middle First
+<dt>MidFst
+<dd>
+Middle First (duplicate)
+<dt>Ten3
+<dd>
+<span class='undocumented'>Unknown</span>
+<dt>TenLst
+<dd>
+<span class='undocumented'>Unknown</span>
+<dt>Vt4
+<dd>
+<span class='undocumented'>Unknown</span>
+<dt>Vt6
+<dd>
+<span class='undocumented'>Unknown</span>
+<dt>VtFst
+<dd>
+Vertical First
+<dt>VtFstRiLe
+<dd>
+Vertical First Right to Left
+<dt>VtLst
+<dd>
+Vertical Last
+</dl>
 
 <h2>Groups</h2>
 
@@ -203,6 +280,8 @@ This part is right of another part.
 <dt id="tare">tare
 <dd>
 This part is left and above another part, such as 广.
+<span class='undocumented'>This is used inconsistently in
+KanjiVG.</span>
 
 <dt id="top">top
 <dd>
@@ -307,9 +386,10 @@ The SVG path information itself. This describes the shape of the line.
   Unicode's <a href="https://www.unicode.org/charts/PDF/U31C0.pdf">CJK
   Strokes</a>, which occupy code positions from U+31C0 to U+31EF, plus
   in some cases another field consisting of alphabetical
-  letters. These letters refer to a set of stroke types which Ulrich
-  Apel designed but has not documented. The letters seem to indicate
-  the intersections of the ends of strokes with other strokes.
+  letters. <span class='undocumented'>These letters refer to a set of
+  stroke types which Ulrich Apel designed but has not documented. The
+  letters seem to indicate the intersections of the ends of strokes
+  with other strokes.</span>
 </p>
 
 <dl>
@@ -321,10 +401,10 @@ End touches middle part of other stroke
 End touches end of other stroke
 <dt>c
 <dd>
-Unknown
+<span class='undocumented'>Unknown</span>
 <dt>v
 <dd>
-Unknown
+<span class='undocumented'>Unknown</span>
 </dl>
 
 <p>
