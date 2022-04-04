@@ -24,6 +24,17 @@ name: format.html
   information about the kanji's structure.
 </p>
 
+<h2>Character models</h2>
+
+<p>
+  There is data for variations of characters and stroke order. The
+  main data is is based on schoolbook fonts (教科書体), which is a
+  variation of the calligraphic kaisho style (楷書). When characters
+  in schoolbook style deviate from traditional kaisho, there might be
+  an extra version for kaisho, labelled with the
+  suffix <code>-Kaisho</code>. There are also different versions for
+  different stroke orders.
+</p>
 
 <h2>Groups</h2>
 
@@ -294,11 +305,27 @@ The SVG path information itself. This describes the shape of the line.
 <p>
   The values of this attribute use the keys of
   Unicode's <a href="https://www.unicode.org/charts/PDF/U31C0.pdf">CJK
-    Strokes</a>, which occupy code positions from U+31C0 to U+31EF, plus
-  in some cases another field consisting of alphabetical letters. These
-  letters refer to a set of stroke types which Ulrich Apel designed but
-  has not documented.
+  Strokes</a>, which occupy code positions from U+31C0 to U+31EF, plus
+  in some cases another field consisting of alphabetical
+  letters. These letters refer to a set of stroke types which Ulrich
+  Apel designed but has not documented. The letters seem to indicate
+  the intersections of the ends of strokes with other strokes.
 </p>
+
+<dl>
+<dt>a
+<dd>
+End touches middle part of other stroke
+<dt>b
+<dd>
+End touches end of other stroke
+<dt>c
+<dd>
+Unknown
+<dt>v
+<dd>
+Unknown
+</dl>
 
 <p>
   Where the value has two possibilities, a slash is used to separate
