@@ -127,7 +127,7 @@ Vertical First Right to Left
 Vertical Last
 </dl>
 
-<h2>Groups</h2>
+<h2>SVG Groups</h2>
 
 <p>
   Kanji are often made of several components, and KanjiVG uses
@@ -148,16 +148,21 @@ Vertical Last
 
 <p>
   The <strong>StrokeNumbers</strong> group is an optional group that
-  gives a convenient position for stroke-order numbers, useful for
+  gives a convenient position
+  for <a href="#stroke-numbers">stroke-order numbers</a>, useful for
   displaying in printed material for instance. The stroke numbers are
   positioned near their corresponding strokes, at their starting
   points.
 </p>
 
+
+<h2>StrokePaths groups</h2>
+
 <p>
-  The rest of this page explains the additional SVG attributes used
+  This explains the SVG attributes used
   in <strong>StrokePaths</strong> that describe the kanji structure.
 </p>
+
 
 <h3>General attributes</h3>
 
@@ -455,7 +460,7 @@ End touches end of other stroke
   by <code>kvg:type="㇔/㇀"</code> in the KanjiVG source file.
 </p>
 
-<h2>Stroke numbers</h2>
+<h2 id='stroke-numbers'>Stroke numbers</h2>
 
 <p>
   Stroke numbers are represented by a top-level group with an ID of
