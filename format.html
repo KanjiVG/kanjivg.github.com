@@ -25,8 +25,8 @@ name: format.html
 </p>
 
 <p class='undocumented'>
-Undocumented or unknown features are
-distinguished with a pale green background.
+  Undocumented and unknown features, and notes on possible flaws in
+  the data, are distinguished with a pale green background.
 </p>
 
 <h2>Character models</h2>
@@ -50,8 +50,8 @@ distinguished with a pale green background.
 <h3>Variant suffixes</h3>
 
 <p>
-The following is a complete list of the file suffixes used to indicate
-variant forms. Not all of them are known.
+  The following is a complete list of the file suffixes used to
+  indicate variant forms. Not all of them are known.
 </p>
 
 <dl>
@@ -78,6 +78,11 @@ Horizontal First, Vertical Last
 <dt>HzLst
 <dd>
 Vertical Last
+<dt>Insatsu
+<dd>
+Printed form (<ruby>印刷<rt>いんさつ</rt></ruby>), where it differs
+from the schoolbook format. <span class='undocumented'>This is used
+inconsistently.</span>
 <dt>Jinmei
 <dd>
 Versions of the character used for names, which appear in the Jinmei
@@ -154,9 +159,9 @@ Vertical Last
   in <strong>StrokePaths</strong> that describe the kanji structure.
 </p>
 
-<h2>General attributes</h2>
+<h3>General attributes</h3>
 
-<h3 id="group-id">id</h3>
+<h4 id="group-id">id</h4>
 
 <p>
   The KanjiVG identification number for this group. It contains the
@@ -169,14 +174,15 @@ Vertical Last
   The group ID numbers are always consecutive positive whole numbers.
 </p>
 
-<h2>KVG namespace attributes</h2>
+<h3>KVG namespace attributes</h3>
 
 <p>
-  All these attributes are placed under the <strong>kvg</strong> namespace.
+  All these attributes are placed under the <strong>kvg</strong>
+  namespace, for example <code>kvg:original="家"</code>
 </p>
 
 
-<h3 id="element">element</h3>
+<h4 id="element">element</h4>
 
 <p>
   This attribute specifies which kanji best represents the group
@@ -184,14 +190,14 @@ Vertical Last
   group as much as possible.
 </p>
 
-<h3 id="number">number</h3>
+<h4 id="number">number</h4>
 
 <p>
   This attribute allows a group to be identified if its element is
   represented several times in the kanji.
 </p>
 
-<h3 id="original">original</h3>
+<h4 id="original">original</h4>
 
 <p>
   This attribute specifies which kanji represents the group from a
@@ -238,7 +244,7 @@ Vertical Last
 </figcaption>
 </figure>
 
-<h3 id="part">part</h3>
+<h4 id="part">part</h4>
 
 <p>
   When the elements of a group of kanji strokes which forms a larger
@@ -248,7 +254,7 @@ Vertical Last
   part of the same component.
 </p>
 
-<h3 id="partial">partial</h3>
+<h4 id="partial">partial</h4>
 
 <p>
   Should be present and set to <strong>true</strong> if the group only
@@ -256,7 +262,7 @@ Vertical Last
   not all its strokes are present.
 </p>
 
-<h3 id="phon">phon</h3>
+<h4 id="phon">phon</h4>
 
 <p>
   A large number of kanji consist of a radical and a phoneticum, the
@@ -264,7 +270,7 @@ Vertical Last
   mark the part indicating the pronunciation.
 </p>
 
-<h3 id="position">position</h3>
+<h4 id="position">position</h4>
 <p>
   Defines where this groups is located with respect to the other
   groups with the same parent. Possible values are
@@ -303,7 +309,7 @@ KanjiVG.</span>
 This part is above another part.
 </dl>
 
-<h3 id="radical">radical</h3>
+<h4 id="radical">radical</h4>
 
 <p>
   Defines if this group is considered as a radical (部首) of the
@@ -341,7 +347,7 @@ of <a href="http://www.edrdg.org/wiki/index.php/KANJIDIC_Project">Kanjidic</a>.
 </figcaption>
 </figure>
 
-<h3 id="radicalForm">radicalForm</h3>
+<h4 id="radicalForm">radicalForm</h4>
 
 <p>
   This is set to the value <strong>true</strong> for a limited number
@@ -350,7 +356,7 @@ of <a href="http://www.edrdg.org/wiki/index.php/KANJIDIC_Project">Kanjidic</a>.
   the <a href="#element">element</a>.
 </p>
 
-<h3 id="tradForm">tradForm</h3>
+<h4 id="tradForm">tradForm</h4>
 
 <p>
   The Kanjidic file with which Ulrich Apel worked in the beginning
@@ -359,7 +365,7 @@ of <a href="http://www.edrdg.org/wiki/index.php/KANJIDIC_Project">Kanjidic</a>.
   dictionaries and have mark-up as well.
 </p>
 
-<h3 id="variant">variant</h3>
+<h4 id="variant">variant</h4>
 <p>
   Should be present and set to <strong>true</strong> if the group is
   from the
@@ -374,9 +380,9 @@ of <a href="http://www.edrdg.org/wiki/index.php/KANJIDIC_Project">Kanjidic</a>.
 </p>
 
 
-<h2>General attributes</h2>
+<h3>General attributes</h3>
 
-<h3 id="d">d</h3>
+<h4 id="d">d</h4>
 
 <p>
   The SVG path information itself. This describes the shape of the
@@ -390,7 +396,7 @@ of <a href="http://www.edrdg.org/wiki/index.php/KANJIDIC_Project">Kanjidic</a>.
   cubic bezier curves. There are no other SVG path elements present.
 </p>
 
-<h3 id="stroke-id">id</h3>
+<h4 id="stroke-id">id</h4>
 
 <p>
   The KanjiVG identification number for this stroke. It contains the
@@ -403,13 +409,13 @@ of <a href="http://www.edrdg.org/wiki/index.php/KANJIDIC_Project">Kanjidic</a>.
   from 1 which correspond to the stroke numbers.
 </p>
 
-<h2>KVG namespace attributes</h2>
+<h3>KVG namespace attributes</h3>
 
 <p>
   These attributes are under the <code>kvg:</code> namespace.
 </p>
 
-<h3 id="type">type</h3>
+<h4 id="type">type</h4>
 
 <p>
   The shape of the stroke. It can be used to know how the stroke
@@ -452,16 +458,18 @@ End touches end of other stroke
 <h2>Stroke numbers</h2>
 
 <p>
-  Stroke numbers are represented by a group with ID of the
-  form <code>kvg:StrokeNumbers_abcde"</code>, where <code>abcde</code>
-  is the identifier of the file, containing
-  ungrouped <code>text</code> elements. Each text element is located
-  on the diagram using a <code>transform</code> attribute. The text
-  within each text element is the stroke number, from one to the total
-  number of strokes. The stroke numbers <em>should</em> correspond to
-  the <a href="#stroke-id">id value of the individual strokes</a>.
+  Stroke numbers are represented by a top-level group with an ID of
+  the form <code>kvg:StrokeNumbers_abcde</code>,
+  where <code>abcde</code> is the identifier of the file. This group
+  contains <code>text</code> elements. Each text element is located on
+  the diagram using a <code>transform</code> attribute. The text
+  within each text element is the stroke number in digits, from one to
+  the total number of strokes. The stroke numbers <em>should</em>
+  correspond to the <a href="#stroke-id">id value of the individual
+  strokes</a>.
 </p>
 <p>
   The stroke numbers are located to the side of the beginning of the
-  stroke whose order they indicate.
+  stroke whose order they indicate. Generally, they should not overlap
+  the strokes.
 </p>
