@@ -154,7 +154,22 @@ Vertical Last
   in <strong>StrokePaths</strong> that describe the kanji structure.
 </p>
 
-<h2>Group attributes</h2>
+<h2>General attributes</h2>
+
+<h3 id="group-id">id</h3>
+
+<p>
+  The KanjiVG identification number for this group. It contains the
+  Unicode value of the kanji as a five-digit lower-case hexadecimal
+  number, followed by a hyphen and the letter "g", followed by a decimal
+  number from one to the total number of groups.
+</p>
+
+<p>
+  The group ID numbers are always consecutive positive whole numbers.
+</p>
+
+<h2>KVG namespace attributes</h2>
 
 <p>
   All these attributes are placed under the <strong>kvg</strong> namespace.
@@ -167,15 +182,6 @@ Vertical Last
   This attribute specifies which kanji best represents the group
   physically. It should be the Unicode character that resembles the
   group as much as possible.
-</p>
-
-<h3 id="group-id">id</h3>
-
-<p>
-The KanjiVG identification number for this group. It contains the
-Unicode value of the kanji as a five-digit lower-case hexadecimal
-number, followed by a hyphen and the letter "g", followed by a decimal
-number from one to the total number of groups.
 </p>
 
 <h3 id="number">number</h3>
@@ -363,15 +369,25 @@ of <a href="http://www.edrdg.org/wiki/index.php/KANJIDIC_Project">Kanjidic</a>.
 <h2>Strokes</h2>
 
 <p>
-  Kanji strokes are represented by the SVG &lt;path&gt; element.
+  Each individual kanji stroke is represented by one SVG &lt;path&gt;
+  element.
 </p>
 
 
-<h2>Stroke attributes</h2>
+<h2>General attributes</h2>
 
 <h3 id="d">d</h3>
+
 <p>
-The SVG path information itself. This describes the shape of the line.
+  The SVG path information itself. This describes the shape of the
+  line.
+</p>
+
+<p>
+  Although there is no rule disallowing various SVG elements, in
+  practice all of the KanjiVG data consists of M/m, C/c, and S/s
+  elements, so the entirety of all of the KanjiVG strokes are solely
+  cubic bezier curves. There are no other SVG path elements present.
 </p>
 
 <h3 id="stroke-id">id</h3>
@@ -381,6 +397,16 @@ The SVG path information itself. This describes the shape of the line.
   Unicode value of the kanji as a five-digit lower-case hexadecimal
   number, followed by a hyphen and the letter "s", followed by a decimal
   number from one to the total stroke count.
+</p>
+<p>
+  The stroke numbers are consecutive positive whole numbers starting
+  from 1 which correspond to the stroke numbers.
+</p>
+
+<h2>KVG namespace attributes</h2>
+
+<p>
+  These attributes are under the <code>kvg:</code> namespace.
 </p>
 
 <h3 id="type">type</h3>
@@ -423,3 +449,19 @@ End touches end of other stroke
   by <code>kvg:type="㇔/㇀"</code> in the KanjiVG source file.
 </p>
 
+<h2>Stroke numbers</h2>
+
+<p>
+  Stroke numbers are represented by a group with ID of the
+  form <code>kvg:StrokeNumbers_abcde"</code>, where <code>abcde</code>
+  is the identifier of the file, containing
+  ungrouped <code>text</code> elements. Each text element is located
+  on the diagram using a <code>transform</code> attribute. The text
+  within each text element is the stroke number, from one to the total
+  number of strokes. The stroke numbers <em>should</em> correspond to
+  the <a href="#stroke-id">id value of the individual strokes</a>.
+</p>
+<p>
+  The stroke numbers are located to the side of the beginning of the
+  stroke whose order they indicate.
+</p>
