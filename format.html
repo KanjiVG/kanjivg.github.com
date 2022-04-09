@@ -403,7 +403,10 @@ of <a href="http://www.edrdg.org/wiki/index.php/KANJIDIC_Project">Kanjidic</a>.
   Although there is no rule disallowing various SVG elements, in
   practice all of the KanjiVG data consists of M/m, C/c, and S/s
   elements, so the entirety of all of the KanjiVG strokes are solely
-  cubic bezier curves. There are no other SVG path elements present.
+  cubic bezier curves. There are no other SVG path elements
+  present. None of the strokes contains a path with more than one
+  sub-path, that is to say there are no strokes with more than one
+  "moveto" element.
 </p>
 
 <h4 id="stroke-id">id</h4>
@@ -435,8 +438,21 @@ of <a href="http://www.edrdg.org/wiki/index.php/KANJIDIC_Project">Kanjidic</a>.
 <p>
   The values of this attribute use the keys of
   Unicode's <a href="https://www.unicode.org/charts/PDF/U31C0.pdf">CJK
-  Strokes</a>, which occupy code positions from U+31C0 to U+31EF, plus
-  in some cases another field consisting of alphabetical
+  Strokes</a>, which occupy code positions from U+31C0 to U+31EF.
+</p>
+<dl>
+<dd>
+㇔
+<dt>
+<b>CJK Stroke D</b> This is used for a short dash. The dash may slant
+either down and left, such as the left stroke of 心 or 灬, or down and
+right, such as the right strokes of 心 or 灬.
+<dd>
+<dt>
+</dl>
+
+<p>
+  In some cases another field consisting of alphabetical
   letters. <span class='undocumented'>These letters refer to a set of
   stroke types which Ulrich Apel designed but has not documented. The
   letters seem to indicate the intersections of the ends of strokes
