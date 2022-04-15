@@ -47,32 +47,6 @@ name: format.html
   different stroke orders.
 </p>
 
-<h3>References used by KanjiVG</h3>
-
-<p>
-The following references were used by the original KanjiVG authors to
-form the data.
-</p>
-
-<p>
-<i>DFKyoKaSho-W3-MP-RKSJ-H</i> by DynaLab and <i>A-OTF Kyoukasho ICA
-Pro L</i> by Morisawa and Company Limited were used as model fonts for
-KanjiVG.  The Morisawa font was used, for example, when the DynaLab
-font was lacking characters.
-</p>
-
-<p>
-<i>Hitsujun shidō no tebiki</i>, the official reference of the
-Ministry for Education (Monbushō), published by Hakubundō, Tokyo in
-1958, was used as reference for the stroke order of the Kyōiku Kanji.
-</p>
-
-<p>
-<i>Kaigyōsō – Hitsujun jitai jiten</i>, author EMORI, Kenji, published
-in 2003 by Sanseidō, Tokyo was used as reference for the kaisho
-characters.
-</p>
-
 <h3>Variant suffixes</h3>
 
 <p>
@@ -357,19 +331,28 @@ This part is above another part.
 </p>
 
 <dl>
-  <dt>
+  <!-- Alphabetical order -->
+  <dt id="radical-general">
     general
   </dt>
   <dd>
     for the generally accepted radical
   </dd>
-  <dt>
+  <dt id="radical-jis">
+    jis
+  </dt>
+  <dd>
+    This marks the radicals used by <a href="#jis-jiten-ref">JIS Kanji
+    Jiten</a>, which sometimes differ from the <code>general</code>
+    or <code>tradit</code> radicals.
+  </dd>
+  <dt id="radical-nelson">
     nelson
   </dt>
   <dd>
     for the radicals from the original Nelson kanji dictionary
   </dd>
-  <dt>
+  <dt id="radical-tradit">
     tradit
   </dt>
   <dd>
@@ -591,7 +574,40 @@ End touches end of other stroke
   the strokes.
 </p>
 
-<h3>References</h3>
+<h2>References</h2>
+
+<h3>References used by KanjiVG</h3>
+
+<p>
+The following references were used by the original KanjiVG authors to
+form the data.
+</p>
+
+<p>
+<i>DFKyoKaSho-W3-MP-RKSJ-H</i> by DynaLab and <i>A-OTF Kyoukasho ICA
+Pro L</i> by Morisawa and Company Limited were used as model fonts for
+KanjiVG.  The Morisawa font was used, for example, when the DynaLab
+font was lacking characters.
+</p>
+
+<p>
+<i>Hitsujun shidō no tebiki</i>, the official reference of the
+Ministry for Education (Monbushō), published by Hakubundō, Tokyo in
+1958, was used as reference for the stroke order of the Kyōiku Kanji.
+</p>
+
+<p>
+<i>Kaigyōsō – Hitsujun jitai jiten</i>, author EMORI, Kenji, published
+in 2003 by Sanseidō, Tokyo was used as reference for the kaisho
+characters.
+</p>
+
+<p>
+<i>Kanjidic</i>, an electronic kanji dictionary.
+</p>
+
+
+<h3>Other references</h3>
 
 <ul>
 <li id='cjk-strokes'>
@@ -600,5 +616,15 @@ Proposed additions to the CJK Strokes block of the UCS (PDF)
 </a> explains the meaning of the CJK Strokes and the Chinese words the
 letter codes are based on. This also has some examples of usage of the
 stroke types.
+</li>
+<li id='jis-jiten'>
+The JIS Kanji Jiten (JIS 漢字字典) is the kanji dictionary of the
+Japanese Standards Association. This kanji dictionary is regarded as
+authoritative on kanji radicals by Jim Breen, the author of Kanjidic,
+upon which KanjiVG was originally based, thus the radicals given in
+this reference are used in Kanjidic as the "traditional" radical,
+which sometimes diverge from the radical used by this project as
+<a href="#radical-general">general</a>
+or <a href="radical-tradit">tradit</a>.
 </li>
 </ul>
