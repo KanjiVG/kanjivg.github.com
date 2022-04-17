@@ -205,8 +205,28 @@ Vertical Last
 <h4 id="number">number</h4>
 
 <p>
-  This attribute allows a group to be identified if its element is
-  represented several times in the kanji.
+  This relatively rare attribute allows an element of a kanji to be
+  identified when it is both represented several times in the kanji,
+  and, due to the stroke order, more than one of these representations
+  is broken into parts, so that the <a href="#part">part attribute</a>
+  has to be used for more than one element. In other words, the number
+  attribute is a way to uniquely identify the part when it becomes
+  ambiguous.
+</p>
+<p>
+  It is only used in a few places in kanjivg where there are two
+  different sets of the same element, such as 05716.svg, the character
+  圖, where there are four 口 elements, two of which are broken into
+  parts one and two due to the stroke order. Please
+  inspect <a href="https://raw.githubusercontent.com/KanjiVG/kanjivg/master/kanji/05716.svg">the
+  source code of that SVG file</a> to understand
+  what <code>kvg:number</code> attribute does.
+</p>
+<p>
+  Generally, elements which can be represented by contiguous blocks of
+  strokes do not have a number attribute, even if multiple cases of
+  the same element occur in a character, so, for example, the 口
+  elements of 品 do not have a number attribute.
 </p>
 
 <h4 id="original">original</h4>
@@ -262,8 +282,11 @@ Vertical Last
   When the elements of a group of kanji strokes which forms a larger
   unit are not consecutive strokes, the group of strokes may be spread
   over several groups of paths in the file. The <strong>part</strong>
-  attribute allows numbering these groups and defined them as being
-  part of the same component.
+  attribute allows numbering these groups and defines them as being
+  part of the same component. There is also a <a href="#number">number
+  attribute</a> which can be used in the rare cases that two groups
+  with the same element have non-consecutive strokes within the same
+  character.
 </p>
 
 <h4 id="partial">partial</h4>
