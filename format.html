@@ -302,7 +302,12 @@ Vertical Last
 <p>
   A large number of kanji consist of a radical and a phoneticum, the
   Sino-Japanese pronunciation. The <code>phon</code> attribute should
-  mark the part indicating the pronunciation.
+  mark the part indicating the pronunciation. 
+</p>
+
+<p class='undocumented'>
+  The values of this attribute are inconsistent and the meanings of
+  many of them are completely undocumented.
 </p>
 
 <h4 id="position">position</h4>
@@ -366,8 +371,10 @@ This part is above another part.
   </dt>
   <dd>
     This marks the radicals used by <a href="#jis-jiten-ref">JIS Kanji
-    Jiten</a>, which sometimes differ from the <code>general</code>
-    or <code>tradit</code> radicals.
+    Jiten</a>, used by Kanjidic, which sometimes differ from
+    the <code>general</code> or <code>tradit</code> radicals. This
+    value was added to deal with inconsistencies between KanjiVG and
+    Kanjidic and other references.
   </dd>
   <dt id="radical-nelson">
     nelson
