@@ -12,3 +12,8 @@
 .romaji {
     font-style: italic;
 }
+
+/* Radical used. */
+.used {
+    background: pink;
+}
