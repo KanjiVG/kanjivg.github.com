@@ -5,29 +5,55 @@ name: conventions.html
 ---
 
 <div class="page-header">
-    <h1>Discussion about the conventions of KanjiVG</h1>
+  <h1>Conventions of KanjiVG</h1>
 </div>
 
 <p>
-    Proposal: all "original" attributes should be within the Unified CJK Ideograms. "element" may be outside of the
-    unified CJK, provided these is an "original" attribute with the closest unified CJK ideogram.
+This page details some choices made by KanjiVG. If you wish to discuss
+changing the individual choices, please use the mailing list at Google
+Groups to bring up your proposal.
 </p>
 
-<h2>
-    Radical to use for <a href="viewer.html?kanji=辶">辶</a> and variants
-</h2>
+<h2>Radicals used</h2>
 
 <p>
-    Right now, the radical being used is 0x8fb6, which is part of the Unified CJK ideograms. However, there are possibly
-    more precise codepoints in the CJK Radicals extension (0x2ecc and 0x2ecd), but they are not part of kanjidic2 and
-    not displayed by most fonts. To add to the confusion, there is also 0xfa66.
-</p>
+This section details the choices made for the values of
+<a href="format.html#element"><code>kvg:element</code></a>, the visual
+representation of a kanji radical.
 
-<h2>
-    Sanzui radical
-</h2>
+<h3>
+  Sanzui
+</h3>
 
 <p>
-    We have different candidates again, 0x2ea1 (radicals extension) and 0x6c35 (unified CJK). Once again, 0x6c35 is
-    chosen for now.
+  The radical used for sanzui elements (the variant form of Kangxi radical 85,
+  "water") is U+6C35 氵 rather than U+2EA1 ⺡, except for the special
+  case of U+2EA1 itself.
 </p>
+
+<h3>
+  Kemono-hen
+</h3>
+
+<p>
+  The radical used for kemono-hen elements (the variant form of Kangxi
+  radical 94, "dog") is U+2EA8 ⺨ rather than U+72AD 犭, except for
+  the special case of U+72AD itself.
+</p>
+
+<h3>
+  Shin-nyō
+</h3>
+
+<p>
+  The radical used for shin-nyō elements (Kangxi radical 162, "walk")
+  is either U+8FB6 辶 or U+2ECC ⻌ depending on whether the radical
+  consists of four or three elements respectively. Confusingly, the
+  visual display of 8FB6 in a font may appear to contain only three
+  strokes.
+</p>
+<p>
+  The visually highly similar U+2ECD from CJK Radicals Supplement, and
+  U+FA66 from CJK Compatibility Ideograph are not used by KanjiVG.
+</p>
+
