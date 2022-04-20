@@ -7,3 +7,8 @@
 .undocumented {
     background-color: #d2ffbf;
 }
+
+/* Italicise romaji. */
+.romaji {
+    font-style: italic;
+}

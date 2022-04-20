@@ -9,26 +9,26 @@ name: conventions.html
 </div>
 
 <p>
-This page details some choices made by KanjiVG. If you wish to discuss
-changing the individual choices, please use the mailing list at Google
-Groups to bring up your proposal.
+  This page details some choices made by KanjiVG. If you wish to discuss
+  changing the individual choices, please use the mailing list (see the
+  link on the left) to bring up your proposal.
 </p>
 
 <h2>Radicals used</h2>
 
 <p>
-This section details the choices made for the values of
-<a href="format.html#element"><code>kvg:element</code></a>, the visual
-representation of a kanji radical.
+  This section details the choices made for the values of
+  <a href="format.html#element"><code>kvg:element</code></a>, the visual
+  representation of a kanji radical.
 
-<h3>
-  Sanzui
-</h3>
+  <h3>
+    Sanzui
+  </h3>
 
 <p>
-  The radical used for sanzui elements (the variant form of Kangxi radical 85,
-  "water") is U+6C35 氵 rather than U+2EA1 ⺡, except for the special
-  case of U+2EA1 itself.
+  The radical used for <span class='romaji'>sanzui</span> elements
+  (the variant form of Kangxi radical 85, "water") is U+6C35 氵 rather
+  than U+2EA1 ⺡, except for the special case of U+2EA1 itself.
 </p>
 
 <h3>
@@ -36,9 +36,9 @@ representation of a kanji radical.
 </h3>
 
 <p>
-  The radical used for kemono-hen elements (the variant form of Kangxi
-  radical 94, "dog") is U+2EA8 ⺨ rather than U+72AD 犭, except for
-  the special case of U+72AD itself.
+  The radical used for <span class='romaji'>kemono-hen</span> elements
+  (the variant form of Kangxi radical 94, "dog") is U+2EA8 ⺨ rather
+  than U+72AD 犭, except for the special case of U+72AD itself.
 </p>
 
 <h3>
@@ -46,14 +46,35 @@ representation of a kanji radical.
 </h3>
 
 <p>
-  The radical used for shin-nyō elements (Kangxi radical 162, "walk")
-  is either U+8FB6 辶 or U+2ECC ⻌ depending on whether the radical
-  consists of four or three elements respectively. Confusingly, the
-  visual display of 8FB6 in a font may appear to contain only three
-  strokes.
+  The radical used for <span class='romaji'>shin-nyō</span> elements
+  (Kangxi radical 162, "walk") is either U+8FB6 辶 or U+2ECC ⻌
+  depending on whether the radical consists of four or three elements
+  respectively. Confusingly, the visual display of U+8FB6 in a font
+  may appear to contain only three strokes.
 </p>
 <p>
-  The visually highly similar U+2ECD from CJK Radicals Supplement, and
-  U+FA66 from CJK Compatibility Ideograph are not used by KanjiVG.
+  The visually highly similar U+2ECD, from CJK Radicals Supplement,
+  and U+FA66, from CJK Compatibility Ideographs, are not used by
+  KanjiVG.
 </p>
 
+<h3>
+  Other radicals
+</h3>
+
+<p>
+  For all of the non-variant radicals, two equivalent forms exist, one
+  in the Kangxi Radicals block of Unicode from U+2F00 to U+2FD5, and
+  another in the CJK Unified Ideograph block of Unicode. KanjiVG uses
+  only the CJK Unified Ideograph versions of these equivalent entries,
+  and does not use the Kangxi Radicals block at all. This seems to be
+  because the KanjiVG project dates back to the early 2000s, when font
+  support for Unicode was more limited than today.
+</p>
+
+<p>
+  However, KanjiVG does use the CJK Radicals Supplement block, for
+  example U+2E97 ⺗ is used for
+  the <span class='romaji'>shitagokoro</span> variant of Kangxi radical
+  61, rather than the CJK Unified Ideographs equivalent form U+38FA 㣺.
+</p>
