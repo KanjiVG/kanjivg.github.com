@@ -32,6 +32,7 @@ community-links:
   icon: asterisk
 - text: Related projects
   url: related.html
+  icon: heart
 tool-links:
 - text: Viewer
   url: viewer.html
