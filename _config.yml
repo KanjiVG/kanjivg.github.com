@@ -30,6 +30,8 @@ community-links:
 - text: Projects using KanjiVG
   url: projects.html
   icon: asterisk
+- text: Related projects
+  url: related.html
 tool-links:
 - text: Viewer
   url: viewer.html
