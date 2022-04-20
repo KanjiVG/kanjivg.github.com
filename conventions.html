@@ -49,8 +49,8 @@ name: conventions.html
   The radical used for <span class='romaji'>shin-nyō</span> elements
   (Kangxi radical 162, "walk") is either U+8FB6 辶 or U+2ECC ⻌
   depending on whether the radical consists of four or three elements
-  respectively. Confusingly, the visual display of U+8FB6 in a font
-  may appear to contain only three strokes.
+  respectively. (Confusingly, the visual display of U+8FB6 in a font
+  may appear to contain only three strokes.)
 </p>
 <p>
   The visually highly similar U+2ECD, from CJK Radicals Supplement,
@@ -75,13 +75,18 @@ Ideographs.
 </h3>
 
 <p>
-  For all of the non-variant radicals, two equivalent forms exist, one
-  in the Kangxi Radicals block of Unicode from U+2F00 to U+2FD5, and
-  another in the CJK Unified Ideograph block of Unicode. KanjiVG uses
-  only the CJK Unified Ideograph versions of these equivalent entries,
-  and does not use the Kangxi Radicals block at all. This seems to be
-  because the KanjiVG project dates back to the early 2000s, when font
-  support for Unicode was more limited than today.
+  For all of the non-variant radical forms, there are two equivalent
+Unicode code points with the same visual form. One is in the Kangxi
+Radicals block of Unicode, from U+2F00 to U+2FD5, and the other is in
+the CJK Unified Ideograph block of Unicode. The equivalence between
+these is given in the Unicode Character Database (UCD) in the
+file <a href="https://www.unicode.org/Public/UCD/latest/ucd/CJKRadicals.txt">CJKRadicals.txt</a>,
+which maps between the pairs.
+</p>
+<p>
+<strong>KanjiVG uses only the CJK Unified Ideograph versions of these
+equivalent entries.</strong> KanjiVG does not use the Kangxi Radicals
+block at all.
 </p>
 
 <p>
@@ -150,6 +155,14 @@ and the name is the romanised Japanese name of the radical.
     <td>
       ⺖ U+2E96
     </td>
+  </tr>
+  <tr>
+    <td>
+      61
+    </td>
+    <td><span class="romaji">shita-gokoro</span></td>
+    <td>㣺 U+38FA</td>
+    <td class="used">⺗ U+2E97</td>
   </tr>
   <tr>
     <td>
