@@ -14,6 +14,8 @@ name: conventions.html
   link on the left) to bring up your proposal.
 </p>
 
+<section id="radicals-used">
+
 <h2>Radicals used</h2>
 
 <p>
@@ -22,34 +24,45 @@ name: conventions.html
   representation of a kanji radical.
 </p>
 
-<h3>
-  Shin-nyō
-</h3>
+<section id="shin-nyo">
+  <h3>
+    Shin-nyō
+  </h3>
 
 <p>
-  The radical used for <span class='romaji'>shin-nyō</span> elements
-  (Kangxi radical 162, "walk") is either U+8FB6 辶 or U+2ECC ⻌
-  depending on whether the radical consists of four or three elements
-  respectively. (Confusingly, the visual display of U+8FB6 in a font
-  may appear to contain only three strokes.)
+  The radical used for Kangxi radical 162, "walk", known
+  as <span class='romaji'>shin-nyō</span> in Japanese, is either
+  U+8FB6 辶 for groups of four strokes, or U+2ECC ⻌ for groups of
+  three strokes. (Depending on the font, U+8FB6 may appear to contain
+  only three strokes.)
 </p>
+
 <p>
   The visually highly similar U+2ECD, from CJK Radicals Supplement,
   and U+FA66, from CJK Compatibility Ideographs, are not used by
   KanjiVG.
 </p>
 
-<h3>
-Shoku-hen
-</h3>
+</section>
 
-<p>
-  飠 U+98E0 from CJK Unified Ideographs is used for the eight-stroke
-  variant of <span class='romaji'>shoku-hen</span>, but ⻞ U+2EDE from
-  CJK Radicals Supplement is used for the nine-stroke variant, since
-  there does not seem to be a visually-close equivalent in CJK Unified
-  Ideographs.
-</p>
+<section id="shoku-hen">
+
+  <h3>
+    Shoku-hen
+  </h3>
+
+  <p>
+    For Kangxi radical 184, "eat", known
+    as <span class='romaji'>shoku-hen</span> in Japanese, 飠 U+98E0
+    from CJK Unified Ideographs is used for the eight-stroke variant,
+    but ⻞ U+2EDE from CJK Radicals Supplement is used for the
+    nine-stroke variant, since there does not seem to be a
+    visually-close equivalent in the CJK Unified Ideographs.
+  </p>
+
+</section>
+
+<section id="other-radicals">
 
 <h3>
   Other radicals
@@ -58,17 +71,20 @@ Shoku-hen
 <p>
   For all of the non-variant radical forms, there are two equivalent
   Unicode code points with the same visual form. One is in the Kangxi
-  Radicals block of Unicode, from U+2F00 to U+2FD5, and the other is in
-  the CJK Unified Ideograph block of Unicode. The equivalence between
-  these is given in the Unicode Character Database (UCD) in the
-  file <a href="https://www.unicode.org/Public/UCD/latest/ucd/CJKRadicals.txt">CJKRadicals.txt</a>,
+  Radicals block of Unicode, from U+2F00 to U+2FD5, and the other is
+  in the CJK Unified Ideograph block of Unicode. The equivalence
+  between these is given in the Unicode Character Database (UCD) in
+  the file
+  <a href="https://www.unicode.org/Public/UCD/latest/ucd/CJKRadicals.txt">CJKRadicals.txt</a>,
   which maps between the pairs.
 </p>
 
 <p>
-  <strong>KanjiVG uses only the CJK Unified Ideograph versions of these
-    equivalent entries.</strong> KanjiVG does not use the Kangxi Radicals
-  block at all.
+  <strong>
+    KanjiVG uses only the CJK Unified Ideograph versions of these
+    equivalent entries.
+  </strong>
+  KanjiVG does not use the Kangxi Radicals block at all.
 </p>
 
 <p>
@@ -79,13 +95,15 @@ Shoku-hen
   U+38FA 㣺.
 </p>
 
-<p>
+<p id="table-key">
   In the following table, <span style='used'>the pink colour</span>
   shows which variant was used for various radicals. The <b>number</b>
   field gives the Kangxi radical number, and the name is the romanised
   Japanese name of the radical.
 </p>
-
+<!--
+The entries in this table are sorted by the radical number on the left.
+-->
 <table>
   <tr>
     <th>
@@ -221,10 +239,10 @@ handle it, so I'm not sure what is best to do.
       </span>
     </td>
     <td class="used">
-      氺 U+6C3A 
+      氺 U+6C3A
     </td>
     <td>
-      ⺢ U+2EA2 
+      ⺢ U+2EA2
     </td>
   </tr>
   <tr>
@@ -254,14 +272,14 @@ handle it, so I'm not sure what is best to do.
     <td>
       90
     </td>
-    Shō-hen
     <td>
+      Shō-hen
     </td>
     <td>
-      爿
+      丬 U+4E2C
     </td>
     <td class='used'>
-      ⺦
+      ⺦ U+2EA6
     </td>
     <td>
       This seems to only be used by Nelson-variant radicals.
@@ -271,10 +289,10 @@ handle it, so I'm not sure what is best to do.
     <td>94</td>
     <td><span class='romaji'>Kemono-hen</span></td>
     <td>
-      犭 U+72AD 
+      犭 U+72AD
     </td>
     <td class='used'>
-      ⺨ U+2EA8 
+      ⺨ U+2EA8
     </td>
     <td>
       U+72AD is used as the element for the special case of U+72AD itself.
@@ -316,3 +334,5 @@ handle it, so I'm not sure what is best to do.
     </td>
   </tr>
 </table>
+</section>
+</section>
