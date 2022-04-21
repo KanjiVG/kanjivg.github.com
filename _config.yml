@@ -14,15 +14,21 @@ project-links:
 - text: Incorrect kanji
   url: incorrect-kanjis.html
   icon: exclamation-sign
-- text: Internationalization
-  url: internationalization.html
-  icon: flag
 format-links:
-- text: Format
-  url: format.html
+- text: Files
+  url: files.html
   icon: info-sign
-- text: Conventions
-  url: conventions.html
+- text: SVG Format
+  url: svg-format.html
+  icon: info-sign
+- text: Variants
+  url: variants
+  icon: info-sign
+- text: Radicals
+  url: radicals.html
+  icon: info-sign
+- text: References
+  url: references.html
   icon: info-sign
 community-links:
 - text: Mailing list
@@ -38,4 +44,3 @@ tool-links:
 - text: Viewer
   url: viewer.html
   icon: picture
-
