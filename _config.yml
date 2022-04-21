@@ -8,22 +8,23 @@ project-links:
 - text: Download
   url: https://github.com/KanjiVG/kanjivg/releases
   icon: download
+- text: Listing
+  url: listing.html
+  icon: list
+- text: Incorrect kanji
+  url: incorrect-kanjis.html
+  icon: exclamation-sign
+- text: Internationalization
+  url: internationalization.html
+  icon: flag
+format:
 - text: Format
   url: format.html
   icon: info-sign
 - text: Conventions
   url: conventions.html
   icon: info-sign
-- text: Internationalization
-  url: internationalization.html
-  icon: flag
-- text: Incorrect kanji
-  url: incorrect-kanjis.html
-  icon: exclamation-sign
-- text: Listing
-  url: listing.html
-  icon: list
-community-links:
+community:
 - text: Mailing list
   url: http://groups.google.com/group/kanjivg
   icon: list-alt
