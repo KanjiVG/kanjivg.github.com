@@ -20,6 +20,7 @@ name: conventions.html
   This section details the choices made for the values of
   <a href="format.html#element"><code>kvg:element</code></a>, the visual
   representation of a kanji radical.
+</p>
 
 <h3>
   Shin-nyō
@@ -43,11 +44,11 @@ Shoku-hen
 </h3>
 
 <p>
-飠 U+98E0 from CJK Unified Ideographs is used for the eight-stroke
-variant of <span class='romaji'>shoku-hen</span>, but ⻞ U+2EDE from
-CJK Radicals Supplement is used for the nine-stroke variant, since
-there does not seem to be a visually-close equivalent in CJK Unified
-Ideographs.
+  飠 U+98E0 from CJK Unified Ideographs is used for the eight-stroke
+  variant of <span class='romaji'>shoku-hen</span>, but ⻞ U+2EDE from
+  CJK Radicals Supplement is used for the nine-stroke variant, since
+  there does not seem to be a visually-close equivalent in CJK Unified
+  Ideographs.
 </p>
 
 <h3>
@@ -56,17 +57,18 @@ Ideographs.
 
 <p>
   For all of the non-variant radical forms, there are two equivalent
-Unicode code points with the same visual form. One is in the Kangxi
-Radicals block of Unicode, from U+2F00 to U+2FD5, and the other is in
-the CJK Unified Ideograph block of Unicode. The equivalence between
-these is given in the Unicode Character Database (UCD) in the
-file <a href="https://www.unicode.org/Public/UCD/latest/ucd/CJKRadicals.txt">CJKRadicals.txt</a>,
-which maps between the pairs.
+  Unicode code points with the same visual form. One is in the Kangxi
+  Radicals block of Unicode, from U+2F00 to U+2FD5, and the other is in
+  the CJK Unified Ideograph block of Unicode. The equivalence between
+  these is given in the Unicode Character Database (UCD) in the
+  file <a href="https://www.unicode.org/Public/UCD/latest/ucd/CJKRadicals.txt">CJKRadicals.txt</a>,
+  which maps between the pairs.
 </p>
+
 <p>
-<strong>KanjiVG uses only the CJK Unified Ideograph versions of these
-equivalent entries.</strong> KanjiVG does not use the Kangxi Radicals
-block at all.
+  <strong>KanjiVG uses only the CJK Unified Ideograph versions of these
+    equivalent entries.</strong> KanjiVG does not use the Kangxi Radicals
+  block at all.
 </p>
 
 <p>
@@ -76,10 +78,12 @@ block at all.
   radical 61, rather than the CJK Unified Ideographs equivalent form
   U+38FA 㣺.
 </p>
+
 <p>
-In the following table, the pink colour shows which variant was used
-for various radicals. Here the number is the Kangxi radical number,
-and the name is the romanised Japanese name of the radical.
+  In the following table, <span style='used'>the pink colour</span>
+  shows which variant was used for various radicals. The <b>number</b>
+  field gives the Kangxi radical number, and the name is the romanised
+  Japanese name of the radical.
 </p>
 
 <table>
@@ -257,7 +261,7 @@ handle it, so I'm not sure what is best to do.
       爿
     </td>
     <td class='used'>
-      '⺦'
+      ⺦
     </td>
     <td>
       This seems to only be used by Nelson-variant radicals.
@@ -311,5 +315,4 @@ handle it, so I'm not sure what is best to do.
       U+961D is used as the element for the special case of U+961D itself.
     </td>
   </tr>
-
 </table>
