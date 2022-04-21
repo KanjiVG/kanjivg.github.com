@@ -311,51 +311,66 @@ Vertical Last
 </p>
 
 <h4 id="position">position</h4>
+
 <p>
   Defines where this groups is located with respect to the other
-  groups with the same parent. Possible values are
+  groups with the same parent. Not every element has a "position"
+  value. Possible values are
 </p>
 
 <dl>
 
-<dt id="bottom">bottom
+<dt id="bottom">bottom</dt>
 <dd>
 This part is under another part.
+</dd>
 
-<dt id="kamae">kamae
+<dt id="kamae">kamae</dt>
 <dd>
 This part is wrapped around another part, such as 門.
+<span class='undocumented'>This is used very inconsistently in KanjiVG
+as a grab-bag for various different structures.</span>
+</dd>
 
-<dt id="left">left
+<dt id="left">left</dt>
 <dd>
 This part is left of another part.
+</dd>
 
 <dt id="nyo">nyo
 <dd>
 This part is left and under another part, such as 辶.
+<span class='undocumented'>The paths which are enclosed by nyo are not
+always grouped into a single group.</span>
+</dd>
 
-<dt id="right">right
+<dt id="right">right</dt>
 <dd>
 This part is right of another part.
+</dd>
 
-<dt id="tare">tare
+<dt id="tare">tare</dt>
 <dd>
 This part is left and above another part, such as 广.
-<span class='undocumented'>This is used inconsistently in
-KanjiVG.</span>
+<span class='undocumented'>This is used inconsistently in KanjiVG. The
+elements which it encloses may not be in a single group.</span>
+</dd>
 
-<dt id="top">top
+<dt id="top">top</dt>
 <dd>
 This part is above another part.
+</dd>
 </dl>
 
 <h4 id="radical">radical</h4>
 
 <p>
-  Defines if this group is considered as a radical 
+  This is set to a value if this group of strokes is considered as a
+  "radical"
 
   (<ruby>部首<rt>ぶしゅ</rt></ruby>) of the kanji, and by which
-  reference. Possible values:
+  reference. The value of the attribute depends on the reference, as
+  follows.
 </p>
 
 <dl>
@@ -371,29 +386,30 @@ This part is above another part.
   </dt>
   <dd>
     This marks the radicals used by <a href="#jis-jiten-ref">JIS Kanji
-    Jiten</a>, used by Kanjidic, which sometimes differ from
-    the <code>general</code> or <code>tradit</code> radicals. This
-    value was added to deal with inconsistencies between KanjiVG and
-    Kanjidic and other references.
+    Jiten</a>, used by <a href="#kanjidic">Kanjidic</a>, which
+    sometimes differ from the <code>general</code>
+    or <code>tradit</code> radicals. This value was added to deal with
+    inconsistencies between KanjiVG and Kanjidic and other references.
   </dd>
   <dt id="radical-nelson">
     nelson
   </dt>
   <dd>
-    for the radicals from the original Nelson kanji dictionary
+    The keyword "nelson" is used for the radicals from the first
+    edition of the Nelson kanji dictionary. Andrew Nelson
+    recategorised various kanji under different radicals than the
+    traditional Kangxi radical system for his 1962 kanji
+    dictionary. This was also copied into <a href="#kanjidic">the
+    Kanjidic online kanji dictionary</a>.
   </dd>
   <dt id="radical-tradit">
     tradit
   </dt>
   <dd>
-    where the Kangxi radical disagrees with Nelson.
+    The keyword "tradit" is used for the "traditional" radical, where
+    the Kangxi radical disagrees with Nelson.
   </dd>
 </dl>
-
-<p>
-  The use of the Nelson radicals is based on that
-of <a href="http://www.edrdg.org/wiki/index.php/KANJIDIC_Project">Kanjidic</a>.
-</p>
 
 <figure>
 <pre>
@@ -632,8 +648,10 @@ in 2003 by Sanseidō, Tokyo was used as reference for the kaisho
 characters.
 </p>
 
-<p>
-<i>Kanjidic</i>, an electronic kanji dictionary.
+<p id="kanjidic">
+<i>Kanjidic</i>, an electronic kanji
+dictionary. See <a href="http://www.edrdg.org/wiki/index.php/KANJIDIC_Project">KANJIDIC
+Project</a> at edrdg.org.
 </p>
 
 
