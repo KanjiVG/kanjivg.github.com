@@ -17,14 +17,14 @@ project-links:
 - text: Internationalization
   url: internationalization.html
   icon: flag
-format:
+format-links:
 - text: Format
   url: format.html
   icon: info-sign
 - text: Conventions
   url: conventions.html
   icon: info-sign
-community:
+community-links:
 - text: Mailing list
   url: http://groups.google.com/group/kanjivg
   icon: list-alt
