@@ -17,7 +17,7 @@ project-links:
 - text: Internationalization
   url: internationalization.html
   icon: flag
-- text: Incorrect kanjis
+- text: Incorrect kanji
   url: incorrect-kanjis.html
   icon: exclamation-sign
 - text: Listing
