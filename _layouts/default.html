@@ -67,6 +67,18 @@
                         <a href="{{ link.url }}"><i class="icon-{{ link.icon }} {{ white }}"></i>{{ link.text }}</a>
                     </li>
                     {% endfor %}
+                    <li class="nav-header">Format</li>
+                    {% for link in site.format-links %}
+                    {% assign active = nil %}
+                    {% assign white = nil %}
+                    {% if page.name == link.url %}
+                    {% assign active = 'active' %}
+                    {% assign white = 'icon-white' %}
+                    {% endif %}
+                    <li class="{{ active }}">
+                        <a href="{{ link.url }}"><i class="icon-{{ link.icon }} {{ white }}"></i>{{ link.text }}</a>
+                    </li>
+                    {% endfor %}
 
                     <li class="nav-header">Community</li>
                     {% for link in site.community-links %}
