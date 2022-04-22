@@ -22,7 +22,7 @@ format-links:
   url: svg-format.html
   icon: info-sign
 - text: Variants
-  url: variants
+  url: variants.html
   icon: info-sign
 - text: Radicals
   url: radicals.html

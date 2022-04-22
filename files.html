@@ -46,3 +46,27 @@ name: files.html
   for more information on the file naming and what variants exist.
 </p>
 
+<h2>Individual kanji files</h2>
+
+<p>
+In the repository for KanjiVG, each kanji has at least one file which
+is given a name of the lower-case hexadecimal Unicode value of the
+kanji, padded to five characters with zeros, followed by the
+suffix <code>.svg</code>. 
+
+<p id="kanji_mismatch">
+Most of the files are in the subdirectory "kanji", but some files have
+been placed into a directory called "kanji_mismatch". This was done
+when all the files were combined from separate stroke and grouping
+files into one, and the files which had different counts of strokes
+were put into the kanji_mismatch directory. All of the files in
+kanji_mismatch are the variants of the original kanji.
+</p>
+
+<h2>Download files</h2>
+
+<p>
+The download XML files are created from the individual kanji files,
+excluding the variant forms. The Python scripts to create the files
+are in the repository.
+</p>
