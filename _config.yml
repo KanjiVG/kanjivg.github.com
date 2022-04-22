@@ -11,8 +11,8 @@ project-links:
 - text: Listing
   url: listing.html
   icon: list
-- text: Incorrect kanji
-  url: incorrect-kanjis.html
+- text: Issues
+  url: https://github.com/KanjiVG/kanjivg/issues
   icon: exclamation-sign
 format-links:
 - text: Files
