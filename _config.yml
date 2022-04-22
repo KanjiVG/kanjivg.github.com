@@ -28,7 +28,7 @@ format-links:
   url: radicals.html
   icon: info-sign
 - text: References
-  url: references.html
+  url: ref.html
   icon: info-sign
 community-links:
 - text: Mailing list
