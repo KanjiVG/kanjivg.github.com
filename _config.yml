@@ -8,6 +8,9 @@ project-links:
 - text: Download
   url: https://github.com/KanjiVG/kanjivg/releases
   icon: download
+- text: Repository
+  url: https://github.com/KanjiVG/kanjivg
+  icon: list
 - text: Listing
   url: listing.html
   icon: list
