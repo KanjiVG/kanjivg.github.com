@@ -9,18 +9,61 @@ name: radicals.html
 </div>
 
 <p>
-KanjiVG contains information on the kanji radical (部首) used by each
-kanji. Since different authors use different radicals for the same
-kanji, it provides several variants.
+  KanjiVG contains information on the kanji radical (部首) used by each
+  kanji. Since different authors use different radicals for the same
+  kanji, it provides several different choices of radical, such
+  as <code>general</code> for generally-accepted radicals,
+  or <code>nelson</code> for the radicals used by the Nelson kanji
+  dictionary. See
+  <a href="svg-format.html#radical">the SVG Format page</a> for a
+  complete list of possible values.
 </p>
-
-<h2>Radicals used</h2>
 
 <p>
-  This section details the choices made for the values of
-  <a href="format.html#element"><code>kvg:element</code></a>, the visual
+  This page details the choices made for the values of
+  <a href="svg-format.html#element"><code>kvg:element</code></a>, the visual
   representation of a kanji radical.
 </p>
+
+<p>
+  Kanji radicals may have more than one visual form. For example,
+  Kangxi radical 61, "water", may take a non-variant form 水, or it
+  may take a variant form 氵.  For all of
+  the <strong>non-variant</strong> radical forms, there are two
+  equivalent Unicode code points with the same visual form. One is in
+  the Kangxi Radicals block of Unicode, where the non-variant radicals
+  are found consecutively from U+2F00 to U+2FD5, and the other is in
+  the CJK Unified Ideograph block of Unicode, where the same radicals
+  are scattered throughout. The equivalence between these two sets of
+  identical radicals is given in the Unicode Character Database (UCD)
+  in the file
+  <a href="https://www.unicode.org/Public/UCD/latest/ucd/CJKRadicals.txt">CJKRadicals.txt</a>,
+  which maps between the pairs.
+</p>
+
+<p>
+  <strong>
+    KanjiVG uses only the CJK Unified Ideograph versions of these
+    equivalent entries.
+  </strong>
+  KanjiVG does not use the Kangxi Radicals block at all. Where a
+  variant radical is used, KanjiVG also specifies the
+  the <a href="svg-format.html#original"><code>kvg:original</code></a>
+  field on the group. This also does not use the Kangxi Radicals block
+  at all.
+</p>
+
+<p>
+  However, KanjiVG does use some parts of the CJK Radicals Supplement
+  block from U+2E80 to U+2EF3, for example U+2E97 ⺗ is used for
+  the <span class='romaji'>shitagokoro</span> variant of Kangxi
+  radical 61, rather than the CJK Unified Ideographs equivalent form
+  U+38FA 㣺. The following section details the choices made by the
+  KanjiVG authors.
+</p>
+
+<section id="#radicals-used">
+<h2>Radicals used</h2>
 
 <section id="shin-nyo">
   <h3>
@@ -65,33 +108,6 @@ kanji, it provides several variants.
 <h3>
   Other radicals
 </h3>
-
-<p>
-  For all of the non-variant radical forms, there are two equivalent
-  Unicode code points with the same visual form. One is in the Kangxi
-  Radicals block of Unicode, from U+2F00 to U+2FD5, and the other is
-  in the CJK Unified Ideograph block of Unicode. The equivalence
-  between these is given in the Unicode Character Database (UCD) in
-  the file
-  <a href="https://www.unicode.org/Public/UCD/latest/ucd/CJKRadicals.txt">CJKRadicals.txt</a>,
-  which maps between the pairs.
-</p>
-
-<p>
-  <strong>
-    KanjiVG uses only the CJK Unified Ideograph versions of these
-    equivalent entries.
-  </strong>
-  KanjiVG does not use the Kangxi Radicals block at all.
-</p>
-
-<p>
-  However, KanjiVG does use some parts of the CJK Radicals Supplement
-  block from U+2E80 to U+2EF3, for example U+2E97 ⺗ is used for
-  the <span class='romaji'>shitagokoro</span> variant of Kangxi
-  radical 61, rather than the CJK Unified Ideographs equivalent form
-  U+38FA 㣺.
-</p>
 
 <p id="table-key">
   In the following table, <span style='used'>the pink colour</span>
