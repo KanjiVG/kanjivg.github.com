@@ -236,10 +236,10 @@ This part is left of another part.
 <dt id="nyo">nyo</dt>
 <dd>
 This part is left and under another part, such as 辶.
-<span class='undocumented'>The paths which are enclosed by nyo are not
-always grouped into a single
-group. See <a href="https://github.com/KanjiVG/kanjivg/issues/337">Github
-issues 337</a> and links there for more discussion.</span>
+
+<dt id="nyoc">nyoc</dt>
+<dd>
+This part is the complement or counterpart of a <a href="#nyo">nyo</a> part.
 </dd>
 
 <dt id="right">right</dt>
@@ -250,8 +250,11 @@ This part is right of another part.
 <dt id="tare">tare</dt>
 <dd>
 This part is left and above another part, such as 广.
-<span class='undocumented'>This is used inconsistently in KanjiVG. The
-elements which it encloses may not be in a single group.</span>
+</dd>
+
+<dt id="tarec">tarec</dt>
+<dd>
+This part is the complement or counterpart of a <a href="#tare">tare</a> part.
 </dd>
 
 <dt id="top">top</dt>
@@ -382,25 +385,28 @@ explained on the <a href="radicals.html">Radicals</a> page.
 
 <p>
   Although there is no rule disallowing various SVG elements, in
-  practice all of the KanjiVG data consists of M/m, C/c, and S/s
-  elements, so the entirety of all of the KanjiVG strokes are solely
-  cubic bezier curves. There are no other SVG path elements
-  present. None of the strokes contains a path with more than one
-  sub-path, that is to say there are no strokes with more than one
-  "moveto" element.
+  practice all of the KanjiVG data consists of cubic bezier curves. In
+  the SVG terminology the path is made up of only M/m, C/c, and S/s
+  elements. There are no other SVG path elements present. None of the
+  strokes contains a path with more than one sub-path, that is to say
+  there are no strokes with more than one "moveto" element.
 </p>
 
 <h4 id="stroke-id">id</h4>
 
 <p>
   The KanjiVG identification number for this stroke. It contains the
-  Unicode value of the kanji as a five-digit lower-case hexadecimal
-  number, followed by a hyphen and the letter "s", followed by a decimal
-  number from one to the total stroke count.
+  prefix <code>kvg:</code> followed by the Unicode value of the kanji
+  as a five-digit lower-case hexadecimal number, followed by any
+  variant information, followed by a hyphen and the letter "s",
+  followed by a decimal number from one to the total stroke count. For
+  example stroke 3 of the file <code>kanji/053ec.svg</code> has the ID
+  number <code>kvg:053ec-s3</code>.
 </p>
 <p>
-  The stroke numbers are consecutive positive whole numbers starting
-  from 1 which correspond to the stroke numbers.
+  The stroke IDs are consecutive positive whole numbers starting from
+  1 which correspond to <a href="#stroke-numbers">the stroke
+  number</a> of the stroke.
 </p>
 
 <h3>KVG namespace attributes</h3>
