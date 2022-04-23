@@ -1,0 +1,326 @@
+---
+layout: default
+title: Stroke types
+name: stroke-types.html
+---
+
+<div class="page-header">
+  <h1>Stroke types in KanjiVG</h1>
+</div>
+
+<p>
+This page discusses the values of
+the <a href="svg-format.html#type">type</a> attribute of the SVG paths
+within KanjiVG.
+</p>
+
+<p>
+  The type attribute specifies the shape of the stroke. It can be used
+  to know how the stroke should be rendered.
+</p>
+
+<p>
+  The values of this attribute use the keys of
+  Unicode's <a href="https://www.unicode.org/charts/PDF/U31C0.pdf">CJK
+  Strokes</a>, which occupy code positions from U+31C0 to U+31EF. The
+  names of these, such as D or HZ, are the initials of the Chinese
+  names.
+</p>
+
+<p>
+  In some cases these stroke types, in particular ㇁ (U+31C1), or ㇔
+  (U+31D4), may appear to be in error, but check the explanations
+  below before suggesting changes.
+</p>
+
+<p class='undocumented'>
+  Undocumented and unknown features, and notes on possible flaws in
+  the data, are distinguished with a pale green background.
+</p>
+
+<dl>
+<dt>㇀</dt>
+<dd>
+<b>CJK Stroke T</b>
+<code>U+31C0</code>
+</dd>
+
+<dt>㇁</dt>
+<dd>
+<b>CJK Stroke WG</b>
+<code>U+31C1</code>
+
+This is used for the down stroke of 犭 and the lower right part of ⻖.
+Unfortunately, many fonts, such as the default font used by github,
+represent this shape extremely poorly, so it may appear to be an error
+on a browser screen. However, this is the correct shape for 犭 and ⻖.
+</dd>
+
+<dt>㇂</dt>
+<dd>
+<b>CJK Stroke XG</b>
+<code>U+31C2</code>
+</dd>
+
+<dt>㇄</dt>
+<dd>
+<b>CJK Stroke SW</b>
+<code>U+31C4</code>
+</dd>
+
+<dt>㇅</dt>
+<dd>
+<b>CJK Stroke HZZ</b>
+<code>U+31C5</code> 
+
+This relatively rare shape is used, for example, for stroke 15 of 麌.
+</dd>
+
+<dt>㇆</dt>
+<dd>
+<b>CJK Stroke HZG</b>
+<code>U+31C6</code> This is used for the right side of 印 or 掏.
+</dd>
+
+<dt>㇇</dt>
+<dd>
+<b>CJK Stroke HP</b>
+<code>U+31C7</code>
+</dd>
+
+<dt>㇈</dt>
+<dd>
+<b>CJK Stroke HZWG</b>
+<code>U+31C8</code>
+</dd>
+
+<dt>㇉</dt>
+<dd>
+<b>CJK Stroke SZWG</b>
+<code>U+31C9</code>
+
+This is used, for example, for the bottom part of 弓.
+</dd>
+
+<dt>㇋</dt>
+<dd>
+<b>CJK Stroke HZZP</b>
+<code>U+31CB</code>
+</dd>
+
+<dt>㇏</dt>
+<dd>
+<b>CJK Stroke N</b>
+<code>U+31CF</code>
+</dd>
+
+<dt>㇐</dt>
+<dd>
+<b>CJK Stroke H</b>
+<code>U+31D0</code> This is used for horizontal lines, such as the top
+and bottom strokes of 西.</dd>
+
+<dt>㇑</dt>
+<dd>
+<b>CJK Stroke S</b>
+<code>U+31D1</code>
+</dd>
+
+<dt>㇒</dt>
+<dd>
+<b>CJK Stroke P</b>
+<code>U+31D2</code>
+</dd>
+
+<dt>㇓</dt>
+<dd>
+<b>CJK Stroke SP</b>
+<code>U+31D3</code>
+</dd>
+
+<dt>㇔</dt>
+<dd>
+<b>CJK Stroke D</b>
+<code>U+31D4</code> 
+
+This is used for a short dash. Although the usual form of this in
+fonts is a line slanting down to the right, the dash may slant either
+down and left, such as the left stroke of 心 or 灬, or down and right,
+such as the right strokes of 心 or 灬.
+</dd>
+
+<dt>㇕</dt>
+<dd>
+<b>CJK Stroke HZ</b>
+<code>U+31D5</code> This is used for the upper right part of 口, or
+the middle upper stroke of 巨.
+</dd>
+
+<dt>㇖</dt>
+<dd>
+<b>CJK Stroke HG</b>
+<code>U+31D6</code>
+</dd>
+
+<dt>㇗</dt>
+<dd>
+<b>CJK Stroke SZ</b>
+<code>U+31D7</code>
+</dd>
+
+<dt>㇙</dt>
+<dd>
+<b>CJK Stroke ST</b>
+<code>U+31D9</code> 
+
+This is used for the bottom left of 衣 or 食.
+</dd>
+
+<dt>㇚</dt>
+<dd>
+<b>CJK Stroke SG</b>
+<code>U+31DA</code>
+</dd>
+
+<dt>㇛</dt>
+<dd>
+<b>CJK Stroke PD</b>
+<code>U+31DB</code>
+</dd>
+
+<dt>㇜</dt>
+<dd>
+<b>CJK Stroke PZ</b>
+<code>U+31DC</code>
+</dd>
+
+<dt>㇞</dt>
+<dd>
+<b>CJK Stroke SZZ</b>
+<code>U+31DE</code>
+</dd>
+
+<dt>㇟</dt>
+<dd>
+<b>CJK Stroke SWG</b>
+<code>U+31DF</code>
+</dd>
+
+<dt>
+６
+</dt>
+<dd>
+<span class='undocumented'>For reasons which have not been documented,
+this was used in some characters such as 蠣 or 寓 to represent one of
+the lower strokes.</span>
+</dd>
+</dl>
+
+<p>
+  In some cases another field consisting of alphabetical
+  letters. <span class='undocumented'>These letters refer to a set of
+  stroke types which Ulrich Apel designed but has not documented. The
+  letters seem to indicate the intersections of the ends of strokes
+  with other
+  strokes. See <a href="https://github.com/KanjiVG/kanjivg/issues/324">issue
+  324 on Github</a> for more details.</span>
+</p>
+
+<dl>
+<dt>a</dt>
+<dd>
+End touches middle part of other stroke
+</dd>
+<dt>b</dt>
+<dd>
+End touches end of other stroke
+</dd>
+<dt>c</dt>
+<dd>
+<span class='undocumented'>Unknown</span>
+</dd>
+<dt>v</dt>
+<dd>
+<span class='undocumented'>Unknown</span>
+</dd>
+<!-- this one has gone, see https://github.com/KanjiVG/kanjivg/issues/342
+<dt>va</dt>
+<dd>
+"㇕va" seems to have been used as a substitute for the ㇁ stroke of 犭
+and for the bottom right stroke of ⻖.
+</dd>
+-->
+</dl>
+
+<p>
+  Where the value has two possibilities, a slash is used to separate
+  them. For example, the bottom dash in 冬 (fuyu, "winter") may slant
+  either upwards or downwards, so this is represented
+  by <code>kvg:type="㇔/㇀"</code> in the KanjiVG source file.
+</p>
+
+<h3 id='unused-patterns'>CJK Strokes which are not used</h3>
+<p>
+The following elements of the CJK Strokes block are not used in KanjiVG:
+</p>
+
+<dl>
+
+<dt>
+㇌
+</dt>
+
+<dd>
+<b>CJK Stroke HPWG</b>
+<code>U+31CC</code> 
+
+This stroke pattern is used to represent the right side of ⻖ and
+related shapes when it is written as two strokes, per the Chinese
+convention. KanjiVG always uses three strokes to write ⻖, with the
+right side broken into upper and lower pieces, so this pattern is not
+used by KanjiVG.
+
+</dd>
+
+<dt>
+㇊
+</dt>
+
+<dd>
+<b>CJK Stroke HZT</b>
+<code>U+31CA</code> 
+
+The main use of this seems to be to represent the 言 component known
+as <span class='romaji'>gonben</span> in simplified Chinese characters
+like 计, or other simplified Chinese forms such as so it is not very useful for Japanese.
+</dd>
+
+<dt>
+㇎
+</dt>
+
+<dd>
+<b>CJK Stroke HZZZ</b>
+<code>U+31CE</code> 
+
+This rare pattern seems to only be used in the Chinese drawing of 凸.
+Japanese uses a different stroke pattern for this character.
+</dd>
+
+</dl>
+
+<!-- This list was extracted from the files by a computer program
+which checked every value of every type on every stroke and found the
+following unused. However, the choices seem to be questionable, since
+KanjiVG is actually using more ambiguous things for these in many
+cases, so I haven't put them into a <dl> format to explain why they're
+not used, like the above ones. -->
+<pre>
+㇃ (Used for second stroke of 心. KanjiVG seems to use ㇟ for this.)
+㇍ (Used for upper right of 投 etc. KanjiVG seems to use ㇈ for this.)
+㇘ (Used in some stroke orders of 肅)
+㇝ (Used for printed forms of the right stroke of 八 or 入)
+㇠ (KanjiVG uses ㇈ instead of this)
+㇡ (KanjiVG uses ㇋ instead of this)
+㇢ (Rare pattern used by 乄)
+</pre>
