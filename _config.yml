@@ -33,6 +33,9 @@ format-links:
 - text: Radicals
   url: radicals.html
   icon: info-sign
+- text: Glossary
+  url: glossary.html
+  icon: info-sign
 - text: References
   url: ref.html
   icon: info-sign
