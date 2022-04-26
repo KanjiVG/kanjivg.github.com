@@ -9,11 +9,28 @@ name: glossary.html
 </div>
 
 <p>
-  This glossary consistently uses the word <i>kanji</i> to indicate
-  sinographs, Chinese characters, hanzi, and so forth.
+  For brevity's sake, this glossary consistently uses the
+  word <i>kanji</i> to indicate sinographs, Chinese characters, hanzi,
+  and so forth.
 </p>
 
 <!-- Alphabetical order -->
+
+<h2>CJK Radical Extension</h2>
+
+<p>
+  A block of Unicode from U+2E80 to U+2EF3 containing the variant
+  forms of kanji radicals. See <a href="radicals.html">Radicals in
+  KanjiVG</a>.
+</p>
+
+<h2>CJK Strokes</h2>
+
+<p>
+  A block of Unicode from U+31C0 to U+31E3 containing the shapes of
+  individual kanji strokes. See <a href="stroke-types.html">Stroke
+  types in KanjiVG</a>.
+</p>
 
 <h2>CJK Unified Ideographs</h2>
 
@@ -21,18 +38,6 @@ name: glossary.html
   A block of Unicode containing kanji. The basic block goes from
   U+4E00 to U+9FFF, but it was extended with CJK Unified Ideographs
   Extension A from U+3400 to U+4DBF.
-</p>
-
-<h2>CJK Strokes</h2>
-
-<p>
-  A block of Unicode containing kanji stroke shapes.
-</p>
-
-<h2>CJK Radicals</h2>
-
-<p>
-  A block of Unicode containing kanji radicals.
 </p>
 
 <h2>Han Unification</h2>
@@ -45,13 +50,14 @@ name: glossary.html
   Unicode code points are not appropriate for Chinese usage.
 </p>
 
-<h2>JIS Level One and Two</h2>
+<h2 id="jis-levels">JIS Level One and Two</h2>
 
 <p>
   <ruby>第1・第2水準漢字<rt>だいいち・だいにすいじゅんかんじ</rt></ruby>
 
   Two sets of kanji which were used as the basis for the coverage of
-  KanjiVG.
+  KanjiVG. See <a href="files.html#coverage">Coverage in KanjiVG
+  files</a>.
 </p>
 
 <p>
@@ -62,17 +68,18 @@ name: glossary.html
 <h2 id='kangxi'>Kangxi radicals</h2>
 
 <p>
-  The historical radical system of an old Chinese dictionary. These
-  radicals are labelled <code>general</code> or <code>tradit</code> in
-  KanjiVG, in contrast with the <a href="#nelson-radicals">Nelson
-    radicals</a>.
+  The historical <a href="radical">radical</a> system of an old
+  Chinese dictionary. These radicals are labelled <code>general</code>
+  or <code>tradit</code> in KanjiVG, in contrast with
+  the <a href="#nelson-radicals">Nelson radicals</a>.
 </p>
 
 <h2 id='kangxi-radicals-block'>Kangxi Radicals Block</h2>
 
 <p>
-  A block of Unicode containing the canonical form of the
-  214 <a href="#kangxi">Kangxi radicals</a>.
+  A block of Unicode from U+2F00 to U+2FD5 containing the canonical
+  form of the 214 <a href="#kangxi">Kangxi radicals</a>. Characters
+  from this block are not used by KanjiVG.
 </p>
 
 
@@ -83,4 +90,54 @@ name: glossary.html
     kanji dictionary</a>. Nelson used a more systematic approach to
   recategorise kanji into radicals, resulting in different values than
   the <a href="kangxi-radicals">Kangxi radical system</a>.
+</p>
+
+<!-- add illustration of Nelson versus Kangxi radicals here -->
+
+<h2 id='radical'>Radicals</h2>
+
+<p>
+  In the KanjiVG documentation and files, "radical" is used as a
+  translation of the Japanese term <ruby>部首<rt>ぶしゅ</rt></ruby>,
+  which essentially means the <a href="#kangxi-radicals">Kangxi
+  radical</a> of the kanji, a group of strokes which can be used to
+  categorise the letter. Some people also refer to the various
+  component parts of a kanji as "radicals", but KanjiVG uses the word
+  "element" for the component parts of a kanji other than the
+  radicals.
+</p>
+
+<h2 id='schoolbook-fonts'>Schoolbook fonts</h2>
+
+<p>
+  Japanese "schoolbook fonts"
+
+  (<ruby>教科書体<rt>きょうかしょたい</rt></ruby>)
+
+  are fonts designed for Japanese children's textbooks. These fonts
+  are made to resemble high-quality Japanese handwriting. 
+</p>
+
+<h2 id="svg">SVG (Scalable Vector Graphics)</h2>
+
+<p>
+  SVG (Scalable Vector Graphics) is a web standard for
+  making <a href="vector-graphics">vector graphics</a>. KanjiVG
+  extends the basic SVG format. See <a href="svg-format.html">SVG
+  Format</a>.
+</p>
+
+<h2 id="vector-graphics">Vector graphics</h2>
+
+<p>
+  Vector graphics is a type of computer graphic where the image is
+  defined mathematically as a collection of graphical objects like
+  curves and lines, rather than as a collection of pixel values, like
+  the PNG or JPEG formats. Vector graphics have the advantage over
+  pixel graphics that they can be scaled to any size without becoming
+  blocky, and that the file size of vector graphics is often much
+  smaller than an equivalent pixel format. They have the disadvantage
+  that they can be difficult to create and edit, and they are not
+  useful for storing some kinds of images, for example, photographic
+  images.
 </p>
