@@ -9,12 +9,14 @@ name: radicals.html
 </div>
 
 <p>
-  KanjiVG contains information on the kanji radical (部首) used by each
+  KanjiVG contains information on
+  the <a href="glossary.html#radical">radical</a> used by each
   kanji. Since different authors use different radicals for the same
   kanji, it provides several different choices of radical, such
   as <code>general</code> for generally-accepted radicals,
-  or <code>nelson</code> for the radicals used by the Nelson kanji
-  dictionary. See
+  or <code>nelson</code>
+  for <a href="glossary.html#nelson-radicals">the radicals used by the
+  Nelson kanji dictionary</a>. See
   <a href="svg-format.html#radical">the SVG Format page</a> for a
   complete list of possible values.
 </p>
@@ -26,17 +28,16 @@ name: radicals.html
 </p>
 
 <p>
-  Kanji radicals may have more than one visual form. For example,
-  Kangxi radical 61, "water", may take a non-variant form 水, or it
-  may take a variant form 氵.  For all of
-  the <strong>non-variant</strong> radical forms, there are two
-  equivalent Unicode code points with the same visual form. One is in
-  the Kangxi Radicals block of Unicode, where the non-variant radicals
-  are found consecutively from U+2F00 to U+2FD5, and the other is in
-  the CJK Unified Ideograph block of Unicode, where the same radicals
-  are scattered throughout. The equivalence between these two sets of
-  identical radicals is given in the Unicode Character Database (UCD)
-  in the file
+  For all of the <a href="glossary.html#variant-radical">non-variant
+  radical</a> forms, there are two equivalent Unicode code points with
+  the same visual form. One is in
+  the <a href="glossary.html#kangxi-radicals-block">Kangxi Radicals
+  block</a>, and the other is in
+  the <a href="glossary.html#cjk-unified-ideographs">CJK Unified
+  Ideograph block</a>, where the same radicals are scattered
+  throughout. The equivalence between these two sets of identical
+  radicals is given in the Unicode Character Database (UCD) in the
+  file
   <a href="https://www.unicode.org/Public/UCD/latest/ucd/CJKRadicals.txt">CJKRadicals.txt</a>,
   which maps between the pairs.
 </p>
@@ -47,22 +48,26 @@ name: radicals.html
     equivalent entries.
   </strong>
   KanjiVG does not use the Kangxi Radicals block at all. Where a
-  variant radical is used, KanjiVG also specifies the
+  <a href="glossary.html#variant-radical">variant radical</a> is used,
+  KanjiVG also specifies the
   the <a href="svg-format.html#original"><code>kvg:original</code></a>
   field on the group. This also does not use the Kangxi Radicals block
   at all.
 </p>
 
 <p>
-  However, KanjiVG does use some parts of the CJK Radicals Supplement
-  block from U+2E80 to U+2EF3, for example U+2E97 ⺗ is used for
+  However, KanjiVG does use some parts of
+  the <a href="glossary.html#cjk-radicals-supplement">CJK Radicals
+  Supplement block</a>. For example U+2E97 ⺗ is used for
   the <span class='romaji'>shitagokoro</span> variant of Kangxi
-  radical 61, rather than the CJK Unified Ideographs equivalent form
-  U+38FA 㣺. The following section details the choices made by the
-  KanjiVG authors.
+  radical 61, rather than
+  the <a href="glossary.html#cjk-unified-ideograph">CJK Unified
+  Ideographs</a> equivalent form U+38FA 㣺. The following section
+  details the choices made by the KanjiVG authors.
 </p>
 
 <section id="#radicals-used">
+
 <h2>Radicals used</h2>
 
 <section id="shin-nyo">
@@ -179,8 +184,7 @@ handle it, so I'm not sure what is best to do.
       ⺌ U+2E8C
     </td>
     <td>
-      This element is used mostly by the Nelson radicals from the
-      first edition of Nelson's character dictionary.
+      Largely <a href="glossary.html#nelson-radical">a Nelson radical</a>.
     </td>
   </tr>
   <tr>
@@ -197,7 +201,7 @@ handle it, so I'm not sure what is best to do.
       ⺕ U+2E95
     </td>
     <td>
-      Nelson?
+      Largely <a href="glossary.html#nelson-radical">a Nelson radical</a>.
     </td>
   </tr>
   <tr>
@@ -275,8 +279,10 @@ handle it, so I'm not sure what is best to do.
       ⺤ U+2EA4
     </td>
     <td>
-      U+722B does not form part of the JIS Level one and two kanji
-      standards, so it was never an element of KanjiVG, hence unlike
+      U+722B does not form part of
+      the <a href="glossary.html#jis-levels">JIS Level one and two
+      kanji standards</a>, so it was never an element of KanjiVG,
+      hence unlike
       <span class='romaji'>sanzui</span>
       and <span class='romaji'>kemono-hen</span> there is no
       "self-exception" for this character.
@@ -298,7 +304,7 @@ handle it, so I'm not sure what is best to do.
       ⺦ U+2EA6
     </td>
     <td>
-      This seems to only be used by Nelson-variant radicals.
+      Largely <a href="glossary.html#nelson-radical">a Nelson radical</a>.
     </td>
   </tr>
   <tr>
