@@ -16,7 +16,10 @@ name: glossary.html
 
 <!-- Alphabetical order -->
 
-<h2>CJK Radical Extension</h2>
+<!-- ids currently go on the h2 element, and are lower case, hyphen
+     separated. -->
+
+<h2 id='cjk-radical-extension'>CJK Radical Extension</h2>
 
 <p>
   A block of Unicode from U+2E80 to U+2EF3 containing the variant
@@ -40,13 +43,24 @@ name: glossary.html
   Extension A from U+3400 to U+4DBF.
 </p>
 
+<h2>Element</h2>
+
+<p>
+  Generic groupings of strokes of kanji into meaningful parts are
+  referred to as "elements" in this documentation. The
+  word <a href="#radical">radical</a> is reserved to mean the
+  identifier of the kanji under a classification system such as
+  the <a href="#kangxi-radical">Kangxi radical system</a>.
+</p>
+
 <h2>Han Unification</h2>
 
 <p>
   Part of the original effort of Unicode to fit as many characters as
-  possible into sixteen bits by using the same code point for characters
-  considered to be identical. These characters are often graphically
-  different, thus the Japanese-style KanjiVG vector graphics for various
+  possible into sixteen bits by using the same code point for
+  characters considered to be identical. These characters are often
+  graphically different, thus the Japanese-style
+  KanjiVG <a href="#vector-graphics">vector graphics</a> for various
   Unicode code points are not appropriate for Chinese usage.
 </p>
 
@@ -94,6 +108,7 @@ name: glossary.html
 
 <!-- add illustration of Nelson versus Kangxi radicals here -->
 
+
 <h2 id='radical'>Radicals</h2>
 
 <p>
@@ -118,11 +133,22 @@ name: glossary.html
   are made to resemble high-quality Japanese handwriting. 
 </p>
 
+<h2 id="stroke-order">Stroke order</h2>
+
+<p>
+Stroke order (<ruby>筆順<rt>ひつじゅん</rt></ruby>) is the order in
+which strokes of a kanji should be written. This becomes important in
+the case of cursive forms of Japanese handwriting, where the way in
+which the strokes are joined up depends upon the order in which they
+are written.
+</p>
+
+
 <h2 id="svg">SVG (Scalable Vector Graphics)</h2>
 
 <p>
   SVG (Scalable Vector Graphics) is a web standard for
-  making <a href="vector-graphics">vector graphics</a>. KanjiVG
+  making <a href="#vector-graphics">vector graphics</a>. KanjiVG
   extends the basic SVG format. See <a href="svg-format.html">SVG
   Format</a>.
 </p>

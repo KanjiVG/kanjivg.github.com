@@ -10,10 +10,11 @@ name: files.html
 
 <h2 id="coverage">Coverage</h2>
 <p>
-  KanjiVG contains vector graphics which represent the Japanese
-  versions of the Chinese characters (henceforth "kanji") and other
-  characters of the Japanese JIS standard encodings known
-  as <a href="glossary.html#jis-levels">level one" and "level
+  KanjiVG contains <a href="glossary.html#vector-graphics">vector
+  graphics</a> which represent the Japanese versions of the Chinese
+  characters (henceforth "kanji") and other characters of the Japanese
+  JIS standard encodings known
+  as <a href="glossary.html#jis-levels">"level one" and "level
   two"</a>.
 </p>
 <p>
@@ -41,9 +42,10 @@ name: files.html
 <h2>Format</h2>
 
 <p>
-  The KanjiVG file format is an extension of SVG. All KanjiVG files
-  are 100% SVG-compliant, and can be opened by any SVG viewer or
-  editor as-is. The shape of each kanji stroke (an individual line) is
+  The KanjiVG file format is an extension
+  of <a href="glossary.html#svg">SVG</a>. All KanjiVG files are 100%
+  SVG-compliant, and can be opened by any SVG viewer or editor
+  as-is. The shape of each kanji stroke (an individual line) is
   described as an
   <a href="http://www.w3.org/TR/SVG/paths.html#PathData">SVG path</a>
   on an area of size 109x109 pixels. Since these are vector graphics,
@@ -51,10 +53,11 @@ name: files.html
 </p>
 
 <p>
-  The SVG file is organized to reflect both the structure and stroke
-  order of the kanji.  Furthermore, several additional attributes
-  provide extra information about the kanji's
-  structure. See <a href="svg-format.html">SVG Format</a> for details.
+  The SVG file is organized to reflect both the structure
+  and <a href="stroke-order">stroke order</a> of the kanji.
+  Furthermore, several additional attributes provide extra information
+  about the kanji's structure. See <a href="svg-format.html">SVG
+  Format</a> for details.
 </p>
 
 <h2>Character models</h2>
@@ -85,15 +88,6 @@ In the repository for KanjiVG, each kanji has at least one file which
 is given a name of the lower-case hexadecimal Unicode value of the
 kanji, padded to five characters with zeros, followed by the
 suffix <code>.svg</code>. 
-</p>
-
-<p id="kanji_mismatch">
-Most of the files are in the subdirectory "kanji", but some files have
-been placed into a directory called "kanji_mismatch". This was done
-when all the files were combined from separate stroke and grouping
-files into one, and the files which had different counts of strokes
-were put into the kanji_mismatch directory. All of the files in
-kanji_mismatch are the variants of the original kanji.
 </p>
 
 <h2>Download files</h2>

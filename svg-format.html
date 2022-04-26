@@ -23,9 +23,13 @@ added <code>kvg:</code> suffix, a "namespace" in XML terminology.
   There are two
   root <a href="http://www.w3.org/TR/SVG/struct.html#Groups">SVG
   groups</a>. The <strong>StrokePaths</strong> group is a set of
-  standard SVG paths that gives the strokes of the kanji in the right
-  order. It also contains groups which describe the structure of the
-  kanji, such as its decomposition into radicals
+  standard SVG paths that gives the strokes of the kanji. The strokes
+  are ordered in the <a href="glossary.html#stroke-order">stroke
+  order</a> as given by the <a href="ref.html">references</a>. It also
+  contains groups which describe the structure of the kanji, such as
+  its decomposition into <a href="glossary.html#element">elements</a>,
+  and which strokes comprise
+  its <a href="glossary.html#radical">radical</a>.
 </p>
 
 <p id='strokenumbers-intro'>
@@ -45,7 +49,9 @@ added <code>kvg:</code> suffix, a "namespace" in XML terminology.
 <h2 id='strokepaths-groups'>StrokePaths groups</h2>
 
 <p>
-  Kanji are often made of several components. For instance,
+  Kanji are often made of several components, referred to
+  as <a href="glossary.html#element">elements</a> in this
+  documentation. For instance,
   <a href="viewer.html?kanji=頑">頑</a> can be seen as a combination of
   <a href="viewer.html?kanji=元">元</a> on its left and
   <a href="viewer.html?kanji=頁">頁</a> on its right. KanjiVG uses SVG
@@ -55,6 +61,11 @@ added <code>kvg:</code> suffix, a "namespace" in XML terminology.
   these groups under their <a href='#element'>element</a>
   attributes. SVG groups provide an elegant way to collect strokes
   into a given group.
+</p>
+<p>
+  In the case that the elements do not consist of contiguous strokes,
+  KanjiVG uses the <a href="#part">part</a>
+  and <a href="#number">number</a> XML attributes to distinguish them.
 </p>
 
 <img src="https://raw.githubusercontent.com/KanjiVG/kanjivg/master/kanji/09811.svg" width="436" height="436">
@@ -97,13 +108,13 @@ added <code>kvg:</code> suffix, a "namespace" in XML terminology.
 </p>
 
 <p>
-The value of <code>element</code> on the outermost group of the
-strokes is the same as the kanji represented by the SVG. However,
-there is no element value on the outermost group of the strokes for
-non-kanji SVG files. <span class="undocumented">The reason for this
-has not been documented.
-See <a href="https://github.com/KanjiVG/kanjivg/issues/319">Why no
-kvg:element on non-hanzi graphics?</a> at github.com.</span>
+  The value of <code>element</code> on the outermost group of the
+  strokes is the same as the kanji represented by the SVG. However,
+  there is no element value on the outermost group of the strokes for
+  non-kanji SVG files. <span class="undocumented">The reason for this
+  has not been documented.
+  See <a href="https://github.com/KanjiVG/kanjivg/issues/319">Why no
+  kvg:element on non-hanzi graphics?</a> at github.com.</span>
 </p>
 
 <h4 id="number">number</h4>
@@ -246,11 +257,14 @@ This part is left of another part.
 <dt id="nyo">nyo</dt>
 <dd>
 This part is left and under another part, such as 辶.
+</dd>
 
 <dt id="nyoc">nyoc</dt>
 <dd>
 This part is the complement or counterpart of a <a href="#nyo">nyo</a> part.
 </dd>
+
+<!-- add illustration here -->
 
 <dt id="right">right</dt>
 <dd>
