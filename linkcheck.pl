@@ -45,6 +45,12 @@ for my $file (@files) {
 		print "Bad link in $file to self-id $id\n";
 	    }
 	}
+	if ($link !~ /^#/ &&
+	    $link !~ /^[a-z_-]+\.html(?:#[a-z_-]+)?$/ &&
+	    $link !~ m!^https?://! &&
+	    $link !~ /viewer/) {
+	    print "$file: Possible bad link $link\n";
+	}
 	push @links, $link;
     }
 }
