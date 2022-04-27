@@ -49,7 +49,15 @@ name: glossary.html
 <p>
   A block of Unicode containing kanji. The basic block goes from
   U+4E00 to U+9FFF, but it was extended with CJK Unified Ideographs
-  Extension A from U+3400 to U+4DBF.
+  Extension A from U+3400 to U+4DBF, and other extensions.
+</p>
+<p>
+  Since the exact block of Unicode that a kanji belongs to is not
+  vitally important to KanjiVG, in this documentation we refer to all
+  of these blocks as the "CJK Unified Ideographs". However, we do
+  distinguish these from the <a href="kangxi-radicals-block">Kangxi
+  Radicals block</a> or the <a href="cjk-strokes">CJK Strokes</a>
+  block.
 </p>
 
 <h2 id="element">Element</h2>
@@ -122,7 +130,7 @@ name: glossary.html
 <p>
   For brevity's sake, the KanjiVG documentation uses the
   word <i>kanji</i> to indicate sinographs, Chinese characters, hanzi,
-  and so forth. The term "Chinese characters" is sometimes used when
+  and so forth. We sometimes use the term "Chinese characters" when
   referring specifically to characters used in China rather than in
   Japan.
 </p>
