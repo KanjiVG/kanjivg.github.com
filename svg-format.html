@@ -19,7 +19,7 @@ All of the SVG extensions used by KanjiVG are XML attributes with an
 added <code>kvg:</code> suffix, a "namespace" in XML terminology.
 </p>
 
-<p id='strokepaths-intro'>
+<p id="strokepaths-intro">
   There are two
   root <a href="http://www.w3.org/TR/SVG/struct.html#Groups">SVG
   groups</a>. The <strong>StrokePaths</strong> group is a set of
@@ -32,7 +32,7 @@ added <code>kvg:</code> suffix, a "namespace" in XML terminology.
   its <a href="glossary.html#radical">radical</a>.
 </p>
 
-<p id='strokenumbers-intro'>
+<p id="strokenumbers-intro">
   The <strong>StrokeNumbers</strong> group is an optional group that
   gives a convenient position
   for <a href="#stroke-numbers">stroke-order numbers</a>, useful for
@@ -46,7 +46,7 @@ added <code>kvg:</code> suffix, a "namespace" in XML terminology.
   the data, are distinguished with a pale green background.
 </p>
 
-<h2 id='strokepaths-groups'>StrokePaths groups</h2>
+<h2 id="strokepaths-groups">StrokePaths groups</h2>
 
 <p>
   Kanji are often made of several components, referred to
@@ -58,7 +58,7 @@ added <code>kvg:</code> suffix, a "namespace" in XML terminology.
   groups to reflect this structure, so the KanjiVG entry contains two
   groups under the parent <code>StrokePaths</code> group containing
   the left and right side of the kanji. The 元 and 頁 are encoded in
-  these groups under their <a href='#element'>element</a>
+  these groups under their <a href="#element">element</a>
   attributes. SVG groups provide an elegant way to collect strokes
   into a given group.
 </p>
@@ -128,6 +128,7 @@ added <code>kvg:</code> suffix, a "namespace" in XML terminology.
   attribute is a way to uniquely identify the part when it becomes
   ambiguous.
 </p>
+
 <p>
   It is only used in a few places in kanjivg where there are two
   different sets of the same element, such as 05716.svg, the character
@@ -137,6 +138,7 @@ added <code>kvg:</code> suffix, a "namespace" in XML terminology.
   source code of that SVG file</a> to understand
   what <code>kvg:number</code> attribute does.
 </p>
+
 <p>
   Generally, elements which can be represented by contiguous blocks of
   strokes do not have a number attribute, even if multiple cases of
@@ -223,8 +225,12 @@ added <code>kvg:</code> suffix, a "namespace" in XML terminology.
 <p class='undocumented'>
   The values of this attribute are inconsistent, and the meanings of
   many of them are completely
-  undocumented. See <a href="https://github.com/KanjiVG/kanjivg/issues/312">issue
-  312 on Github</a> for more details.
+  undocumented. See 
+
+  <a href="https://github.com/KanjiVG/kanjivg/issues/312">issue 312 on
+  Github</a>
+
+  for more details.
 </p>
 
 <h4 id="position">position</h4>
@@ -237,54 +243,54 @@ added <code>kvg:</code> suffix, a "namespace" in XML terminology.
 
 <dl>
 
-<dt id="bottom">bottom</dt>
-<dd>
-This part is under another part.
-</dd>
+  <dt id="bottom">bottom</dt>
+  <dd>
+    This part is under another part.
+  </dd>
 
-<dt id="kamae">kamae</dt>
-<dd>
-This part is wrapped around another part, such as 門.
-<span class='undocumented'>This is used very inconsistently in KanjiVG
-as a grab-bag for various different structures.</span>
-</dd>
+  <dt id="kamae">kamae</dt>
+  <dd>
+    This part is wrapped around another part, such as 門.
+    <span class='undocumented'>This is used very inconsistently in KanjiVG
+      as a grab-bag for various different structures.</span>
+  </dd>
 
-<dt id="left">left</dt>
-<dd>
-This part is left of another part.
-</dd>
+  <dt id="left">left</dt>
+  <dd>
+    This part is left of another part.
+  </dd>
 
-<dt id="nyo">nyo</dt>
-<dd>
-This part is left and under another part, such as 辶.
-</dd>
+  <dt id="nyo">nyo</dt>
+  <dd>
+    This part is left and under another part, such as 辶.
+  </dd>
 
-<dt id="nyoc">nyoc</dt>
-<dd>
-This part is the complement or counterpart of a <a href="#nyo">nyo</a> part.
-</dd>
+  <dt id="nyoc">nyoc</dt>
+  <dd>
+    This part is the complement or counterpart of a <a href="#nyo">nyo</a> part.
+  </dd>
 
-<!-- add illustration here -->
+  <!-- add illustration here -->
 
-<dt id="right">right</dt>
-<dd>
-This part is right of another part.
-</dd>
+  <dt id="right">right</dt>
+  <dd>
+    This part is right of another part.
+  </dd>
 
-<dt id="tare">tare</dt>
-<dd>
-This part is left and above another part, such as 广.
-</dd>
+  <dt id="tare">tare</dt>
+  <dd>
+    This part is left and above another part, such as 广.
+  </dd>
 
-<dt id="tarec">tarec</dt>
-<dd>
-This part is the complement or counterpart of a <a href="#tare">tare</a> part.
-</dd>
+  <dt id="tarec">tarec</dt>
+  <dd>
+    This part is the complement or counterpart of a <a href="#tare">tare</a> part.
+  </dd>
 
-<dt id="top">top</dt>
-<dd>
-  This part is above another part.
-</dd>
+  <dt id="top">top</dt>
+  <dd>
+    This part is above another part.
+  </dd>
 </dl>
 
 <h4 id="radical">radical</h4>
@@ -309,7 +315,7 @@ This part is the complement or counterpart of a <a href="#tare">tare</a> part.
   </dt>
   <dd>
     This marks the radicals used by <a href="ref.html#jis-jiten-ref">JIS Kanji
-    Jiten</a>, used by <a href="ref.html#kanjidic">Kanjidic</a>, which
+      Jiten</a>, used by <a href="ref.html#kanjidic">Kanjidic</a>, which
     sometimes differ from the <code>general</code>
     or <code>tradit</code> radicals. This value was added to deal with
     inconsistencies between KanjiVG and Kanjidic and other references.
@@ -326,8 +332,8 @@ This part is the complement or counterpart of a <a href="#tare">tare</a> part.
   </dt>
   <dd>
     The keyword "tradit" is used for the "traditional" radical, where
-    the <a href="glossary.html#kangxi">Kangxi radical</a> disagrees
-    with Nelson.
+    the <a href="glossary.html#kangxi-radicals">Kangxi radical</a>
+    disagrees with Nelson.
   </dd>
 </dl>
 
@@ -355,9 +361,9 @@ This part is the complement or counterpart of a <a href="#tare">tare</a> part.
 </figure>
 
 <p>
-Unicode has more than one code point which may represent each
-radical. The choices of radicals which have been used by KanjiVG are
-explained on the <a href="radicals.html">Radicals</a> page.
+  Unicode has more than one code point which may represent each
+  radical. The choices of radicals which have been used by KanjiVG are
+  explained on the <a href="radicals.html">Radicals</a> page.
 </p>
 
 <h4 id="radicalForm">radicalForm</h4>
@@ -379,6 +385,7 @@ explained on the <a href="radicals.html">Radicals</a> page.
 </p>
 
 <h4 id="variant">variant</h4>
+
 <p>
   Should be present and set to <strong>true</strong> if the group is
   from the
@@ -422,6 +429,7 @@ explained on the <a href="radicals.html">Radicals</a> page.
   example stroke 3 of the file <code>kanji/053ec.svg</code> has the ID
   number <code>kvg:053ec-s3</code>.
 </p>
+
 <p>
   The stroke IDs are consecutive positive whole numbers starting from
   1 which correspond to <a href="#stroke-numbers">the stroke
@@ -454,7 +462,7 @@ explained on the <a href="radicals.html">Radicals</a> page.
   information on stroke types.
 </p>
 
-<h2 id='stroke-numbers'>Stroke numbers</h2>
+<h2 id="stroke-numbers">Stroke numbers</h2>
 
 <p>
   Stroke numbers are represented by a top-level group with an ID of
@@ -467,6 +475,7 @@ explained on the <a href="radicals.html">Radicals</a> page.
   correspond to the <a href="#stroke-id">id value of the individual
   strokes</a>.
 </p>
+
 <p>
   The stroke numbers are located to the side of the beginning of the
   stroke whose order they indicate. Generally, they should not overlap
