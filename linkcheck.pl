@@ -29,6 +29,9 @@ for my $file (@files) {
     while ($text =~ /id="(.*?)"/g) {
 	my $id = $1;
 	$ids{$id} = 1;
+	if ($id =~ /^#/) {
+	    print "$file: bad id $id with #\n";
+	}
 #	print "Added id $id\n";
     }
     while ($text =~ /href="(.*?)"/g) {
