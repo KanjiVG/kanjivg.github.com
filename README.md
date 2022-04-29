@@ -24,58 +24,6 @@
 
     ***[KanjiVG]*** *Github Submodule .*
 
----
-
-## Pages
-
-**[404][Page 404]**
-
-*File Not Found .*
-
-**[Index][Page Index]**
-
-*Project Overview .*
-
-**[Incorrect Kanji][Page Incorrect Kanji]**
-
-*List Of Erroneous Kanji .*
-
-**[Conventions][Page Conventions]**
-
-*Project Conventions For Kanji SVGs .*
-
-**[Format][Page Format]**
-
-*Details The Kanji SVG Format .*
-
-
-**[Internationalization][Page Internationalization]**
-
-*Project Scope / Limitations .*
-
-**[Listing][Page Listing]**
-
-*All Kanji .*
-
-**[Projects][Page Projects]**
-
-*Projects using* ***KanjiVG*** *.*
-
-**[Viewer][Page Viewer]**
-
-*Kanji SVG Visualizer .*
-
-<!----------------------------------------------------------------------------->
-
-[Page 404]: 404.html
-[Page Conventions]: Conventions.html
-[Page Format]: Format.html
-[Page Incorrect Kanji]: incorrect-kanjis.html
-[Page Index]: index.html
-[Page Internationalization]: internationalization.html
-[Page Listing]: listing.html
-[Page Projects]: projects.html
-[Page Viewer]: viewer.html
 
 [Layouts]: _layouts/default.html
 [Config]: _config.yml
