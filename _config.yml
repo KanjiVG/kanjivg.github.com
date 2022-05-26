@@ -53,3 +53,6 @@ tool-links:
 - text: Viewer
   url: viewer.html
   icon: picture
+- text: Known problems
+  url: known-problems
+  icon: info-sign
