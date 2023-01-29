@@ -37,7 +37,6 @@ name: viewer.html
                 kanji
         );
         jQuery('#kanjiViewerParams').submit(runKanjiViewer);
-        jQuery('#kanjiViewerParams').reset(runKanjiViewer);
     });
     function runKanjiViewer() {
 		KanjiViewer.setFontSize(jQuery('#fontSize').val());
@@ -61,7 +60,7 @@ name: viewer.html
             <label class="control-label" for="kanji">Kanji</label>
 
             <div class="controls docs-input-sizes">
-                <input class="span3" type="text" value="" id="kanji" placeholder="e.g. 線">
+                <input class="span3" type="text" value="" id="kanji" placeholder="e.g. 線" onchange="changeBox();">
             </div>
         </div>
 
