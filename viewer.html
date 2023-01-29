@@ -36,7 +36,7 @@ name: viewer.html
                 jQuery('#colorGroups:checked').val(),
                 kanji
         );
-        jQuery('#kanjiViewerParams').submit(function () {
+	function runKanjiViewer() {
             KanjiViewer.setFontSize(jQuery('#fontSize').val());
             KanjiViewer.setZoom(jQuery('#zoomFactor').val());
             KanjiViewer.setStrokeWidth(jQuery('#strokeWidth').val());
@@ -45,7 +45,8 @@ name: viewer.html
             KanjiViewer.setKanji(jQuery('#kanji').val());
             KanjiViewer.refreshKanji();
             return false;
-        });
+	}
+        jQuery('#kanjiViewerParams').submit(runKanjiViewer);
     });
 </script>
 
@@ -92,11 +93,11 @@ name: viewer.html
 
             <div class="controls">
                 <label class="checkbox">
-                    <input type="checkbox" name="displayOrders" id="displayOrders" checked="on">
+                    <input type="checkbox" name="displayOrders" id="displayOrders" checked="on" onchange="changeBox();">
                     Display stroke order
                 </label>
                 <label class="checkbox">
-                    <input type="checkbox" name="colorGroups" id="colorGroups">
+                    <input type="checkbox" name="colorGroups" id="colorGroups" "changeBox();">
                     Colour groups instead of individual stroke
                 </label>
 

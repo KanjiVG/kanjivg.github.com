@@ -190,3 +190,6 @@ KanjiViewer = {
         });
     }
 };
+function changeBox() {
+	runKanjiViewer();
+}
