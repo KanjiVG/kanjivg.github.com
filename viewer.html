@@ -3,50 +3,8 @@ layout: default
 title: Viewer
 name: viewer.html
 ---
-
-<script type="text/javascript">
-    jQuery(document).ready(function () {
-        function urldecode(str) {
-            return decodeURIComponent((str + '').replace(/\+/g, '%20'));
-        }
-
-        function getUrlVars() {
-            var vars = [], hash;
-            var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
-            for (var i = 0; i < hashes.length; i++) {
-                hash = hashes[i].split('=');
-                vars.push(hash[0]);
-                vars[hash[0]] = urldecode(hash[1]);
-            }
-            return vars;
-        }
-
-        var kanji = getUrlVars()["kanji"];
-        if (kanji == null) {
-            kanji = jQuery('#kanji').val();
-        } else {
-            jQuery('#kanji').val(kanji);
-        }
-        KanjiViewer.initialize(
-                "kanjiViewer",
-                jQuery('#strokeWidth').val(),
-                jQuery('#fontSize').val(),
-                jQuery('#zoomFactor').val(),
-                jQuery('#displayOrders:checked').val(),
-                jQuery('#colorGroups:checked').val(),
-                kanji
-        );
-        jQuery('#kanjiViewerParams').submit(function () {
-            KanjiViewer.setFontSize(jQuery('#fontSize').val());
-            KanjiViewer.setZoom(jQuery('#zoomFactor').val());
-            KanjiViewer.setStrokeWidth(jQuery('#strokeWidth').val());
-            KanjiViewer.setStrokeOrdersVisible(jQuery('#displayOrders:checked').val());
-            KanjiViewer.setColorGroups(jQuery('#colorGroups:checked').val());
-            KanjiViewer.setKanji(jQuery('#kanji').val());
-            KanjiViewer.refreshKanji();
-            return false;
-        });
-    });
+<script>
+{% include_relative viewer-top.js %}
 </script>
 
 <div class="page-header">
@@ -59,44 +17,38 @@ name: viewer.html
             <label class="control-label" for="kanji">Kanji</label>
 
             <div class="controls docs-input-sizes">
-                <input class="span3" type="text" value="" id="kanji" placeholder="e.g. 線">
+                <input class="viewer-input" type="text" value="" id="kanji" placeholder="e.g. 線" onchange="changeBox();">
             </div>
-        </div>
-
-        <div class="control-group">
             <label class="control-label" for="strokeWidth">Stroke width</label>
 
             <div class="controls docs-input-sizes">
-                <input class="span3" type="text" value="3" id="strokeWidth" placeholder="">
+                <input class="viewer-input" type="text" value="3" id="strokeWidth" placeholder="">
             </div>
-        </div>
-
-        <div class="control-group">
             <label class="control-label" for="fontSize">Font size</label>
 
             <div class="controls docs-input-sizes">
-                <input class="span3" type="text" value="5" id="fontSize" placeholder="">
+                <input class="viewer-input" type="text" value="5" id="fontSize" placeholder="">
             </div>
         </div>
-
+<!-- This doesn't work at the moment, commented out pending attempt to fix it.
         <div class="control-group">
             <label class="control-label" for="zoomFactor">Zoom percentage</label>
 
             <div class="controls docs-input-sizes">
-                <input class="span3" type="text" value="100" id="zoomFactor" placeholder="">
+                <input class="viewer-input" type="text" value="100" id="zoomFactor" placeholder="">
             </div>
         </div>
-
+-->
         <div class="control-group">
             <label class="control-label" id="optionsCheckboxes">Options</label>
 
             <div class="controls">
                 <label class="checkbox">
-                    <input type="checkbox" name="displayOrders" id="displayOrders" checked="on">
+                    <input type="checkbox" name="displayOrders" id="displayOrders" checked="on" onchange="changeBox();">
                     Display stroke order
                 </label>
                 <label class="checkbox">
-                    <input type="checkbox" name="colorGroups" id="colorGroups">
+                    <input type="checkbox" name="colorGroups" id="colorGroups" onchange="changeBox();">
                     Colour groups instead of individual stroke
                 </label>
 
@@ -107,7 +59,7 @@ name: viewer.html
         </div>
         <div class="form-actions">
             <input type="submit" class="btn btn-primary" value="Redraw">&nbsp;
-            <button type="reset" class="btn btn-info">Reset</button>
+            <button type="reset" class="btn btn-info"">Reset</button>
         </div>
     </fieldset>
 </form>

@@ -174,15 +174,15 @@ KanjiViewer = {
             });
         }
         jQuery(this.xml).find('text').each(function () {
-            var color = Raphael.color('#808080');
+            var color = Raphael.color('#000');
             var text = jQuery(this).text();
             var transform = jQuery(this).attr('transform');
-            var x = transform.split(' ')[4];
-            var y = transform.split(' ')[5].replace(')', '');
-            var order = parent.paper.text(x, y, text);
+			console.log("transform = " + transform);
+            var order = parent.paper.text(0, 0, text);
+			console.log(order);
             order.attr({
                 'fill':color,
-                'font-size':parent.fontSize
+                'font-size':parent.fontSize,
             });
             if (!parent.displayOrders) {
                 order.hide();
@@ -190,3 +190,6 @@ KanjiViewer = {
         });
     }
 };
+function changeBox() {
+	runKanjiViewer();
+}
