@@ -36,18 +36,18 @@ name: viewer.html
                 jQuery('#colorGroups:checked').val(),
                 kanji
         );
-	function runKanjiViewer() {
-            KanjiViewer.setFontSize(jQuery('#fontSize').val());
-            KanjiViewer.setZoom(jQuery('#zoomFactor').val());
-            KanjiViewer.setStrokeWidth(jQuery('#strokeWidth').val());
-            KanjiViewer.setStrokeOrdersVisible(jQuery('#displayOrders:checked').val());
-            KanjiViewer.setColorGroups(jQuery('#colorGroups:checked').val());
-            KanjiViewer.setKanji(jQuery('#kanji').val());
-            KanjiViewer.refreshKanji();
-            return false;
-	}
         jQuery('#kanjiViewerParams').submit(runKanjiViewer);
     });
+    function runKanjiViewer() {
+		KanjiViewer.setFontSize(jQuery('#fontSize').val());
+		KanjiViewer.setZoom(jQuery('#zoomFactor').val());
+		KanjiViewer.setStrokeWidth(jQuery('#strokeWidth').val());
+		KanjiViewer.setStrokeOrdersVisible(jQuery('#displayOrders:checked').val());
+		KanjiViewer.setColorGroups(jQuery('#colorGroups:checked').val());
+		KanjiViewer.setKanji(jQuery('#kanji').val());
+		KanjiViewer.refreshKanji();
+		return false;
+	}
 </script>
 
 <div class="page-header">
