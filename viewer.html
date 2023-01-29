@@ -37,6 +37,7 @@ name: viewer.html
                 kanji
         );
         jQuery('#kanjiViewerParams').submit(runKanjiViewer);
+        jQuery('#kanjiViewerParams').reset(runKanjiViewer);
     });
     function runKanjiViewer() {
 		KanjiViewer.setFontSize(jQuery('#fontSize').val());
@@ -108,7 +109,7 @@ name: viewer.html
         </div>
         <div class="form-actions">
             <input type="submit" class="btn btn-primary" value="Redraw">&nbsp;
-            <button type="reset" class="btn btn-info" onclick="changeBox();">Reset</button>
+            <button type="reset" class="btn btn-info"">Reset</button>
         </div>
     </fieldset>
 </form>
