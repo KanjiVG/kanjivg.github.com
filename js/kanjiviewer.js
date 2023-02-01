@@ -177,9 +177,9 @@ KanjiViewer = {
             var color = Raphael.color('#000');
             var text = jQuery(this).text();
             var transform = jQuery(this).attr('transform');
-			console.log("transform = " + transform);
-            var order = parent.paper.text(0, 0, text);
-			console.log(order);
+            var x = transform.split(' ')[4];
+            var y = transform.split(' ')[5].replace(')', '');
+            var order = parent.paper.text(x, y, text);
             order.attr({
                 'fill':color,
                 'font-size':parent.fontSize,
