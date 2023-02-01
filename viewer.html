@@ -3,56 +3,8 @@ layout: default
 title: Viewer
 name: viewer.html
 ---
-<<<<<<< HEAD
 <script>
 {% include_relative viewer-top.js %}
-=======
-
-<script type="text/javascript">
-    jQuery(document).ready(function () {
-        function urldecode(str) {
-            return decodeURIComponent((str + '').replace(/\+/g, '%20'));
-        }
-
-        function getUrlVars() {
-            var vars = [], hash;
-            var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
-            for (var i = 0; i < hashes.length; i++) {
-                hash = hashes[i].split('=');
-                vars.push(hash[0]);
-                vars[hash[0]] = urldecode(hash[1]);
-            }
-            return vars;
-        }
-
-        var kanji = getUrlVars()["kanji"];
-        if (kanji == null) {
-            kanji = jQuery('#kanji').val();
-        } else {
-            jQuery('#kanji').val(kanji);
-        }
-        KanjiViewer.initialize(
-                "kanjiViewer",
-                jQuery('#strokeWidth').val(),
-                jQuery('#fontSize').val(),
-                jQuery('#zoomFactor').val(),
-                jQuery('#displayOrders:checked').val(),
-                jQuery('#colorGroups:checked').val(),
-                kanji
-        );
-        jQuery('#kanjiViewerParams').submit(runKanjiViewer);
-    });
-    function runKanjiViewer() {
-		KanjiViewer.setFontSize(jQuery('#fontSize').val());
-		KanjiViewer.setZoom(jQuery('#zoomFactor').val());
-		KanjiViewer.setStrokeWidth(jQuery('#strokeWidth').val());
-		KanjiViewer.setStrokeOrdersVisible(jQuery('#displayOrders:checked').val());
-		KanjiViewer.setColorGroups(jQuery('#colorGroups:checked').val());
-		KanjiViewer.setKanji(jQuery('#kanji').val());
-		KanjiViewer.refreshKanji();
-		return false;
-	}
->>>>>>> ab5cefbbdc7312b4aea4bc0b3ce3fb6105d76937
 </script>
 
 <div class="page-header">
@@ -65,11 +17,7 @@ name: viewer.html
             <label class="control-label" for="kanji">Kanji</label>
 
             <div class="controls docs-input-sizes">
-<<<<<<< HEAD
                 <input class="viewer-input" type="text" value="" id="kanji" placeholder="e.g. 線" onchange="changeBox();">
-=======
-                <input class="span3" type="text" value="" id="kanji" placeholder="e.g. 線" onchange="changeBox();">
->>>>>>> ab5cefbbdc7312b4aea4bc0b3ce3fb6105d76937
             </div>
             <label class="control-label" for="strokeWidth">Stroke width</label>
 
