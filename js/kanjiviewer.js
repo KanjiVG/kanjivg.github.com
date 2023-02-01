@@ -1,23 +1,9 @@
-/**
- * Copyright (C) 2012 Axel Bodart.
- *
- * This work is distributed under the conditions of the Creative Commons
- * Attribution-Share Alike 3.0 Licence. This means you are free:
- * to Share - to copy, distribute and transmit the work
- * to Remix - to adapt the work
-
- * Under the following conditions:
- * * Attribution. You must attribute the work by stating your use of KanjiVG in
- *    your own copyright header and linking to KanjiVG's website
- *    (http://kanjivg.tagaini.net)
- * * Share Alike. If you alter, transform, or build upon this work, you may
- *    distribute the resulting work only under the same or similar license to this
- *    one.
- *
- * See http://creativecommons.org/licenses/by-sa/3.0/ for more details.
- */
+function kanjiURL(kanji) {
+	return 'kanjivg/kanji/0' + kanji.charCodeAt(0).toString(16) + '.svg'
+}
 KanjiViewer = {
     initialize:function (divName, strokeWidth, fontSize, zoomFactor, displayOrders, colorGroups, kanji) {
+		this.img = document.getElementById("kanji-image");
         this.paper = new Raphael(divName, '100%', '100%');
         this.strokeWidth = strokeWidth;
         this.fontSize = fontSize;
@@ -50,7 +36,9 @@ KanjiViewer = {
         }
     },
     refreshKanji:function () {
+
         if (this.fetchNeeded && this.kanji != "") {
+			this.image.src=kanjiURL(kanji);
             var parent = this;
             this.paper.clear();
             var loader = this.paper.text(0, 0, 'Loading ' + this.kanji);
