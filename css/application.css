@@ -25,3 +25,8 @@ code {
 .viewer-input {
     width: 3em;
 }
+
+#kanji-image {
+    width: 327px;
+    height: 327px;
+}
