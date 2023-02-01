@@ -38,7 +38,7 @@ KanjiViewer = {
     refreshKanji:function () {
 
         if (this.fetchNeeded && this.kanji != "") {
-			this.image.src=kanjiURL(kanji);
+			this.img.src=kanjiURL(this.kanji);
             var parent = this;
             this.paper.clear();
             var loader = this.paper.text(0, 0, 'Loading ' + this.kanji);
