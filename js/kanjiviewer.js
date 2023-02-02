@@ -99,6 +99,8 @@ KanjiViewer = {
     },
     refreshKanji:function () {
         if (this.fetchNeeded && this.kanji != "") {
+			setKanjiDrawing(this.kanji);
+/*
 			var kanji = this.kanji;
 			var url = kanjiURL(this.kanji);
             var parent = this;
@@ -136,8 +138,10 @@ KanjiViewer = {
             });
         } else {
             this.drawKanji();
+*/
         }
     },
+/*
     createStroke:function (path, color) {
         var stroke = this.paper.path(jQuery(path).attr('d'));
         stroke['initialColor'] = color;
@@ -240,6 +244,7 @@ KanjiViewer = {
             }
         });
     }
+*/
 };
 function changeBox() {
 	runKanjiViewer();
