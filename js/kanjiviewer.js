@@ -1,5 +1,67 @@
+// Convert kanji into a hexadecimal
+function kanjiToHex(kanji) {
+	return '0' + kanji.charCodeAt(0).toString(16);
+}
+// Returns the github URL of a kanji specified by a string. Only the
+// first kanji in the string is used.
 function kanjiURL(kanji) {
 	return 'kanjivg/kanji/0' + kanji.charCodeAt(0).toString(16) + '.svg'
+}
+
+function loadKanjiVG(img, el, kanji) {
+	img.innerHTML = '';
+	img.appendChild(el.documentElement);
+	var hk = kanjiToHex(kanji);
+	var baseID = "kvg:" + hk;
+	console.log(baseID);
+	var baseEl = document.getElementById(baseID);
+	console.log(baseEl);
+	baseEl.style.stroke = "#FC8";
+    const paths = baseEl.getElementsByTagName("path");
+	console.log(paths);
+	textBaseID = "kvg:StrokeNumbers_" + hk;
+	var textBaseEl = document.getElementById(textBaseID);
+	const texts = textBaseEl.getElementsByTagName("text");
+	console.log(texts);
+	var i = 0;
+	for (var path of paths) {
+		var colour = "#" + randomColour();
+		path.style.stroke = colour;
+		console.log(" path = "+path + " colour = " + colour);
+		texts[i].style.fill = colour;
+		i++;
+	}
+}
+
+function randomColour() {
+	var colour = new String();
+	for (var i = 0; i < 3; i++) {
+		var random16 = Math.floor (Math.random() * 16);
+		colour = colour.concat (random16.toString(16).toUpperCase());
+	}
+	return colour;
+}
+
+
+function getKanjiVG(kanji) {
+	var xhr = new XMLHttpRequest();
+	var url = kanjiURL(kanji);
+	xhr.open("GET", url, false);
+	// Following line is just to be on the safe side;
+	// not needed if your server delivers SVG with correct MIME type
+	xhr.overrideMimeType("image/svg+xml");
+	xhr.onload = function(e) {
+		// You might also want to check for xhr.readyState/xhr.status here
+		loadKanjiVG(img, xhr.responseXML, kanji);
+	};
+	xhr.send("");
+}
+
+function setKanjiDrawing(kanji) {
+	console.log("kanji is "+kanji);
+	img = document.getElementById("kanji-image");
+	console.log(img);
+	getKanjiVG(kanji);
 }
 KanjiViewer = {
     initialize:function (divName, strokeWidth, fontSize, zoomFactor, displayOrders, colorGroups, kanji) {
@@ -36,9 +98,9 @@ KanjiViewer = {
         }
     },
     refreshKanji:function () {
-
         if (this.fetchNeeded && this.kanji != "") {
-			this.img.src=kanjiURL(this.kanji);
+			var kanji = this.kanji;
+			var url = kanjiURL(this.kanji);
             var parent = this;
             this.paper.clear();
             var loader = this.paper.text(0, 0, 'Loading ' + this.kanji);
@@ -50,12 +112,13 @@ KanjiViewer = {
                 'text-anchor':'start'
             });
             jQuery.ajax({
-                url:'kanjivg/kanji/0' + this.kanji.charCodeAt(0).toString(16) + '.svg',
+                url:url,
                 dataType:'xml',
                 success:function (results) {
                     parent.fetchNeeded = false;
                     parent.xml = results;
                     parent.drawKanji();
+					setKanjiDrawing(kanji);
                 },
                 statusCode:{
                     404:function () {
