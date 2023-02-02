@@ -8,27 +8,16 @@ name: viewer.html
 </script>
 
 <div class="page-header">
-    <h1>Viewer</h1>
+    <h1>KanjiVG Viewer</h1>
 </div>
 
 <form id="kanjiViewerParams" action="#" class="form-horizontal">
   <fieldset>
     <div id="viewer-controls">
       <div id="kanji-etc">
-        <label class="control-label" for="kanji">Kanji</label>
-
-        <div class="controls docs-input-sizes">
+	<div>
+          <label for="kanji">Kanji</label>
           <input class="viewer-input" type="text" value="" id="kanji" placeholder="e.g. 線" onchange="changeBox();">
-        </div>
-        <label class="control-label" for="strokeWidth">Stroke width</label>
-
-        <div class="controls docs-input-sizes">
-          <input class="viewer-input" type="text" value="3" id="strokeWidth" placeholder="">
-        </div>
-        <label class="control-label" for="fontSize">Font size</label>
-
-        <div class="controls docs-input-sizes">
-          <input class="viewer-input" type="text" value="5" id="fontSize" placeholder="">
         </div>
       </div>
       <div id="kanji-options">
