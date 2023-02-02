@@ -77,3 +77,10 @@ code {
     }
 }
 
+.control-label {
+    width: unset;
+}
+
+label {
+    display: unset;
+}

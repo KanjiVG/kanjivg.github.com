@@ -10,7 +10,8 @@ function kanjiURL(kanji) {
 
 const kanjiSVGID = "kanji-svg";
 
-// 
+// This function is called back after a successful load of a kanji
+// image.
 function loadKanjiVG(el, kanji) {
 	var img = document.getElementById("kanji-image");
 	img.innerHTML = '';
@@ -40,16 +41,19 @@ function loadKanjiVG(el, kanji) {
 	}
 }
 
+// Not totally white colours
+const dark = 12;
+// This returns a random colour which is not completely white.
 function randomColour() {
 	var colour = new String();
 	for (var i = 0; i < 3; i++) {
-		var random16 = Math.floor(Math.random() * 16);
-		colour = colour.concat(random16.toString(16).toUpperCase());
+		var r = Math.floor(Math.random() * dark);
+		colour = colour.concat(r.toString(16).toUpperCase());
 	}
 	return colour;
 }
 
-
+// Get the kanjiVG data from the submodule
 function getKanjiVG(kanji) {
 	var xhr = new XMLHttpRequest();
 	var url = kanjiURL(kanji);
@@ -62,10 +66,6 @@ function getKanjiVG(kanji) {
 		loadKanjiVG(xhr.responseXML, kanji);
 	};
 	xhr.send("");
-}
-
-function setKanjiDrawing(kanji) {
-	getKanjiVG(kanji);
 }
 
 KanjiViewer = {
@@ -98,7 +98,7 @@ KanjiViewer = {
     },
     refreshKanji:function () {
         if (this.fetchNeeded && this.kanji != "") {
-			setKanjiDrawing(this.kanji);
+			getKanjiVG(this.kanji);
         }
     },
 };

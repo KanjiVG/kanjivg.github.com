@@ -12,55 +12,46 @@ name: viewer.html
 </div>
 
 <form id="kanjiViewerParams" action="#" class="form-horizontal">
-    <fieldset>
-      <div id="viewer-controls">
-        <div class="control-group" id="kanji-etc">
-            <label class="control-label" for="kanji">Kanji</label>
+  <fieldset>
+    <div id="viewer-controls">
+      <div id="kanji-etc">
+        <label class="control-label" for="kanji">Kanji</label>
 
-            <div class="controls docs-input-sizes">
-                <input class="viewer-input" type="text" value="" id="kanji" placeholder="e.g. 線" onchange="changeBox();">
-            </div>
-            <label class="control-label" for="strokeWidth">Stroke width</label>
-
-            <div class="controls docs-input-sizes">
-                <input class="viewer-input" type="text" value="3" id="strokeWidth" placeholder="">
-            </div>
-            <label class="control-label" for="fontSize">Font size</label>
-
-            <div class="controls docs-input-sizes">
-                <input class="viewer-input" type="text" value="5" id="fontSize" placeholder="">
-            </div>
+        <div class="controls docs-input-sizes">
+          <input class="viewer-input" type="text" value="" id="kanji" placeholder="e.g. 線" onchange="changeBox();">
         </div>
-<!-- This doesn't work at the moment, commented out pending attempt to fix it.
-        <div class="control-group">
-            <label class="control-label" for="zoomFactor">Zoom percentage</label>
+        <label class="control-label" for="strokeWidth">Stroke width</label>
 
-            <div class="controls docs-input-sizes">
-                <input class="viewer-input" type="text" value="100" id="zoomFactor" placeholder="">
-            </div>
+        <div class="controls docs-input-sizes">
+          <input class="viewer-input" type="text" value="3" id="strokeWidth" placeholder="">
         </div>
--->
-        <div class="control-group" id="kanji-options">
-            <label class="control-label" id="optionsCheckboxes">Options</label>
+        <label class="control-label" for="fontSize">Font size</label>
 
-            <div class="controls">
-                <label class="checkbox">
-                    <input type="checkbox" name="displayOrders" id="displayOrders" checked="on" onchange="changeBox();">
-                    Display stroke order
-                </label>
-                <label class="checkbox">
-                    <input type="checkbox" name="colorGroups" id="colorGroups" onchange="changeBox();">
-                    Colour groups instead of individual stroke
-                </label>
-            </div>
-        </div>
-        <div class="form-actions" id="kanji-actions">
-            <input type="submit" class="btn btn-primary" value="Redraw">&nbsp;
-            <button type="reset" class="btn btn-info">Reset</button>
-	    <button id="animate" class="kanjivg-button btn btn-info" data-kanjivg-target="#kanji-svg">Animate</button>
+        <div class="controls docs-input-sizes">
+          <input class="viewer-input" type="text" value="5" id="fontSize" placeholder="">
         </div>
       </div>
-    </fieldset>
+      <div id="kanji-options">
+        <label id="optionsCheckboxes">Options</label>
+
+        <div>
+<p>
+          <input type="checkbox" name="displayOrders" id="displayOrders" checked="on" onchange="changeBox();">
+          <label for="displayOrders">Display stroke order</label>
+</p>
+<p>
+          <input type="checkbox" name="colorGroups" id="colorGroups" onchange="changeBox();">
+          <label for="colorGroups">Colour groups instead of individual stroke</label>
+</p>
+        </div>
+      </div>
+      <div id="kanji-actions">
+        <input type="submit" value="Redraw">&nbsp;
+        <button type="reset" >Reset</button>
+	<button id="animate" class="kanjivg-button" data-kanjivg-target="#kanji-svg">Animate</button>
+      </div>
+    </div>
+  </fieldset>
 </form>
 <div id="kanji-image"></div>
 
