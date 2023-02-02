@@ -1,7 +1,3 @@
-#kanjiViewer {
-    border: 1px solid #dcdcdc;
-    height: 350px;
-}
 /* This class is used to notify of undocumented segments on the
    documentation pages. */
 .undocumented {
@@ -31,3 +27,53 @@ code {
     width: 327px;
     height: 327px;
 }
+
+#viewer-controls {
+    display: grid;
+}
+
+
+@media screen and (min-width: 600px) {
+    #kanji-etc {
+	grid-column-start: 1;
+	grid-column-end: 2;
+	grid-row-start: 1;
+	grid-row-end: 2;
+    }
+
+    #kanji-options {
+	grid-column-start: 2;
+	grid-column-end: 3;
+	grid-row-start: 1;
+	grid-row-end: 2;
+    }
+
+    #kanji-actions {
+	grid-column-start: 1;
+	grid-column-end: 3;
+	grid-row-start: 2;
+	grid-row-end: 3;
+	display: inline;
+    }
+}
+
+@media screen and (min-width: 800px) {
+    #kanji-etc {
+	grid-column-start: 1;
+	grid-column-end: 2;
+    }
+
+    #kanji-options {
+	grid-column-start: 2;
+	grid-column-end: 3;
+    }
+
+    #kanji-actions {
+	grid-column-start: 3;
+	grid-column-end: 4;
+	grid-row-start: 1;
+	grid-row-end: 2;
+	display: inline;
+    }
+}
+

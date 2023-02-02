@@ -13,7 +13,8 @@ name: viewer.html
 
 <form id="kanjiViewerParams" action="#" class="form-horizontal">
     <fieldset>
-        <div class="control-group">
+      <div id="viewer-controls">
+        <div class="control-group" id="kanji-etc">
             <label class="control-label" for="kanji">Kanji</label>
 
             <div class="controls docs-input-sizes">
@@ -39,7 +40,7 @@ name: viewer.html
             </div>
         </div>
 -->
-        <div class="control-group">
+        <div class="control-group" id="kanji-options">
             <label class="control-label" id="optionsCheckboxes">Options</label>
 
             <div class="controls">
@@ -51,18 +52,15 @@ name: viewer.html
                     <input type="checkbox" name="colorGroups" id="colorGroups" onchange="changeBox();">
                     Colour groups instead of individual stroke
                 </label>
-
-                <p class="help-block">
-                    <strong>Note:</strong> Please redraw after changing options.
-                </p>
             </div>
         </div>
-        <div class="form-actions">
+        <div class="form-actions" id="kanji-actions">
             <input type="submit" class="btn btn-primary" value="Redraw">&nbsp;
-            <button type="reset" class="btn btn-info"">Reset</button>
+            <button type="reset" class="btn btn-info">Reset</button>
+	    <button id="animate" class="kanjivg-button btn btn-info" data-kanjivg-target="#kanji-svg">Animate</button>
         </div>
+      </div>
     </fieldset>
 </form>
-<div id="kanjiViewer"></div>
 <div id="kanji-image"></div>
 
