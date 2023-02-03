@@ -1,3 +1,4 @@
+var colours = Array("red", "orange", "green", "aliceblue", "goldenrod");
 // Convert kanji into a hexadecimal
 function kanjiToHex(kanji) {
 	return '0' + kanji.charCodeAt(0).toString(16);
@@ -95,7 +96,13 @@ function displayGroups(stuff, kanji) {
 		if (k == kanji) {
 			continue;
 		}
-		var img = document.createElement("div");
+		var img;
+		if (k == "No element") {
+			img = document.createElement("div");
+		} else {
+			img = document.createElement("a");
+		}
+		img.href = "?kanji=" + k;
 		img.appendChild(stuff.cloneNode(true));
 		img.classList.add("group-image");
 		gs.appendChild(img);
@@ -107,8 +114,12 @@ function displayGroups(stuff, kanji) {
 				console.log("Nothing for "+gps[i]);
 				continue;
 			}
-			g.style.stroke = "red";
-		} 
+			g.style.stroke = colours[i];
+			const texts = svg.getElementsByTagName("text");
+			for (var text of texts) {
+				text.style.display = "none";
+			} 
+		}
 	}
 }
 
