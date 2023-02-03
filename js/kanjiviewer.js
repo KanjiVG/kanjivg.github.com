@@ -10,12 +10,25 @@ function kanjiURL(kanji) {
 
 const kanjiSVGID = "kanji-svg";
 
+function displayOrders() {
+	var displayOrdersEl = document.getElementById("displayOrders");
+	var doc = displayOrdersEl.checked;
+	return doc;
+}
+
+function colorGroups() {
+	var displayOrdersEl = document.getElementById("colorGroups");
+	var doc = displayOrdersEl.checked;
+	return doc;
+}
+
 // This function is called back after a successful load of a kanji
 // image.
 function loadKanjiVG(el, kanji) {
 	var img = document.getElementById("kanji-image");
 	img.innerHTML = '';
-	img.appendChild(el.documentElement);
+	var stuff = el.documentElement;
+	img.appendChild(stuff.cloneNode(true));
 	var svg = img.lastChild;
 	svg.id = kanjiSVGID;
 	var hk = kanjiToHex(kanji);
@@ -26,8 +39,8 @@ function loadKanjiVG(el, kanji) {
 	textBaseID = "kvg:StrokeNumbers_" + hk;
 	var textBaseEl = document.getElementById(textBaseID);
 	const texts = textBaseEl.getElementsByTagName("text");
-	var displayOrdersEl = document.getElementById("displayOrders");
-	var doc = displayOrdersEl.checked;
+	var doc = displayOrders(); 
+	var cg = colorGroups();
 	var i = 0;
 	for (var path of paths) {
 		var colour = "#" + randomColour();
@@ -38,6 +51,64 @@ function loadKanjiVG(el, kanji) {
 			texts[i].style.fill = "none";
 		}
 		i++;
+	}
+	if (cg) {
+		displayGroups(stuff, kanji);
+	} else {
+		removeGroups();
+	}
+}
+
+function groups() {
+	var img = document.getElementById("group-images");
+	return img;
+}
+
+function removeGroups() {
+	groups().innerHTML = '';
+}
+
+function findSVGGroups(stuff) {
+	var kanji2group = new Object();
+	const gs = stuff.getElementsByTagName("g");
+	for (var group of gs) {
+		if (group.id.match(/kvg:Stroke(Numbers|Paths)/)) {
+			continue;
+		}
+		var element = group.getAttribute("kvg:element");
+		if (! element) {
+			element = "No element";
+		}
+		if (! kanji2group[element]) {
+			kanji2group[element] = new Array;
+		}
+		kanji2group[element].push(group.id);
+	}
+	return kanji2group;
+}
+
+function displayGroups(stuff, kanji) {
+	var gs = groups();
+	gs.innerHTML = '';
+	var kanji2group = findSVGGroups(stuff);
+	for (var k in kanji2group) {
+		if (k == kanji) {
+			continue;
+		}
+		var img = document.createElement("div");
+		img.appendChild(stuff.cloneNode(true));
+		img.classList.add("group-image");
+		gs.appendChild(img);
+		var svg = img.lastChild;
+		var gps = kanji2group[k];
+		for (let i in gps) {
+			var g = svg.getElementById(gps[i]);
+			if (! g) {
+				console.log("Nothing for "+gps[i]);
+				continue;
+			}
+			g.style.stroke = "red";
+		} 
 	}
 }
 
@@ -62,8 +133,10 @@ function getKanjiVG(kanji) {
 	// not needed if your server delivers SVG with correct MIME type
 	xhr.overrideMimeType("image/svg+xml");
 	xhr.onload = function(e) {
+		if (this.readyState == 4 && this.status == 200) {
+			loadKanjiVG(xhr.responseXML, kanji);
+		}
 		// You might also want to check for xhr.readyState/xhr.status here
-		loadKanjiVG(xhr.responseXML, kanji);
 	};
 	xhr.send("");
 }

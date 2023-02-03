@@ -55,6 +55,17 @@ code {
 	grid-row-end: 3;
 	display: inline;
     }
+    #kanji-visuals {
+	display: grid;
+    }
+    #kanji-image {
+	grid-column-start: 1;
+	grid-column-end: 2;
+    }
+    #group-images {
+	grid-column-start: 2;
+	grid-column-end: 3;
+    }
 }
 
 @media screen and (min-width: 800px) {
@@ -83,4 +94,13 @@ code {
 
 label {
     display: unset;
+}
+
+.group-image {
+    display: inline;
+}
+
+.group-image svg {
+    width: 145px;
+    height: 145px;
 }
