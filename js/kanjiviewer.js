@@ -23,6 +23,21 @@ function colorGroups() {
 	return doc;
 }
 
+const showGroups = "show-groups";
+
+function getShowGroups() {
+	var sg = localStorage.getItem(showGroups);
+	console.log("sg="+sg);
+	if (sg === "on") {
+		return true;
+	}
+	return false;
+}
+
+function setShowGroups(onOff) {
+	localStorage.setItem(showGroups, onOff);
+}
+
 // This function is called back after a successful load of a kanji
 // image.
 function loadKanjiVG(el, kanji) {
@@ -186,6 +201,12 @@ KanjiViewer = {
         }
     },
 };
+
+function changeColorGroups() {
+	var cg = jQuery('#colorGroups:checked').val();
+	setShowGroups(cg);
+}
+
 function changeBox() {
 	runKanjiViewer();
 }

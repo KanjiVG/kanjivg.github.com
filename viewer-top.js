@@ -20,6 +20,10 @@ jQuery(document).ready(function () {
 	} else {
 		jQuery('#kanji').val(kanji);
 	}
+	var cg = getShowGroups();
+	if (cg) {
+		jQuery('#colorGroups').prop('checked', true);
+	}
 	KanjiViewer.initialize(
 		"kanjiViewer",
 		jQuery('#strokeWidth').val(),
