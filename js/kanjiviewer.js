@@ -1,4 +1,13 @@
+var debug=true;
+function msg(s) {
+	if (! debug) {
+		return;
+	}
+	console.log(s);
+}
+// These colours are used to colour the different groups of the kanji.
 var colours = Array("red", "orange", "green", "aliceblue", "goldenrod");
+
 // Convert kanji into a hexadecimal
 function kanjiToHex(kanji) {
 	return '0' + kanji.charCodeAt(0).toString(16);
@@ -27,7 +36,6 @@ const showGroups = "show-groups";
 
 function getShowGroups() {
 	var sg = localStorage.getItem(showGroups);
-	console.log("sg="+sg);
 	if (sg === "on") {
 		return true;
 	}
@@ -41,21 +49,27 @@ function setShowGroups(onOff) {
 // This function is called back after a successful load of a kanji
 // image.
 function loadKanjiVG(el, kanji) {
+	document.title = kanji + " - KanjiVG";
 	var img = document.getElementById("kanji-image");
 	img.innerHTML = '';
-	var stuff = el.documentElement;
-	img.appendChild(stuff.cloneNode(true));
-	var svg = img.lastChild;
-	svg.id = kanjiSVGID;
+	var svg = el.documentElement;
+	// Use svg.cloneNode here because it contains a reference, so if
+	// we append it then we cannot reuse it for the group display. The
+	// "true" argument makes a deep copy.
+	img.appendChild(svg.cloneNode(true));
+	// Add an ID to the SVG element in img so we can apply styles to
+	// it.
+	img.lastChild.id = kanjiSVGID;
 	var hk = kanjiToHex(kanji);
 	var baseID = "kvg:" + hk;
 	var baseEl = document.getElementById(baseID);
-	baseEl.style.stroke = "#FC8";
     const paths = baseEl.getElementsByTagName("path");
 	textBaseID = "kvg:StrokeNumbers_" + hk;
 	var textBaseEl = document.getElementById(textBaseID);
 	const texts = textBaseEl.getElementsByTagName("text");
+	// True if we display the stroke order
 	var doc = displayOrders(); 
+	// True if we show the groups
 	var cg = colorGroups();
 	var i = 0;
 	for (var path of paths) {
@@ -69,7 +83,7 @@ function loadKanjiVG(el, kanji) {
 		i++;
 	}
 	if (cg) {
-		displayGroups(stuff, kanji);
+		displayGroups(svg, kanji);
 	} else {
 		removeGroups();
 	}
@@ -84,16 +98,21 @@ function removeGroups() {
 	groups().innerHTML = '';
 }
 
-function findSVGGroups(stuff) {
+const noElement = "No element";
+
+// Given svg data, find the groups within it, and return an object
+// where the keys are the kanji of the elements, and the values are
+// arrays consisting of the groups of svg which contain that kanji.
+function findSVGGroups(svg) {
 	var kanji2group = new Object();
-	const gs = stuff.getElementsByTagName("g");
+	const gs = svg.getElementsByTagName("g");
 	for (var group of gs) {
 		if (group.id.match(/kvg:Stroke(Numbers|Paths)/)) {
 			continue;
 		}
 		var element = group.getAttribute("kvg:element");
 		if (! element) {
-			element = "No element";
+			element = noElement;
 		}
 		if (! kanji2group[element]) {
 			kanji2group[element] = new Array;
@@ -103,34 +122,53 @@ function findSVGGroups(stuff) {
 	return kanji2group;
 }
 
-function displayGroups(stuff, kanji) {
+// Display the groups within the character. This creates copies of the
+// SVG with the group highlighted using a different colour.
+function displayGroups(svg, kanji) {
+	// If the user happens to input a long string of characters,
+	// extract the first one only.
+	kanji = Array.from(kanji)[0];
+	msg("displaying groups of "+kanji);
 	var gs = groups();
 	gs.innerHTML = '';
-	var kanji2group = findSVGGroups(stuff);
+	var kanji2group = findSVGGroups(svg);
 	for (var k in kanji2group) {
+		// Don't display the group if it is the kanji itself. This is
+		// the case for the top level group.
 		if (k == kanji) {
+			msg("k==kanji "+ k + " == " + kanji);
 			continue;
 		}
 		var img;
-		if (k == "No element") {
+		if (k == noElement) {
+			// Don't add links if this doesn't have an element.
 			img = document.createElement("div");
 		} else {
+			// Add a link.
+
+			// When the index of kanjivg is added, here we will add a
+			// check that the kanji actually does exist within
+			// KanjiVG.
 			img = document.createElement("a");
 		}
 		img.href = "?kanji=" + k;
-		img.appendChild(stuff.cloneNode(true));
+		img.appendChild(svg.cloneNode(true));
 		img.classList.add("group-image");
 		gs.appendChild(img);
-		var svg = img.lastChild;
+		var svgcopy = img.lastChild;
 		var gps = kanji2group[k];
 		for (let i in gps) {
-			var g = svg.getElementById(gps[i]);
+			// Find the group within the copy of the SVG using
+			// getElementById.
+			var g = svgcopy.getElementById(gps[i]);
 			if (! g) {
-				console.log("Nothing for "+gps[i]);
 				continue;
 			}
+			// Here we should be checking the part as well as the
+			// element. If the element has two parts, they should
+			// receive the same colour.
 			g.style.stroke = colours[i];
-			const texts = svg.getElementsByTagName("text");
+			const texts = svgcopy.getElementsByTagName("text");
 			for (var text of texts) {
 				text.style.display = "none";
 			} 
@@ -150,8 +188,10 @@ function randomColour() {
 	return colour;
 }
 
-// Get the kanjiVG data from the submodule
+// Get the kanjiVG data from the submodule. This starts a request for
+// the data, then loads it when ready using loadKanjiVG.
 function getKanjiVG(kanji) {
+	msg("Getting " + kanji);
 	var xhr = new XMLHttpRequest();
 	var url = kanjiURL(kanji);
 	xhr.open("GET", url, false);
@@ -162,7 +202,6 @@ function getKanjiVG(kanji) {
 		if (this.readyState == 4 && this.status == 200) {
 			loadKanjiVG(xhr.responseXML, kanji);
 		}
-		// You might also want to check for xhr.readyState/xhr.status here
 	};
 	xhr.send("");
 }
@@ -170,18 +209,8 @@ function getKanjiVG(kanji) {
 KanjiViewer = {
     initialize:function (divName, strokeWidth, fontSize, zoomFactor, displayOrders, colorGroups, kanji) {
         this.kanji = kanji;
-        this.fetchNeeded = true;
         this.refreshKanji();
 		this.animate = new KanjivgAnimate("#animate");
-    },
-    setZoom:function (zoomFactor) {
-        this.zoom = zoomFactor;
-    },
-    setStrokeWidth:function (strokeWidth) {
-        this.strokeWidth = strokeWidth;
-    },
-    setFontSize:function (fontSize) {
-        this.fontSize = fontSize;
     },
     setStrokeOrdersVisible:function (visible) {
         this.displayOrders = visible;
@@ -190,13 +219,14 @@ KanjiViewer = {
         this.colorGroups = colorGroups;
     },
     setKanji:function (kanji) {
+		msg("setKanji: " + kanji + " this.kanji=" + this.kanji);
         if (kanji != this.kanji && kanji != '' && kanji != undefined) {
             this.kanji = kanji;
-            this.fetchNeeded = true;
         }
     },
     refreshKanji:function () {
-        if (this.fetchNeeded && this.kanji != "") {
+		msg("refreshKanji: " + this.kanji);
+        if (this.kanji) {
 			getKanjiVG(this.kanji);
         }
     },

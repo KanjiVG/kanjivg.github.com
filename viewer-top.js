@@ -37,9 +37,6 @@ jQuery(document).ready(function () {
 });
 
 function runKanjiViewer() {
-	KanjiViewer.setFontSize(jQuery('#fontSize').val());
-	KanjiViewer.setZoom(jQuery('#zoomFactor').val());
-	KanjiViewer.setStrokeWidth(jQuery('#strokeWidth').val());
 	KanjiViewer.setStrokeOrdersVisible(jQuery('#displayOrders:checked').val());
 	KanjiViewer.setColorGroups(jQuery('#colorGroups:checked').val());
 	KanjiViewer.setKanji(jQuery('#kanji').val());
