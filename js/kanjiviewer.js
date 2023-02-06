@@ -143,6 +143,8 @@ function displayGroups(svg, kanji) {
 		if (k == noElement) {
 			// Don't add links if this doesn't have an element.
 			img = document.createElement("div");
+			img.appendChild(svg.cloneNode(true));
+			gs.insertBefore(img, gs.children[0]);
 		} else {
 			// Add a link.
 
@@ -150,11 +152,11 @@ function displayGroups(svg, kanji) {
 			// check that the kanji actually does exist within
 			// KanjiVG.
 			img = document.createElement("a");
+			img.href = "?kanji=" + k;
+			img.appendChild(svg.cloneNode(true));
+			gs.appendChild(img);
 		}
-		img.href = "?kanji=" + k;
-		img.appendChild(svg.cloneNode(true));
 		img.classList.add("group-image");
-		gs.appendChild(img);
 		var svgcopy = img.lastChild;
 		var gps = kanji2group[k];
 		for (let i in gps) {
