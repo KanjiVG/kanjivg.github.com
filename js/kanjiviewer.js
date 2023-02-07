@@ -46,6 +46,26 @@ function setShowGroups(onOff) {
 	localStorage.setItem(showGroups, onOff);
 }
 
+
+var index;
+
+function loadIndex() {
+	msg("Loading index");
+	var xhr = new XMLHttpRequest();
+	xhr.open("GET", "kanjivg/kvg-index.json", false);
+	xhr.onload = function (e) {
+		if (this.readyState == 4 && this.status == 200) {
+			try {
+				index = JSON.parse(xhr.responseText);
+				msg("Index loaded OK " + index["感"]);
+			} catch {
+				console.log("Failed to parse JSON");
+			}
+		}
+	}
+	xhr.send("");
+}
+
 // This function is called back after a successful load of a kanji
 // image.
 function loadKanjiVG(el, kanji) {
@@ -140,7 +160,8 @@ function displayGroups(svg, kanji) {
 			continue;
 		}
 		var img;
-		if (k == noElement) {
+		msg("kanji is " + k + " in index: " + index[k]);
+		if (k == noElement || ! index[k]) {
 			// Don't add links if this doesn't have an element.
 			img = document.createElement("div");
 			img.appendChild(svg.cloneNode(true));
@@ -210,6 +231,7 @@ function getKanjiVG(kanji) {
 
 KanjiViewer = {
     initialize:function (divName, strokeWidth, fontSize, zoomFactor, displayOrders, colorGroups, kanji) {
+		loadIndex();
         this.kanji = kanji;
         this.refreshKanji();
 		this.animate = new KanjivgAnimate("#animate");
