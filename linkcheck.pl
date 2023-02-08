@@ -7,9 +7,24 @@ use warnings;
 use strict;
 use utf8;
 use FindBin '$Bin';
+use Getopt::Long;
+# This requires installation using "cpanm File::Slurper".
 use File::Slurper qw!read_text!;
 
+my $ok = GetOptions (
+    verbose => \my $verbose,
+);
+
+if (! $ok) {
+    print <<EOF;
+--verbose   - print debugging messages
+EOF
+    exit;
+}
+
 binmode STDOUT, ":encoding(utf8)";
+
+msg ("Reading glossary");
 
 my $glossary = read_text ("$Bin/glossary.html");
 my %gloss_id;
@@ -17,8 +32,10 @@ while ($glossary =~ /id="(.*)"/g) {
     $gloss_id{$1} = 1;
 }
 my @links;
+msg ("Reading files");
 my @files = <*.html>;
 for my $file (@files) {
+    msg ("\tReading $file");
     my $text = read_text ($file);
     my %ids;
     while ($text =~ /(href|id)='(.*)'/g) {
@@ -32,7 +49,6 @@ for my $file (@files) {
 	if ($id =~ /^#/) {
 	    print "$file: bad id $id with #\n";
 	}
-#	print "Added id $id\n";
     }
     while ($text =~ /href="(.*?)"/g) {
 	my $link = $1;
@@ -51,9 +67,20 @@ for my $file (@files) {
 	if ($link !~ /^#/ &&
 	    $link !~ /^[a-z_-]+\.html(?:#[a-z_-]+)?$/ &&
 	    $link !~ m!^https?://! &&
-	    $link !~ /viewer/) {
+	    $link !~ /viewer/ &&
+	    $link !~ /site\.group/) {
 	    print "$file: Possible bad link $link\n";
 	}
 	push @links, $link;
     }
+}
+msg ("Finished");
+exit;
+
+sub msg
+{
+    if (! $verbose) {
+	return;
+    }
+    print "@_\n";
 }
