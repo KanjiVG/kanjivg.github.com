@@ -1,22 +1,5 @@
-var debug=true;
-function msg(s) {
-	if (! debug) {
-		return;
-	}
-	console.log(s);
-}
 // These colours are used to colour the different groups of the kanji.
 var colours = Array("red", "orange", "green", "aliceblue", "goldenrod");
-
-// Convert kanji into a hexadecimal
-function kanjiToHex(kanji) {
-	return '0' + kanji.charCodeAt(0).toString(16);
-}
-// Returns the github URL of a kanji specified by a string. Only the
-// first kanji in the string is used.
-function kanjiURL(kanji) {
-	return 'kanjivg/kanji/0' + kanji.charCodeAt(0).toString(16) + '.svg'
-}
 
 const kanjiSVGID = "kanji-svg";
 
@@ -46,25 +29,6 @@ function setShowGroups(onOff) {
 	localStorage.setItem(showGroups, onOff);
 }
 
-
-var index;
-
-function loadIndex() {
-	msg("Loading index");
-	var xhr = new XMLHttpRequest();
-	xhr.open("GET", "kanjivg/kvg-index.json", false);
-	xhr.onload = function (e) {
-		if (this.readyState == 4 && this.status == 200) {
-			try {
-				index = JSON.parse(xhr.responseText);
-				msg("Index loaded OK " + index["感"]);
-			} catch {
-				console.log("Failed to parse JSON");
-			}
-		}
-	}
-	xhr.send("");
-}
 
 // This function is called back after a successful load of a kanji
 // image.

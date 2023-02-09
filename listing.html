@@ -6,61 +6,13 @@ name: listing.html
 
 <script type="text/javascript">
     jQuery(document).ready(function () {
-        function fixedFromCharCode(codePt) {
-            if (codePt > 0xFFFF) {
-                codePt -= 0x10000;
-                return String.fromCharCode(0xD800 + (codePt >> 10), 0xDC00 + (codePt & 0x3FF));
-            }
-            else {
-                return String.fromCharCode(codePt);
-            }
-        }
-
-        jQuery("#load-kanji-listing").click(function () {
-            var btn = jQuery(this);
-            btn.button('loading');
-            jQuery.getJSON("https://api.github.com/repos/KanjiVG/kanjivg/git/refs/heads/master?callback=?", function (refs) {
-                var sha = refs.data.object.sha;
-                jQuery.getJSON("https://api.github.com/repos/KanjiVG/kanjivg/git/trees/" + sha + "?callback=?", function (results) {
-                    var trees = results.data.tree;
-                    jQuery.each(trees, function (i, value) {
-                        if (value.path == "kanji") {
-                            jQuery.getJSON(value.url + "?callback=?", function (results) {
-                                var trees = results.data.tree;
-                                var entries = [];
-                                var len = trees.length;
-                                for (i = 0; i < len; i++) {
-                                    var value = trees[i];
-                                    var unicode = value.path;
-                                    unicode = unicode.split('.');
-                                    unicode = unicode[0];
-                                    unicode = "0x" + unicode;
-                                    unicode = fixedFromCharCode(unicode);
-                                    entries.push(' <a href="viewer.html?kanji=' + unicode + '">' + unicode + '</a> ');
-                                }
-                                jQuery("#kanji-listing").append(entries.join(''));
-                                btn.button('reset');
-                            });
-                        }
-                    });
-                });
-            });
-            return false;
-        });
+	listing();
     });
 </script>
 
 <div class="page-header">
     <h1>Kanji list</h1>
 </div>
-
-<p>
-    Considering the amount of data, loading this page might take a while and thus is not auto loaded.
-</p>
-
-<p>
-    <a id="load-kanji-listing" href="https://github.com/KanjiVG/kanjivg/tree/master/kanji" class="btn btn-warning" data-loading-text="Fetching..." autocomplete="off">Display all kanjis</a>
-</p>
 
 <div id="kanji-listing">
 </div>
