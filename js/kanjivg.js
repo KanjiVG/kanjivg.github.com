@@ -10,9 +10,8 @@ function msg(s) {
 function kanjiToHex(kanji) {
 	var kcode = kanji.codePointAt(0)
 	var hex = kcode.toString(16);
-	if (kcode <= 0xffff) {
-		hex = '0' + hex;
-	}
+	var zeros = 5 - hex.length;
+	hex = "0".repeat(zeros) + hex;
 	return hex;
 }
 
