@@ -30,55 +30,6 @@ function setShowGroups(onOff) {
 }
 
 
-// This function is called back after a successful load of a kanji
-// image.
-function loadKanjiVG(el, kanji) {
-	document.title = kanji + " - KanjiVG";
-	var img = document.getElementById("kanji-image");
-	img.innerHTML = '';
-	var svg = el.documentElement;
-	// Use svg.cloneNode here because it contains a reference, so if
-	// we append it then we cannot reuse it for the group display. The
-	// "true" argument makes a deep copy.
-	img.appendChild(svg.cloneNode(true));
-	// Add an ID to the SVG element in img so we can apply styles to
-	// it.
-	img.lastChild.id = kanjiSVGID;
-	var hk = kanjiToHex(kanji);
-	var baseID = "kvg:" + hk;
-	var baseEl = document.getElementById(baseID);
-	const paths = baseEl.getElementsByTagName("path");
-	textBaseID = "kvg:StrokeNumbers_" + hk;
-	var textBaseEl = document.getElementById(textBaseID);
-	const texts = textBaseEl.getElementsByTagName("text");
-	// True if we display the stroke order
-	var doc = displayOrders(); 
-	// True if we show the groups
-	var cg = colorGroups();
-	var i = 0;
-	for (var path of paths) {
-		var colour = "#" + randomColour();
-		path.style.stroke = colour;
-		if (doc) {
-			texts[i].style.fill = colour;
-		} else {
-			texts[i].style.fill = "none";
-		}
-		i++;
-	}
-	if (cg) {
-		displayGroups(svg, kanji);
-	} else {
-		removeGroups();
-	}
-	var link = document.createElement("a");
-	link.href = githubURL(kanji);
-	link.appendChild(document.createTextNode("Image source"));
-	var linkP = document.createElement("p");
-	linkP.appendChild(link);
-	img.appendChild(linkP);
-}
-
 function groups() {
 	var img = document.getElementById("group-images");
 	return img;
@@ -199,35 +150,6 @@ function randomColour() {
 	return colour;
 }
 
-function getKanjiVGURL(url, kanji) {
-	var xhr = new XMLHttpRequest();
-	xhr.open("GET", url, false);
-	// Following line is just to be on the safe side;
-	// not needed if your server delivers SVG with correct MIME type
-	xhr.overrideMimeType("image/svg+xml");
-	xhr.onload = function(e) {
-		if (this.readyState == 4 && this.status == 200) {
-			loadKanjiVG(xhr.responseXML, kanji);
-		}
-	};
-	xhr.send("");
-}
-
-function getKanjiVGFile(file) {
-	msg("Getting file " + file);
-	var url = fileToKanjiVG(file);
-	var kanji = fileToKanji(file);
-	getKanjiVGURL(url, kanji);
-}
-
-// Get the kanjiVG data from the submodule. This starts a request for
-// the data, then loads it when ready using loadKanjiVG.
-function getKanjiVG(kanji) {
-	msg("Getting kanji " + kanji);
-	var url = kanjiURL(kanji);
-	getKanjiVGURL(url, kanji);
-}
-
 KanjiViewer = {
 	initialize:function (divName, displayOrders, colorGroups, kanji, file) {
 		loadIndex();
@@ -235,6 +157,110 @@ KanjiViewer = {
 		this.kanji = kanji;
 		this.refreshKanji();
 		this.animate = new KanjivgAnimate("#animate");
+	},
+	getKanjiVGURL: function (url, kanji) {
+		var xhr = new XMLHttpRequest();
+		xhr.open("GET", url, false);
+		// Following line is just to be on the safe side;
+		// not needed if your server delivers SVG with correct MIME type
+		xhr.overrideMimeType("image/svg+xml");
+		var self = this;
+		xhr.onload = function(e) {
+			if (this.readyState == 4 && this.status == 200) {
+				self.loadKanjiVG(xhr.responseXML);
+			}
+		};
+		xhr.send("");
+	},
+	getKanjiVGFile: function () {
+		msg("Getting file " + this.file);
+		var url = fileToKanjiVG(this.file);
+		this.kanji = fileToKanji(this.file);
+		this.getKanjiVGURL(url);
+	},
+	// Get the kanjiVG data from the submodule. This starts a request for
+	// the data, then loads it when ready using loadKanjiVG.
+	getKanjiVG: function () {
+		msg("Getting kanji " + this.kanji);
+		var url = kanjiURL(this.kanji);
+		this.getKanjiVGURL(url);
+	},
+	// This function is called back after a successful load of a kanji
+	// image.
+	loadKanjiVG: function (el) {
+		document.title = this.kanji + " - KanjiVG";
+		var img = document.getElementById("kanji-image");
+		img.innerHTML = '';
+		var svg = el.documentElement;
+		// Use svg.cloneNode here because it contains a reference, so
+		// if we append it then we cannot reuse it for the group
+		// display. The "true" argument makes a deep copy.
+		img.appendChild(svg.cloneNode(true));
+		// Add an ID to the SVG element in img so we can apply styles to
+		// it.
+		img.lastChild.id = kanjiSVGID;
+		var hk = kanjiToHex(this.kanji);
+		if (this.file) {
+			hk = this.file;
+			hk = hk.replace(/\.svg/,"");
+		}
+		var baseID = "kvg:" + hk;
+		var baseEl = document.getElementById(baseID);
+		const paths = baseEl.getElementsByTagName("path");
+		textBaseID = "kvg:StrokeNumbers_" + hk;
+		var textBaseEl = document.getElementById(textBaseID);
+		const texts = textBaseEl.getElementsByTagName("text");
+		// True if we display the stroke order
+		var doc = displayOrders(); 
+		// True if we show the groups
+		var cg = colorGroups();
+		var i = 0;
+		for (var path of paths) {
+			var colour = "#" + randomColour();
+			path.style.stroke = colour;
+			if (! texts[i]) {
+				console.log("Missing label for stroke "+i);
+			} else {
+				if (doc) {
+					texts[i].style.fill = colour;
+				} else {
+					texts[i].style.fill = "none";
+				}
+			}
+			i++;
+		}
+		if (cg) {
+			displayGroups(svg, this.kanji);
+		} else {
+			removeGroups();
+		}
+		var link = document.createElement("a");
+		if (this.file) {
+			link.href = github + this.file;
+		} else {
+			link.href = githubURL(this.kanji);
+		}
+		link.appendChild(document.createTextNode("Image source"));
+		var linkP = document.createElement("p");
+		linkP.appendChild(link);
+		img.appendChild(linkP);
+		var files = index[this.kanji];
+		if (files.length > 1) {
+			msg("Appending variant files");
+			var fileP = document.createElement("p");
+			fileTitle = document.createElement("b");
+			fileTitle.appendChild(document.createTextNode("Variant files: "));
+			fileP.appendChild(fileTitle);
+			for (var i in files) {
+				fileP.appendChild(document.createTextNode(" "));
+				var file = files[i];
+				var fileA = document.createElement("a");
+				fileA.appendChild(document.createTextNode(file));
+				fileA.href = "?file=" + file;
+				fileP.appendChild(fileA);
+			}
+			img.appendChild(fileP);
+		}
 	},
 	setStrokeOrdersVisible:function (visible) {
 		this.displayOrders = visible;
@@ -251,12 +277,12 @@ KanjiViewer = {
 	refreshKanji:function () {
 		if (this.file) {
 			msg("Loading file " + this.file);
-			getKanjiVGFile(this.file);
+			this.getKanjiVGFile();
 			return;
 		}
 		if (this.kanji) {
 			msg("Loading kanji " + this.kanji);
-			getKanjiVG(this.kanji);
+			this.getKanjiVG();
 			return;
 		}
 		msg("No kanji or file is specified at the moment");
