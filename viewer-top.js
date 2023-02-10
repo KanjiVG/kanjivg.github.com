@@ -1,23 +1,22 @@
 jQuery(document).ready(function () {
-
-	var kanji = getUrlVars()["kanji"];
+	urlVars = getUrlVars();
+	var kanji = urlVars["kanji"];
 	if (kanji == null) {
 		kanji = jQuery('#kanji').val();
 	} else {
 		jQuery('#kanji').val(kanji);
 	}
+	var file = urlVars["file"];
 	var cg = getShowGroups();
 	if (cg) {
 		jQuery('#colorGroups').prop('checked', true);
 	}
 	KanjiViewer.initialize(
 		"kanjiViewer",
-		jQuery('#strokeWidth').val(),
-		jQuery('#fontSize').val(),
-		jQuery('#zoomFactor').val(),
 		jQuery('#displayOrders:checked').val(),
 		jQuery('#colorGroups:checked').val(),
-		kanji
+		kanji,
+		file
 	);
 	jQuery('#kanjiViewerParams').submit(runKanjiViewer);
 });

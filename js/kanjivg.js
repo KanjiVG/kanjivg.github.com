@@ -15,18 +15,31 @@ function githubURL(kanji) {
 
 // Convert kanji into a hexadecimal
 function kanjiToHex(kanji) {
-	var kcode = kanji.codePointAt(0)
+	var kcode = kanji.codePointAt(0);
 	var hex = kcode.toString(16);
 	var zeros = 5 - hex.length;
 	hex = "0".repeat(zeros) + hex;
 	return hex;
 }
 
+function fileToKanjiVG(file) {
+	return 'kanjivg/kanji/' + file;
+}
+
+const fileToKanjiRe = /^([0-9a-f]+).*/
+
+function fileToKanji(file) {
+	var match = fileToKanjiRe.exec(file);
+	var hex = parseInt(match[0], 16);
+	var kanji = String.fromCharCode(hex);
+	return kanji;
+}
+
 // Returns the github URL of a kanji specified by a string. Only the
 // first kanji in the string is used.
 function kanjiURL(kanji) {
 	var hex = kanjiToHex(kanji); 
-	return 'kanjivg/kanji/' + hex + '.svg'
+	return fileToKanjiVG(hex + '.svg');
 }
 
 var index;

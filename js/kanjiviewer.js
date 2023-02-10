@@ -1,5 +1,5 @@
 // These colours are used to colour the different groups of the kanji.
-var colours = Array("red", "orange", "green", "aliceblue", "goldenrod");
+var colours = Array("red", "orange", "green", "blue", "goldenrod");
 
 const kanjiSVGID = "kanji-svg";
 
@@ -199,12 +199,8 @@ function randomColour() {
 	return colour;
 }
 
-// Get the kanjiVG data from the submodule. This starts a request for
-// the data, then loads it when ready using loadKanjiVG.
-function getKanjiVG(kanji) {
-	msg("Getting " + kanji);
+function getKanjiVGURL(url, kanji) {
 	var xhr = new XMLHttpRequest();
-	var url = kanjiURL(kanji);
 	xhr.open("GET", url, false);
 	// Following line is just to be on the safe side;
 	// not needed if your server delivers SVG with correct MIME type
@@ -217,9 +213,25 @@ function getKanjiVG(kanji) {
 	xhr.send("");
 }
 
+function getKanjiVGFile(file) {
+	msg("Getting file " + file);
+	var url = fileToKanjiVG(file);
+	var kanji = fileToKanji(file);
+	getKanjiVGURL(url, kanji);
+}
+
+// Get the kanjiVG data from the submodule. This starts a request for
+// the data, then loads it when ready using loadKanjiVG.
+function getKanjiVG(kanji) {
+	msg("Getting kanji " + kanji);
+	var url = kanjiURL(kanji);
+	getKanjiVGURL(url, kanji);
+}
+
 KanjiViewer = {
-	initialize:function (divName, strokeWidth, fontSize, zoomFactor, displayOrders, colorGroups, kanji) {
+	initialize:function (divName, displayOrders, colorGroups, kanji, file) {
 		loadIndex();
+		this.file = file;
 		this.kanji = kanji;
 		this.refreshKanji();
 		this.animate = new KanjivgAnimate("#animate");
@@ -237,10 +249,17 @@ KanjiViewer = {
 		}
 	},
 	refreshKanji:function () {
-		msg("refreshKanji: " + this.kanji);
-		if (this.kanji) {
-			getKanjiVG(this.kanji);
+		if (this.file) {
+			msg("Loading file " + this.file);
+			getKanjiVGFile(this.file);
+			return;
 		}
+		if (this.kanji) {
+			msg("Loading kanji " + this.kanji);
+			getKanjiVG(this.kanji);
+			return;
+		}
+		msg("No kanji or file is specified at the moment");
 	},
 };
 
