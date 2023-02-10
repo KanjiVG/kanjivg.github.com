@@ -47,7 +47,7 @@ function loadKanjiVG(el, kanji) {
 	var hk = kanjiToHex(kanji);
 	var baseID = "kvg:" + hk;
 	var baseEl = document.getElementById(baseID);
-    const paths = baseEl.getElementsByTagName("path");
+	const paths = baseEl.getElementsByTagName("path");
 	textBaseID = "kvg:StrokeNumbers_" + hk;
 	var textBaseEl = document.getElementById(textBaseID);
 	const texts = textBaseEl.getElementsByTagName("text");
@@ -194,30 +194,30 @@ function getKanjiVG(kanji) {
 }
 
 KanjiViewer = {
-    initialize:function (divName, strokeWidth, fontSize, zoomFactor, displayOrders, colorGroups, kanji) {
+	initialize:function (divName, strokeWidth, fontSize, zoomFactor, displayOrders, colorGroups, kanji) {
 		loadIndex();
-        this.kanji = kanji;
-        this.refreshKanji();
+		this.kanji = kanji;
+		this.refreshKanji();
 		this.animate = new KanjivgAnimate("#animate");
-    },
-    setStrokeOrdersVisible:function (visible) {
-        this.displayOrders = visible;
-    },
-    setColorGroups:function (colorGroups) {
-        this.colorGroups = colorGroups;
-    },
-    setKanji:function (kanji) {
+	},
+	setStrokeOrdersVisible:function (visible) {
+		this.displayOrders = visible;
+	},
+	setColorGroups:function (colorGroups) {
+		this.colorGroups = colorGroups;
+	},
+	setKanji:function (kanji) {
 		msg("setKanji: " + kanji + " this.kanji=" + this.kanji);
-        if (kanji != this.kanji && kanji != '' && kanji != undefined) {
-            this.kanji = kanji;
-        }
-    },
-    refreshKanji:function () {
+		if (kanji != this.kanji && kanji != '' && kanji != undefined) {
+			this.kanji = kanji;
+		}
+	},
+	refreshKanji:function () {
 		msg("refreshKanji: " + this.kanji);
-        if (this.kanji) {
+		if (this.kanji) {
 			getKanjiVG(this.kanji);
-        }
-    },
+		}
+	},
 };
 
 function changeColorGroups() {
