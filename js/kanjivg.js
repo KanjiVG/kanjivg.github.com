@@ -76,3 +76,12 @@ function getUrlVars() {
 	}
 	return vars;
 }
+
+// Return a random kanji
+function randomKanji() {
+	var keys = Object.keys(index);
+	var n = keys.length;
+	var k = Math.random() * n
+	var r = keys[Math.floor(k)];
+	return r;
+}

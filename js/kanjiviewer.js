@@ -168,8 +168,15 @@ KanjiViewer = {
 		loadIndex();
 		this.file = file;
 		this.kanji = kanji;
+		var urlVars = getUrlVars();
+		var random = urlVars["random"];
+		if (random) {
+			msg("Choosing a random kanji");
+			this.kanji = randomKanji();
+		}
 		this.refreshKanji();
 		this.animate = new KanjivgAnimate("#animate");
+
 	},
 	getKanjiVGURL: function (url, kanji) {
 		var xhr = new XMLHttpRequest();
