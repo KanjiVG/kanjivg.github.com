@@ -63,6 +63,36 @@ function findSVGGroups(svg) {
 	return kanji2group;
 }
 
+function addImage(gs, k, svgCopy) {
+	msg("kanji is " + k + " in index: " + index[k]);
+	var top;
+	top = document.createElement("div");
+	var figure = document.createElement("figure");
+	figure.appendChild(svgCopy);
+	svgCopy.classList.add("group-svg");
+	var figCaption = document.createElement("figcaption");
+	figCaption.appendChild(document.createTextNode(k));
+	figure.appendChild(figCaption);
+	top = document.createElement("div");
+	if (k == noElement || ! index[k]) {
+		// Don't add links if this doesn't have an element.
+		top.appendChild(figure);
+		gs.insertBefore(top, gs.children[0]);
+	} else {
+		// Add a link.
+
+		// When the index of kanjivg is added, here we will add a
+		// check that the kanji actually does exist within
+		// KanjiVG.
+		var link = document.createElement("a");
+		link.href = "?kanji=" + k;
+		link.appendChild(figure);
+		top.appendChild(link);
+		gs.appendChild(top);
+	}
+	top.classList.add("group-image");
+}
+
 // Display the groups within the character. This creates copies of the
 // SVG with the group highlighted using a different colour.
 function displayGroups(svg, kanji) {
@@ -81,26 +111,9 @@ function displayGroups(svg, kanji) {
 			msg("k==kanji "+ k + " == " + kanji);
 			continue;
 		}
-		var img;
-		msg("kanji is " + k + " in index: " + index[k]);
-		if (k == noElement || ! index[k]) {
-			// Don't add links if this doesn't have an element.
-			img = document.createElement("div");
-			img.appendChild(svg.cloneNode(true));
-			gs.insertBefore(img, gs.children[0]);
-		} else {
-			// Add a link.
-
-			// When the index of kanjivg is added, here we will add a
-			// check that the kanji actually does exist within
-			// KanjiVG.
-			img = document.createElement("a");
-			img.href = "?kanji=" + k;
-			img.appendChild(svg.cloneNode(true));
-			gs.appendChild(img);
-		}
-		img.classList.add("group-image");
-		var svgcopy = img.lastChild;
+		
+		var svgcopy = svg.cloneNode(true);
+		addImage(gs, k, svgcopy);
 		var gps = kanji2group[k];
 		var cNum = -1;
 		for (let i in gps) {

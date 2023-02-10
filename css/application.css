@@ -105,12 +105,30 @@ label {
     display: inline;
 }
 
-.group-image svg {
+svg.group-svg {
+    display: block;
     width: 145px;
     height: 145px;
+    margin: 0px;
+    padding: 0px;
 }
 
 .sidebar-nav {
     padding: 9px 0;
+}
+
+figcaption {
+    display: table-caption;
+    caption-side: bottom;
+    text-align: center;
+    font-size: 1.25em;
+}
+
+figure {
+    display: inline-table;
+    padding: 0px;
+    margin: 0px;
+    margin-inline: 0px;
+    margin-block: 0px;
 }
 
