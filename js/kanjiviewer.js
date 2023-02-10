@@ -71,6 +71,12 @@ function loadKanjiVG(el, kanji) {
 	} else {
 		removeGroups();
 	}
+	var link = document.createElement("a");
+	link.href = githubURL(kanji);
+	link.appendChild(document.createTextNode("Image source"));
+	var linkP = document.createElement("p");
+	linkP.appendChild(link);
+	img.appendChild(linkP);
 }
 
 function groups() {
@@ -116,6 +122,7 @@ function displayGroups(svg, kanji) {
 	var gs = groups();
 	gs.innerHTML = '';
 	var kanji2group = findSVGGroups(svg);
+	var elePart = new Object();
 	for (var k in kanji2group) {
 		// Don't display the group if it is the kanji itself. This is
 		// the case for the top level group.
@@ -144,6 +151,7 @@ function displayGroups(svg, kanji) {
 		img.classList.add("group-image");
 		var svgcopy = img.lastChild;
 		var gps = kanji2group[k];
+		var cNum = -1;
 		for (let i in gps) {
 			// Find the group within the copy of the SVG using
 			// getElementById.
@@ -154,7 +162,23 @@ function displayGroups(svg, kanji) {
 			// Here we should be checking the part as well as the
 			// element. If the element has two parts, they should
 			// receive the same colour.
-			g.style.stroke = colours[i];
+			var element = g.getAttribute("kvg:element");
+			var part = g.getAttribute("kvg:part");
+			var cont = false;
+			if (element && part) {
+				var p = parseInt(part);
+				msg("elem = "+element+" part= "+part);
+				prevPart = elePart[element];
+				if (prevPart && prevPart < p) {
+					msg("continuing");
+					cont = true;
+				}
+				elePart[element] = p;
+			}
+			if (! cont) {
+				cNum++;
+			}
+			g.style.stroke = colours[cNum];
 			const texts = svgcopy.getElementsByTagName("text");
 			for (var text of texts) {
 				text.style.display = "none";
