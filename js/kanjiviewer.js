@@ -254,16 +254,20 @@ KanjiViewer = {
 		} else {
 			removeGroups();
 		}
-		var link = document.createElement("a");
+		var source;
 		if (this.file) {
-			link.href = github + this.file;
+			source = github + this.file;
 		} else {
-			link.href = githubURL(this.kanji);
+			source = githubURL(this.kanji);
 		}
-		link.appendChild(document.createTextNode("Image source"));
 		var linkP = document.createElement("p");
-		linkP.appendChild(link);
+		var linkT = document.createElement("b");
+		linkT.appendChild(document.createTextNode("Links:"));
+		linkP.appendChild(linkT);
 		img.appendChild(linkP);
+		addLink(linkP, source, "Image source");
+		kescape = encodeURIComponent(this.kanji);
+		addLink(linkP, "https://en.wiktionary.org/wiki/" + kescape, "Wiktionary");
 		var files = index[this.kanji];
 		if (files.length > 1) {
 			msg("Appending variant files");
@@ -316,4 +320,19 @@ function changeColorGroups() {
 
 function changeBox() {
 	runKanjiViewer();
+}
+
+function gotoRandom() {
+	var kanji = randomKanji();
+	window.location.href = "?kanji=" + kanji;
+	return false;
+}
+
+function addLink(parent, url, text) {
+	parent.appendChild(document.createTextNode(" "));
+	var link = document.createElement("a");
+	link.appendChild(document.createTextNode(text));
+	link.href = url;
+	link.setAttribute("target", "_blank");
+	parent.appendChild(link);
 }
