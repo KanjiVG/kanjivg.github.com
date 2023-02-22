@@ -3,7 +3,7 @@ title: KanjiVG
 author: Ulrich Apel
 url: https://github.com/KanjiVG/kanjivg.github.com
 year: 2023
-group: http://groups.google.com/group/kanjivg
+group: https://groups.google.com/group/kanjivg
 project-links:
 - text: Home
   url: index.html
@@ -44,7 +44,7 @@ format-links:
   icon: info-sign
 community-links:
 - text: Mailing list
-  url: {{ site.group }}
+  url: https://groups.google.com/group/kanjivg
   icon: list-alt
 - text: Projects using KanjiVG
   url: projects.html
