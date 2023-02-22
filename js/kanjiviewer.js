@@ -75,15 +75,12 @@ function addImage(gs, k, svgCopy) {
 	figure.appendChild(figCaption);
 	top = document.createElement("div");
 	if (k == noElement || ! index[k]) {
-		// Don't add links if this doesn't have an element.
+		// Don't add links if this doesn't have an element, or if the
+		// element is not in KanjiVG.
 		top.appendChild(figure);
 		gs.insertBefore(top, gs.children[0]);
 	} else {
 		// Add a link.
-
-		// When the index of kanjivg is added, here we will add a
-		// check that the kanji actually does exist within
-		// KanjiVG.
 		var link = document.createElement("a");
 		link.href = "?kanji=" + k;
 		link.appendChild(figure);
@@ -123,9 +120,6 @@ function displayGroups(svg, kanji) {
 			if (! g) {
 				continue;
 			}
-			// Here we should be checking the part as well as the
-			// element. If the element has two parts, they should
-			// receive the same colour.
 			var element = g.getAttribute("kvg:element");
 			var part = g.getAttribute("kvg:part");
 			var cont = false;
