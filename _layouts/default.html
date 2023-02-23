@@ -36,63 +36,63 @@
           </a>
           <a class="brand" href="index.html">KanjiVG</a>
 
-          <div class="nav-collapse">
             <form class="navbar-search pull-right" method="get" action="viewer.html">
               <input type="text" class="search-query" placeholder="View kanji" name="kanji">
             </form>
-          </div>
         </div>
       </div>
     </div>
-    <div class="container-fluid">
-      <div class="row-fluid">
-        <div class="span2">
-          <div class="well sidebar-nav">
-            <ul class="nav nav-list">
-              <li class="nav-header">Project</li>
-              {% for link in site.project-links %}
-              {% assign active = nil %}
-              {% assign white = nil %}
-              {% if page.name == link.url %}
-              {% assign active = 'active' %}
-              {% assign white = 'icon-white' %}
-              {% endif %}
-              <li class="{{ active }}">
-                <a href="{{ link.url }}"><i class="icon-{{ link.icon }} {{ white }}"></i>{{ link.text }}</a>
-              </li>
-              {% endfor %}
-              <li class="nav-header">Format</li>
-              {% for link in site.format-links %}
-              {% assign active = nil %}
-              {% assign white = nil %}
-              {% if page.name == link.url %}
-              {% assign active = 'active' %}
-              {% assign white = 'icon-white' %}
-              {% endif %}
-              <li class="{{ active }}">
-                <a href="{{ link.url }}"><i class="icon-{{ link.icon }} {{ white }}"></i>{{ link.text }}</a>
-              </li>
-              {% endfor %}
+    <div class="nav-collapse">
+      <div class="container-fluid">
+	<div class="row-fluid">
+          <div class="span2">
+            <div class="well sidebar-nav">
+              <ul class="nav nav-list">
+		<li class="nav-header">Project</li>
+		{% for link in site.project-links %}
+		{% assign active = nil %}
+		{% assign white = nil %}
+		{% if page.name == link.url %}
+		{% assign active = 'active' %}
+		{% assign white = 'icon-white' %}
+		{% endif %}
+		<li class="{{ active }}">
+                  <a href="{{ link.url }}"><i class="icon-{{ link.icon }} {{ white }}"></i>{{ link.text }}</a>
+		</li>
+		{% endfor %}
+		<li class="nav-header">Format</li>
+		{% for link in site.format-links %}
+		{% assign active = nil %}
+		{% assign white = nil %}
+		{% if page.name == link.url %}
+		{% assign active = 'active' %}
+		{% assign white = 'icon-white' %}
+		{% endif %}
+		<li class="{{ active }}">
+                  <a href="{{ link.url }}"><i class="icon-{{ link.icon }} {{ white }}"></i>{{ link.text }}</a>
+		</li>
+		{% endfor %}
 
-              <li class="nav-header">Community</li>
-              {% for link in site.community-links %}
-              {% assign active = nil %}
-              {% assign white = nil %}
-              {% if page.name == link.url %}
-              {% assign active = 'active' %}
-              {% assign white = 'icon-white' %}
-              {% endif %}
-              <li class="{{ active }}">
-                <a href="{{ link.url }}"><i class="icon-{{ link.icon }} {{ white }}"></i>{{ link.text }}</a>
-              </li>
-              {% endfor %}
+		<li class="nav-header">Community</li>
+		{% for link in site.community-links %}
+		{% assign active = nil %}
+		{% assign white = nil %}
+		{% if page.name == link.url %}
+		{% assign active = 'active' %}
+		{% assign white = 'icon-white' %}
+		{% endif %}
+		<li class="{{ active }}">
+                  <a href="{{ link.url }}"><i class="icon-{{ link.icon }} {{ white }}"></i>{{ link.text }}</a>
+		</li>
+		{% endfor %}
 
-            </ul>
+              </ul>
+            </div>
           </div>
-        </div>
-        <div class="span10">
-          {{ content }}
-        </div>
+          <div class="span10">
+            {{ content }}
+          </div>
+	</div>
       </div>
       <hr>
       <footer>
