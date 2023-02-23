@@ -10,9 +10,9 @@ function displayOrders() {
 }
 
 function colorGroups() {
-	var displayOrdersEl = document.getElementById("colorGroups");
-	var doc = displayOrdersEl.checked;
-	return doc;
+	var colorGroupsEl = document.getElementById("colorGroups");
+	var cgc = colorGroupsEl.checked;
+	return cgc;
 }
 
 const showGroups = "show-groups";
