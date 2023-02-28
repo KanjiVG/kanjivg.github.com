@@ -67,7 +67,7 @@ code {
         grid-column-end: 2;
     }
 
-    #group-images {
+    #sub-images {
         grid-column-start: 2;
         grid-column-end: 3;
     }
@@ -101,7 +101,23 @@ label {
     display: unset;
 }
 
+.sub-image {
+    display: inline;
+}
+
+#radical-images {
+    display: inline;
+}
+
+#group-images {
+    display: inline;
+}
+
 .group-image {
+    display: inline;
+}
+
+#sub-images {
     display: inline;
 }
 
@@ -132,3 +148,12 @@ figure {
     margin-block: 0px;
 }
 
+.radical-explanation {
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.radical-stroke {
+    stroke: #c586d7;
+    stroke-width: 4px;
+}

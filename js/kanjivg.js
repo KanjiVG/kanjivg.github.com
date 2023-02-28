@@ -1,7 +1,8 @@
 // The URL of the repository
 const github = "https://github.com/KanjiVG/kanjivg/blob/master/kanji/";
 
-var debug=true;
+var debug = true;
+
 function msg(s) {
 	if (! debug) {
 		return;

@@ -11,9 +11,14 @@ jQuery(document).ready(function () {
 	if (cg) {
 		jQuery('#colorGroups').prop('checked', true);
 	}
+	var rad = getShowRadicals();
+	if (rad) {
+		jQuery('#radicals').prop('checked', true);
+	}
 	KanjiViewer.initialize(
 		"kanjiViewer",
 		jQuery('#displayOrders:checked').val(),
+		jQuery('#radicals:checked').val(),
 		jQuery('#colorGroups:checked').val(),
 		kanji,
 		file
@@ -23,6 +28,7 @@ jQuery(document).ready(function () {
 
 function runKanjiViewer() {
 	KanjiViewer.setStrokeOrdersVisible(jQuery('#displayOrders:checked').val());
+	KanjiViewer.setRadicals(jQuery('#radicals:checked').val());
 	KanjiViewer.setColorGroups(jQuery('#colorGroups:checked').val());
 	KanjiViewer.setKanji(jQuery('#kanji').val());
 	KanjiViewer.refreshKanji();

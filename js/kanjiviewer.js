@@ -9,24 +9,45 @@ function displayOrders() {
 	return doc;
 }
 
+function showRad() {
+	var radEl = document.getElementById("radicals");
+	var rad = radEl.checked;
+	return rad;
+}
+
 function colorGroups() {
 	var colorGroupsEl = document.getElementById("colorGroups");
 	var cgc = colorGroupsEl.checked;
 	return cgc;
 }
 
-const showGroups = "show-groups";
-
-function getShowGroups() {
-	var sg = localStorage.getItem(showGroups);
-	if (sg === "on") {
+function onOff(name) {
+	var v = localStorage.getItem(name);
+	if (v === "on") {
 		return true;
 	}
 	return false;
 }
 
+const showGroups = "show-groups";
+
+function getShowGroups() {
+	return onOff(showGroups);
+}
+
 function setShowGroups(onOff) {
 	localStorage.setItem(showGroups, onOff);
+}
+
+const showRadicals = "show-radicals";
+
+function getShowRadicals() {
+	return onOff(showRadicals);
+}
+
+function setShowRadicals(onOff) {
+	msg("Setting radicals to " + onOff);
+	localStorage.setItem(showRadicals, onOff);
 }
 
 
@@ -39,14 +60,48 @@ function removeGroups() {
 	groups().innerHTML = '';
 }
 
+function radicalImages() {
+	var img = document.getElementById("radical-images");
+	return img;
+}
+
+function removeRadicals() {
+	radicalImages().innerHTML = '';
+}
+
 const noElement = "No element";
+
+function listGroups(svg) {
+	const gs = svg.getElementsByTagName("g");
+	return gs
+}
+
+// Find the radicals of svg. The return value is an object with three
+// possible elements, general, nelson, and jis, each of which contains
+// an array listing the groups which comprise the radical.
+function findRadicals(svg) {
+	const gs = listGroups(svg);
+	var rads = new Object();
+	for (var group of gs) {
+		var r = group.getAttribute("kvg:radical");
+		if (! r) {
+			continue;
+		}
+		if (! rads[r]) {
+			rads[r] = new Array();
+		}
+		rads[r].push(group.id);
+	}
+	console.log(rads);
+	return rads;
+}
 
 // Given svg data, find the groups within it, and return an object
 // where the keys are the kanji of the elements, and the values are
 // arrays consisting of the groups of svg which contain that kanji.
 function findSVGGroups(svg) {
 	var kanji2group = new Object();
-	const gs = svg.getElementsByTagName("g");
+	const gs = listGroups(svg);
 	for (var group of gs) {
 		if (group.id.match(/kvg:Stroke(Numbers|Paths)/)) {
 			continue;
@@ -63,6 +118,9 @@ function findSVGGroups(svg) {
 	return kanji2group;
 }
 
+// Given a copy of the svg in svgCopy, a kanji k representing the
+// subgroup, and an array of groups to highlight gs, add an image to
+// the list of images.
 function addImage(gs, k, svgCopy) {
 	msg("kanji is " + k + " in index: " + index[k]);
 	var top;
@@ -71,7 +129,7 @@ function addImage(gs, k, svgCopy) {
 	figure.appendChild(svgCopy);
 	svgCopy.classList.add("group-svg");
 	var figCaption = document.createElement("figcaption");
-	figCaption.appendChild(document.createTextNode(k));
+	figCaption.innerHTML = k;
 	figure.appendChild(figCaption);
 	top = document.createElement("div");
 	if (k == noElement || ! index[k]) {
@@ -89,6 +147,46 @@ function addImage(gs, k, svgCopy) {
 	}
 	top.classList.add("group-image");
 }
+
+function addRadicalImage(gs, name, gloss, svgCopy) {
+	var link = "<a class=\"radical-explanation\" target=\"_blank\" href=\"glossary.html#" + gloss + "\">" + name + "</a>";
+	addImage(gs, link, svgCopy);
+}
+
+function displayRadicals(svg) {
+	msg("Showing radicals");
+	var rads = findRadicals(svg);
+	if (! rads) {
+		return;
+	}
+	var radNames = Object.keys(rads).sort();
+	msg(radNames);
+	var gs = radicalImages();
+	gs.innerHTML = '';
+	for (const r of radNames) {
+		msg("radical "+r);
+		var svgcopy = svg.cloneNode(true);
+		var gps = rads[r];
+		for (let i in gps) {
+			var g = svgcopy.getElementById(gps[i]);
+			if (! g) {
+				continue;
+			}
+			g.classList.add("radical-stroke");
+		}
+		noStrokeNumbers(svgcopy);
+		if (r == "general" || r == "tradit") {
+			addRadicalImage(gs, "Radical", "radical", svgcopy);
+		} else if (r == "jis") {
+			addRadicalImage(gs, "JIS radical", "jis-radicals", svgcopy);
+		} else if (r == "nelson") {
+			addRadicalImage(gs, "Nelson radical", "nelson-radicals", svgcopy);
+		} else {
+			msg("Unhandled radical " + r);
+		}
+	}
+}
+
 
 // Display the groups within the character. This creates copies of the
 // SVG with the group highlighted using a different colour.
@@ -137,12 +235,17 @@ function displayGroups(svg, kanji) {
 				cNum++;
 			}
 			g.style.stroke = colours[cNum];
-			const texts = svgcopy.getElementsByTagName("text");
-			for (var text of texts) {
-				text.style.display = "none";
-			} 
+			noStrokeNumbers(svgcopy);
 		}
 	}
+}
+
+// Turn off the display of stroke numbers
+function noStrokeNumbers(svgcopy) {
+	const texts = svgcopy.getElementsByTagName("text");
+	for (var text of texts) {
+		text.style.display = "none";
+	} 
 }
 
 // Not totally white colours
@@ -158,7 +261,7 @@ function randomColour() {
 }
 
 KanjiViewer = {
-	initialize:function (divName, displayOrders, colorGroups, kanji, file) {
+	initialize:function (divName, displayOrders, radicals, colorGroups, kanji, file) {
 		loadIndex();
 		this.file = file;
 		this.kanji = kanji;
@@ -170,7 +273,6 @@ KanjiViewer = {
 		}
 		this.refreshKanji();
 		this.animate = new KanjivgAnimate("#animate");
-
 	},
 	getKanjiVGURL: function (url, kanji) {
 		var xhr = new XMLHttpRequest();
@@ -226,8 +328,6 @@ KanjiViewer = {
 		const texts = textBaseEl.getElementsByTagName("text");
 		// True if we display the stroke order
 		var doc = displayOrders(); 
-		// True if we show the groups
-		var cg = colorGroups();
 		var i = 0;
 		for (var path of paths) {
 			var colour = "#" + randomColour();
@@ -243,6 +343,15 @@ KanjiViewer = {
 			}
 			i++;
 		}
+		// True if we show the radicals
+		var rad = showRad();
+		if (rad) {
+			displayRadicals(svg);
+		} else {
+			removeRadicals();
+		}
+		// True if we show the groups
+		var cg = colorGroups();
 		if (cg) {
 			displayGroups(svg, this.kanji);
 		} else {
@@ -286,6 +395,9 @@ KanjiViewer = {
 	setColorGroups:function (colorGroups) {
 		this.colorGroups = colorGroups;
 	},
+	setRadicals:function (rad) {
+		this.showRadicals = rad;
+	},
 	setKanji:function (kanji) {
 		msg("setKanji: " + kanji + " this.kanji=" + this.kanji);
 		if (kanji != this.kanji && kanji != '' && kanji != undefined) {
@@ -306,6 +418,11 @@ KanjiViewer = {
 		msg("No kanji or file is specified at the moment");
 	},
 };
+
+function changeRadicals() {
+	var rad = jQuery('#radicals:checked').val();
+	setShowRadicals(rad);
+}
 
 function changeColorGroups() {
 	var cg = jQuery('#colorGroups:checked').val();
