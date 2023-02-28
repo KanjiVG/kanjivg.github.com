@@ -15,6 +15,11 @@ jQuery(document).ready(function () {
 	if (rad) {
 		jQuery('#radicals').prop('checked', true);
 	}
+	var noso = getNoShowSO();
+	if (noso) {
+		// This is on by default.
+		jQuery('#displayOrders').prop('checked', false);
+	}
 	KanjiViewer.initialize(
 		"kanjiViewer",
 		jQuery('#displayOrders:checked').val(),

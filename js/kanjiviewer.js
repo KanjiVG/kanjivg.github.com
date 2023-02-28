@@ -50,6 +50,22 @@ function setShowRadicals(onOff) {
 	localStorage.setItem(showRadicals, onOff);
 }
 
+const noShowSO = "no-show-so";
+
+function getNoShowSO() {
+	var noso = localStorage.getItem(noShowSO);
+	if (noso == "on") {
+		return true;
+	}
+	if (noso == "off") {
+		return false;
+	}
+	return false;
+}
+
+function setNoShowSO(noso) {
+	localStorage.setItem(noShowSO, noso);
+}
 
 function groups() {
 	var img = document.getElementById("group-images");
@@ -422,6 +438,17 @@ KanjiViewer = {
 function changeRadicals() {
 	var rad = jQuery('#radicals:checked').val();
 	setShowRadicals(rad);
+}
+
+function changeNoShowSO() {
+	var so = jQuery('#displayOrders:checked').val();
+	if (so) {
+		msg("Setting no show so to false");
+		setNoShowSO("off");
+	} else {
+		msg("Setting no show so to true");
+		setNoShowSO("on");
+	}
 }
 
 function changeColorGroups() {
