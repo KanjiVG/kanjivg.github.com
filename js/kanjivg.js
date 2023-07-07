@@ -27,7 +27,7 @@ function fileToKanjiVG(file) {
 	return 'kanjivg/kanji/' + file;
 }
 
-const fileToKanjiRe = /^([0-9a-f]+).*/
+const fileToKanjiRe = /^([0-9a-f]+).*/;
 
 function fileToKanji(file) {
 	var match = fileToKanjiRe.exec(file);

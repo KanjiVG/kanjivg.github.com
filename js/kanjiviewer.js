@@ -276,6 +276,8 @@ function randomColour() {
 	return colour;
 }
 
+const hexKanji = /^\s*([0-9a-fA-F]{4,5})\s*$/;
+
 KanjiViewer = {
 	initialize:function (divName, displayOrders, radicals, colorGroups, kanji, file) {
 		loadIndex();
@@ -416,6 +418,11 @@ KanjiViewer = {
 	},
 	setKanji:function (kanji) {
 		msg("setKanji: " + kanji + " this.kanji=" + this.kanji);
+		var match = hexKanji.exec(kanji);
+		if (match !== null) {
+			msg("Loading from hex string "+match[0]);
+			kanji = String.fromCharCode(parseInt(match[1], 16));
+		}
 		if (kanji != this.kanji && kanji != '' && kanji != undefined) {
 			this.kanji = kanji;
 		}
