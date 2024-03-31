@@ -389,7 +389,7 @@ KanjiViewer = {
 		addLink(linkP, source, "Image source");
 		kescape = encodeURIComponent(this.kanji);
 		addLink(linkP, "https://en.wiktionary.org/wiki/" + kescape, "Wiktionary");
-		addLink(linkP, lemodaURL, "LeMoDa.net viewer")
+		addLink(linkP, lemodaURL(this.kanji), "LeMoDa.net viewer")
 		var files = index[this.kanji];
 		if (files.length > 1) {
 			msg("Appending variant files");
