@@ -389,7 +389,13 @@ KanjiViewer = {
 		addLink(linkP, source, "Image source");
 		kescape = encodeURIComponent(this.kanji);
 		addLink(linkP, "https://en.wiktionary.org/wiki/" + kescape, "Wiktionary");
-		addLink(linkP, lemodaURL(this.kanji), "LeMoDa.net viewer")
+		var lemoda;
+		if (this.file) {
+			lemoda = lemodaURL + this.file;
+		} else {
+			lemoda = githubURL(this.kanji);
+		}
+		addLink(linkP, lemoda, "LeMoDa.net viewer")
 		var files = index[this.kanji];
 		if (files.length > 1) {
 			msg("Appending variant files");
@@ -483,6 +489,8 @@ function addLink(parent, url, text) {
 	parent.appendChild(link);
 }
 
-function lemodaURL(kanji) {
-	return "https://www.lemoda.net/kvg/" + kanjiToHex(kanji) + ".svg";
+var lemodaURL = "https://www.lemoda.net/kvg/";
+
+function kanjiLemodaURL(kanji) {
+	return lemodaURL + kanjiToHex(kanji) + ".svg";
 }
