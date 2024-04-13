@@ -316,6 +316,7 @@ KanjiViewer = {
 	// the data, then loads it when ready using loadKanjiVG.
 	getKanjiVG: function () {
 		msg("Getting kanji " + this.kanji);
+		this.detectHexKanji();
 		var url = kanjiURL(this.kanji);
 		this.getKanjiVGURL(url);
 	},
@@ -393,7 +394,7 @@ KanjiViewer = {
 		if (this.file) {
 			lemoda = lemodaURL + this.file;
 		} else {
-			lemoda = githubURL(this.kanji);
+			lemoda = kanjiLemodaURL(this.kanji);
 		}
 		addLink(linkP, lemoda, "LeMoDa.net viewer")
 		var files = index[this.kanji];
@@ -425,6 +426,7 @@ KanjiViewer = {
 	},
 	setKanji:function (kanji) {
 		msg("setKanji: " + kanji + " this.kanji=" + this.kanji);
+		// Turn a string of hexadecimal into a kanji
 		var match = hexKanji.exec(kanji);
 		if (match !== null) {
 			msg("Loading from hex string "+match[0]);
@@ -447,7 +449,16 @@ KanjiViewer = {
 		}
 		msg("No kanji or file is specified at the moment");
 	},
+	// If kanji is a string of hexadecimal, turn that into a kanji
+	detectHexKanji:function () {
+		var match = hexKanji.exec(this.kanji);
+		if (match !== null) {
+			msg("Loading from hex string "+match[0]);
+			this.kanji = String.fromCharCode(parseInt(match[1], 16));
+		}
+	}
 };
+
 
 function changeRadicals() {
 	var rad = jQuery('#radicals:checked').val();
