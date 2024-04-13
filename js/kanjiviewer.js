@@ -108,7 +108,6 @@ function findRadicals(svg) {
 		}
 		rads[r].push(group.id);
 	}
-	console.log(rads);
 	return rads;
 }
 
@@ -137,8 +136,12 @@ function findSVGGroups(svg) {
 // Given a copy of the svg in svgCopy, a kanji k representing the
 // subgroup, and an array of groups to highlight gs, add an image to
 // the list of images.
-function addImage(gs, k, svgCopy) {
-	msg("kanji is " + k + " in index: " + index[k]);
+function addImage(gs, k, svgCopy, addLink) {
+	if (addLink) {
+		msg("Kanji is " + k + ", found in index as: " + index[k]);
+	} else {
+		msg("Link adding was switched off.");
+	}
 	var top;
 	top = document.createElement("div");
 	var figure = document.createElement("figure");
@@ -148,7 +151,7 @@ function addImage(gs, k, svgCopy) {
 	figCaption.innerHTML = k;
 	figure.appendChild(figCaption);
 	top = document.createElement("div");
-	if (k == noElement || ! index[k]) {
+	if (! addLink || k == noElement || ! index[k]) {
 		// Don't add links if this doesn't have an element, or if the
 		// element is not in KanjiVG.
 		top.appendChild(figure);
@@ -166,7 +169,7 @@ function addImage(gs, k, svgCopy) {
 
 function addRadicalImage(gs, name, gloss, svgCopy) {
 	var link = "<a class=\"radical-explanation\" target=\"_blank\" href=\"glossary.html#" + gloss + "\">" + name + "</a>";
-	addImage(gs, link, svgCopy);
+	addImage(gs, link, svgCopy, false);
 }
 
 function displayRadicals(svg) {
@@ -176,11 +179,10 @@ function displayRadicals(svg) {
 		return;
 	}
 	var radNames = Object.keys(rads).sort();
-	msg(radNames);
 	var gs = radicalImages();
 	gs.innerHTML = '';
 	for (const r of radNames) {
-		msg("radical "+r);
+		msg("Radical '"+r+"':");
 		var svgcopy = svg.cloneNode(true);
 		var gps = rads[r];
 		for (let i in gps) {
@@ -210,7 +212,7 @@ function displayGroups(svg, kanji) {
 	// If the user happens to input a long string of characters,
 	// extract the first one only.
 	kanji = Array.from(kanji)[0];
-	msg("displaying groups of "+kanji);
+	msg("Displaying groups of "+kanji+":");
 	var gs = groups();
 	gs.innerHTML = '';
 	var kanji2group = findSVGGroups(svg);
@@ -219,13 +221,16 @@ function displayGroups(svg, kanji) {
 		// Don't display the group if it is the kanji itself. This is
 		// the case for the top level group.
 		if (k == kanji) {
-			msg("k==kanji "+ k + " == " + kanji);
+			msg("Skipping group display for self, "+ k + " == " + kanji);
 			continue;
 		}
-		
 		var svgcopy = svg.cloneNode(true);
-		addImage(gs, k, svgcopy);
 		var gps = kanji2group[k];
+		var addLink = true;
+		if (k == noElement) {
+			addLink = false;
+		}
+		addImage(gs, k, svgcopy, addLink);
 		var cNum = -1;
 		for (let i in gps) {
 			// Find the group within the copy of the SVG using
@@ -238,8 +243,11 @@ function displayGroups(svg, kanji) {
 			var part = g.getAttribute("kvg:part");
 			var cont = false;
 			if (element && part) {
+				// This element has a part number, so we have to keep
+				// the different parts of the element within the same
+				// colour scheme.
 				var p = parseInt(part);
-				msg("elem = "+element+" part= "+part);
+				msg("Element = "+element+", part= "+part);
 				prevPart = elePart[element];
 				if (prevPart && prevPart < p) {
 					msg("continuing");
