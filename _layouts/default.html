@@ -3,27 +3,27 @@
   <head>
     <meta charset="utf-8">
     <title>{% if page.title %}{{ page.title }} - {% endif %}{{ site.title }}</title>
-    {% if site.author %}
+    {%- if site.author %}
     <meta name="author" content="{{ site.author }}"/>
-    {% endif %}
-    {% if page.description %}
+    {%- endif %}
+    {%- if page.description %}
     <meta name="description" content="{{ page.description }}"/>
-    {% endif %}
+    {%- endif %}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/bootstrap-responsive.min.css">
     <link rel="stylesheet" href="css/application.css">
-    {% if page.name == "viewer.html" %}
-    <script type="text/javascript" src="js/jquery-3.7.1.min.js"></script>
+    {%- if page.name == "viewer.html" %}
+    <script type="text/javascript" src="js/{{ site.jquery }}"></script>
     <script type="text/javascript" src="js/kanjivg.js"></script>
     <script type="text/javascript" src="js/kanjiviewer.js"></script>
     <script type="text/javascript" src="js/KanjivgAnimate.js"></script>
-    {% endif %}
-    {% if page.name == "listing.html" %}
-    <script type="text/javascript" src="js/jquery-3.7.1.min.js"></script>
+    {%- endif %}
+    {%- if page.name == "listing.html" %}
+    <script type="text/javascript" src="js/{{ site.jquery }}"></script>
     <script type="text/javascript" src="js/kanjivg.js"></script>
     <script type="text/javascript" src="js/listing.js"></script>
-    {% endif %}
+    {%- endif %}
   </head>
   <body>
     <div class="navbar">
