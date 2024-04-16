@@ -35,7 +35,6 @@
             <span class="icon-bar"></span>
           </a>
           <a class="brand" href="index.html">KanjiVG</a>
-
             <form class="navbar-search pull-right" method="get" action="viewer.html">
               <input type="text" class="search-query" placeholder="View kanji" name="kanji">
             </form>
@@ -47,42 +46,42 @@
         <div class="span2">
           <div class="well sidebar-nav">
             <ul class="nav nav-list">
-	      <li class="nav-header">Project</li>
-	      {%- for link in site.project-links %}
-	      {%- assign active = nil %}
-	      {%- assign white = nil %}
-	      {%- if page.name == link.url %}
-	      {%- assign active = 'active' %}
-	      {%- assign white = 'icon-white' %}
-	      {%- endif %}
-	      <li class="{{ active }}">
+              <li class="nav-header">Project</li>
+              {%- for link in site.project-links %}
+              {%- assign active = nil %}
+              {%- assign white = nil %}
+              {%- if page.name == link.url %}
+              {%- assign active = 'active' %}
+              {%- assign white = 'icon-white' %}
+              {%- endif %}
+              <li class="{{ active }}">
                 <a href="{{ link.url }}"><i class="icon-{{ link.icon }} {{ white }}"></i>{{ link.text }}</a>
-	      </li>
-	      {%- endfor %}
-	      <li class="nav-header">Format</li>
-	      {%- for link in site.format-links %}
-	      {%- assign active = nil %}
-	      {%- assign white = nil %}
-	      {%- if page.name == link.url %}
-	      {%- assign active = 'active' %}
-	      {%- assign white = 'icon-white' %}
-	      {%- endif %}
-	      <li class="{{ active }}">
+              </li>
+              {%- endfor %}
+              <li class="nav-header">Format</li>
+              {%- for link in site.format-links %}
+              {%- assign active = nil %}
+              {%- assign white = nil %}
+              {%- if page.name == link.url %}
+              {%- assign active = 'active' %}
+              {%- assign white = 'icon-white' %}
+              {%- endif %}
+              <li class="{{ active }}">
                 <a href="{{ link.url }}"><i class="icon-{{ link.icon }} {{ white }}"></i>{{ link.text }}</a>
-	      </li>
-	      {%- endfor %}
-	      <li class="nav-header">Community</li>
-	      {%- for link in site.community-links %}
-	      {%- assign active = nil %}
-	      {%- assign white = nil %}
-	      {%- if page.name == link.url %}
-	      {%- assign active = 'active' %}
-	      {%- assign white = 'icon-white' %}
-	      {%- endif %}
-	      <li class="{{ active }}">
+              </li>
+              {%- endfor %}
+              <li class="nav-header">Community</li>
+              {%- for link in site.community-links %}
+              {%- assign active = nil %}
+              {%- assign white = nil %}
+              {%- if page.name == link.url %}
+              {%- assign active = 'active' %}
+              {%- assign white = 'icon-white' %}
+              {%- endif %}
+              <li class="{{ active }}">
                 <a href="{{ link.url }}"><i class="icon-{{ link.icon }} {{ white }}"></i>{{ link.text }}</a>
-	      </li>
-	      {%- endfor %}
+              </li>
+              {%- endfor %}
             </ul>
           </div>
         </div>
@@ -92,30 +91,29 @@
       </div>
       <hr>
       <footer>
-	{% if page.name == "viewer.html" %}
-	<div id="acknowledgements">
-	  <h3>Acknowledgements</h3>
-	  <p>
-	    The animated kanji display is provided by 
-	    <a href="{{ page.nidera }}">KanjivgAnimate</a>, copyright
-	    NihongoDera, used under the 
-	    <a href="{{ page.nidera }}/blob/master/LICENSE">MIT
-	      License</a>.
-	  </p>
-	</div>
-	{% endif %}
+        {% if page.name == "viewer.html" %}
+        <div id="acknowledgements">
+          <h3>Acknowledgements</h3>
+          <p>
+            The animated kanji display is provided by 
+            <a href="{{ page.nidera }}">KanjivgAnimate</a>, copyright
+            NihongoDera, used under the 
+            <a href="{{ page.nidera }}/blob/master/LICENSE">MIT
+              License</a>.
+          </p>
+        </div>
+        {% endif %}
         <p>
-	  &copy; 2009 &mdash; {{ site.year }} {{ site.author }} &mdash; <a href="index.html">Licensing</a>
-	</p>
-
-	<p>
-	  The source code for this documentation is at
-	  <a href="{{ site.url }}">github.com</a>.  Report issues with
-	  the documentation on the
-	  <a href="{{ site.url }}/issues">issues page</a>.  To ask
-	  questions or discuss KanjiVG, use the <a href="{{ site.group
-	  }}">mailing list</a>.
-	</p>
+          &copy; 2009 &mdash; {{ site.year }} {{ site.author }} &mdash; <a href="index.html">Licensing</a>
+        </p>
+        <p>
+          The source code for this documentation is at
+          <a href="{{ site.url }}">github.com</a>.  Report issues with
+          the documentation on the
+          <a href="{{ site.url }}/issues">issues page</a>.  To ask
+          questions or discuss KanjiVG, use the <a href="{{ site.group
+          }}">mailing list</a>.
+        </p>
       </footer>
     </div>
   </body>

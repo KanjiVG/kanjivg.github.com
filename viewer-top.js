@@ -26,7 +26,8 @@ jQuery(document).ready(function () {
 		jQuery('#radicals:checked').val(),
 		jQuery('#colorGroups:checked').val(),
 		kanji,
-		file
+		file,
+		urlVars
 	);
 	jQuery('#kanjiViewerParams').submit(runKanjiViewer);
 });

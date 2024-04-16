@@ -287,24 +287,21 @@ function randomColour() {
 const hexKanji = /^\s*([0-9a-fA-F]{4,5})\s*$/;
 
 KanjiViewer = {
-	initialize:function (divName, displayOrders, radicals, colorGroups, kanji, file) {
-		loadIndex();
-		this.file = file;
-		this.kanji = kanji;
-		var urlVars = getUrlVars();
-		var random = urlVars["random"];
-		if (random) {
-			msg("Choosing a random kanji");
-			this.kanji = randomKanji();
+	// If kanji is a string of hexadecimal, turn that into a kanji
+	detectHexKanji:function () {
+		var match = hexKanji.exec(this.kanji);
+		if (match !== null) {
+			msg("Loading from hex string "+match[0]);
+			this.kanji = String.fromCharCode(parseInt(match[1], 16));
 		}
-		this.refreshKanji();
-		this.animate = new KanjivgAnimate("#animate");
-	},
-	getKanjiVGURL: function (url, kanji) {
+	}
+	// Get the SVG data from github for the user's requested kanji.
+	getKanjiVGURL: function (url) {
 		var xhr = new XMLHttpRequest();
 		xhr.open("GET", url, false);
-		// Following line is just to be on the safe side;
-		// not needed if your server delivers SVG with correct MIME type
+		// The following line is just to be on the safe side; not
+		// needed if your server delivers SVG with the correct MIME
+		// type.
 		xhr.overrideMimeType("image/svg+xml");
 		var self = this;
 		xhr.onload = function(e) {
@@ -314,6 +311,7 @@ KanjiViewer = {
 		};
 		xhr.send("");
 	},
+	// Get the SVG data for a specified file.
 	getKanjiVGFile: function () {
 		msg("Getting file " + this.file);
 		var url = fileToKanjiVG(this.file);
@@ -327,6 +325,18 @@ KanjiViewer = {
 		this.detectHexKanji();
 		var url = kanjiURL(this.kanji);
 		this.getKanjiVGURL(url);
+	},
+	initialize:function (divName, displayOrders, radicals, colorGroups, kanji, file, urlVars) {
+		loadIndex();
+		this.file = file;
+		this.kanji = kanji;
+		var random = urlVars["random"];
+		if (random) {
+			msg("Choosing a random kanji");
+			this.kanji = randomKanji();
+		}
+		this.refreshKanji();
+		this.animate = new KanjivgAnimate("#animate");
 	},
 	// This function is called back after a successful load of a kanji
 	// image.
@@ -345,7 +355,7 @@ KanjiViewer = {
 		var hk = kanjiToHex(this.kanji);
 		if (this.file) {
 			hk = this.file;
-			hk = hk.replace(/\.svg/,"");
+			hk = hk.replace(/\.svg/, "");
 		}
 		var baseID = "kvg:" + hk;
 		var baseEl = document.getElementById(baseID);
@@ -360,7 +370,9 @@ KanjiViewer = {
 			var colour = "#" + randomColour();
 			path.style.stroke = colour;
 			if (! texts[i]) {
-				console.log("Missing label for stroke "+i);
+				// Some of the files actually have missing stroke
+				// labels.
+				msg("Missing label for stroke "+i);
 			} else {
 				if (doc) {
 					texts[i].style.fill = colour;
@@ -390,6 +402,8 @@ KanjiViewer = {
 		} else {
 			source = githubURL(this.kanji);
 		}
+		// This adds the links which appear underneath the viewer
+		// display.
 		var linkP = document.createElement("p");
 		var linkT = document.createElement("b");
 		linkT.appendChild(document.createTextNode("Links:"));
@@ -423,6 +437,19 @@ KanjiViewer = {
 			img.appendChild(fileP);
 		}
 	},
+	refreshKanji:function () {
+		if (this.file) {
+			msg("Loading file " + this.file);
+			this.getKanjiVGFile();
+			return;
+		}
+		if (this.kanji) {
+			msg("Loading kanji " + this.kanji);
+			this.getKanjiVG();
+			return;
+		}
+		msg("No kanji or file is specified at the moment");
+	},
 	setStrokeOrdersVisible:function (visible) {
 		this.displayOrders = visible;
 	},
@@ -444,27 +471,6 @@ KanjiViewer = {
 			this.kanji = kanji;
 		}
 	},
-	refreshKanji:function () {
-		if (this.file) {
-			msg("Loading file " + this.file);
-			this.getKanjiVGFile();
-			return;
-		}
-		if (this.kanji) {
-			msg("Loading kanji " + this.kanji);
-			this.getKanjiVG();
-			return;
-		}
-		msg("No kanji or file is specified at the moment");
-	},
-	// If kanji is a string of hexadecimal, turn that into a kanji
-	detectHexKanji:function () {
-		var match = hexKanji.exec(this.kanji);
-		if (match !== null) {
-			msg("Loading from hex string "+match[0]);
-			this.kanji = String.fromCharCode(parseInt(match[1], 16));
-		}
-	}
 };
 
 
