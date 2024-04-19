@@ -294,9 +294,9 @@ KanjiViewer = {
 			msg("Loading from hex string "+match[0]);
 			this.kanji = String.fromCharCode(parseInt(match[1], 16));
 		}
-	}
+	},
 	// Get the SVG data from github for the user's requested kanji.
-	getKanjiVGURL: function (url) {
+	getKanjiVGURL:function (url) {
 		var xhr = new XMLHttpRequest();
 		xhr.open("GET", url, false);
 		// The following line is just to be on the safe side; not
@@ -312,7 +312,7 @@ KanjiViewer = {
 		xhr.send("");
 	},
 	// Get the SVG data for a specified file.
-	getKanjiVGFile: function () {
+	getKanjiVGFile:function () {
 		msg("Getting file " + this.file);
 		var url = fileToKanjiVG(this.file);
 		this.kanji = fileToKanji(this.file);
@@ -320,7 +320,7 @@ KanjiViewer = {
 	},
 	// Get the kanjiVG data from the submodule. This starts a request for
 	// the data, then loads it when ready using loadKanjiVG.
-	getKanjiVG: function () {
+	getKanjiVG:function () {
 		msg("Getting kanji " + this.kanji);
 		this.detectHexKanji();
 		var url = kanjiURL(this.kanji);
@@ -340,7 +340,7 @@ KanjiViewer = {
 	},
 	// This function is called back after a successful load of a kanji
 	// image.
-	loadKanjiVG: function (el) {
+	loadKanjiVG:function (el) {
 		document.title = this.kanji + " - KanjiVG";
 		var img = document.getElementById("kanji-image");
 		img.innerHTML = '';
