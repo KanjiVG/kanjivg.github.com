@@ -157,3 +157,11 @@ figure {
     stroke: #c586d7;
     stroke-width: 4px;
 }
+
+/* Make the types very big so it's easier to see them. */
+
+dt.stroke-type {
+    font-size: 2em;
+    margin: 0.5em;
+    font-family: "Meiryo UI";
+}
