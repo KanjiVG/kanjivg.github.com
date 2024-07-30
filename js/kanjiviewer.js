@@ -418,7 +418,9 @@ KanjiViewer = {
 		} else {
 			lemoda = kanjiLemodaURL(this.kanji);
 		}
-		addLink(linkP, lemoda, "LeMoDa.net viewer")
+		addLink(linkP, lemoda, "LeMoDa.net viewer");
+		var wwwjdic = kanjiWWWJDICURL(this.kanji);
+		addLink(linkP, wwwjdic, "WWWJDIC");
 		var files = index[this.kanji];
 		if (files.length > 1) {
 			msg("Appending variant files");
@@ -519,3 +521,12 @@ var lemodaURL = "https://www.lemoda.net/kvg/";
 function kanjiLemodaURL(kanji) {
 	return lemodaURL + kanjiToHex(kanji) + ".svg";
 }
+
+var wwwjdicURL = "https://www.edrdg.org/cgi-bin/wwwjdic/wwwjdic?1MKU";
+
+function kanjiWWWJDICURL(kanji) {
+	var kcode = kanji.codePointAt(0);
+	var hex = kcode.toString(16);
+	return wwwjdicURL + hex;
+}
+
