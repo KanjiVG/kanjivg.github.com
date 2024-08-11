@@ -112,8 +112,9 @@ function setUserMessage(message) {
 
 // Clear the display of kanji and return the div's element, for
 // applications where it is needed.
-
 function clearKanjiDisplay() {
+	removeRadicals();
+	removeGroups();
 	var img = document.getElementById("kanji-image");
 	img.innerHTML = '';
 	return img;
@@ -573,7 +574,6 @@ function kanjiWWWJDICURL(kanji) {
 }
 
 function reset() {
-	console.log("Reset");
 	clearKanjiDisplay();
 	clearUserMessage();
 }
