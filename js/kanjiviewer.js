@@ -92,6 +92,23 @@ function listGroups(svg) {
 	return gs
 }
 
+function getUserMessage() {
+	var userMessage = doc.getElementById("user-message");
+	return userMessage;
+}
+
+function clearUserMessage() {
+	userMessage = getUserMessage();
+	userMessage.innerHTML = "";
+	userMessage.style.display = "none";
+}
+
+function setUserMessage(message) {
+	userMessage = getUserMessage();
+	userMessage.innerHTML = message;
+	userMessage.style.display = "block";
+}
+
 // Find the radicals of svg. The return value is an object with three
 // possible elements, general, nelson, and jis, each of which contains
 // an array listing the groups which comprise the radical.
@@ -305,8 +322,13 @@ KanjiViewer = {
 		xhr.overrideMimeType("image/svg+xml");
 		var self = this;
 		xhr.onload = function(e) {
-			if (this.readyState == 4 && this.status == 200) {
-				self.loadKanjiVG(xhr.responseXML);
+			if (this.readyState == 4) {
+				if (this.status == 200) {
+					self.loadKanjiVG(xhr.responseXML);
+				}
+				if (this.status == 404) {
+					self.notFound()
+				}
 			}
 		};
 		xhr.send("");
@@ -341,6 +363,7 @@ KanjiViewer = {
 	// This function is called back after a successful load of a kanji
 	// image.
 	loadKanjiVG:function (el) {
+		clearUserMessage();
 		document.title = this.kanji + " - KanjiVG";
 		var img = document.getElementById("kanji-image");
 		img.innerHTML = '';
@@ -439,6 +462,11 @@ KanjiViewer = {
 			img.appendChild(fileP);
 		}
 	},
+	notFound:function() {
+		var userMessage = doc.getElementById("user-message");
+		userMessage.style.display = "block";
+		userMessage.innerHTML = "That character is not covered by KanjiVG. Please see <a href='https://kanjivg.tagaini.net/files.html'>this page</a> for an explanation of KanjiVG's coverage, or <a href='https://kanjivg.tagaini.net/listing.html'>this page</a> for a complete list of characters."
+	}
 	refreshKanji:function () {
 		if (this.file) {
 			msg("Loading file " + this.file);

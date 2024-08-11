@@ -165,3 +165,9 @@ dt.stroke-type {
     margin: 0.5em;
     font-family: "Meiryo UI";
 }
+
+#user-message {
+    background: #eed;
+    display: none;
+    font-size: 1.5em;
+}
