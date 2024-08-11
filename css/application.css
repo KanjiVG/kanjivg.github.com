@@ -170,4 +170,15 @@ dt.stroke-type {
     background: #eed;
     display: none;
     font-size: 1.5em;
+    line-height: 2em;
+    margin: 1em;
+    padding: 1em;
+}
+
+#kanji-label {
+    font-size: 1.5em;
+}
+
+#kanji {
+    font-size: 1.5em;
 }

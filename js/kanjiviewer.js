@@ -93,7 +93,7 @@ function listGroups(svg) {
 }
 
 function getUserMessage() {
-	var userMessage = doc.getElementById("user-message");
+	var userMessage = document.getElementById("user-message");
 	return userMessage;
 }
 
@@ -104,9 +104,19 @@ function clearUserMessage() {
 }
 
 function setUserMessage(message) {
+	clearKanjiDisplay();
 	userMessage = getUserMessage();
 	userMessage.innerHTML = message;
 	userMessage.style.display = "block";
+}
+
+// Clear the display of kanji and return the div's element, for
+// applications where it is needed.
+
+function clearKanjiDisplay() {
+	var img = document.getElementById("kanji-image");
+	img.innerHTML = '';
+	return img;
 }
 
 // Find the radicals of svg. The return value is an object with three
@@ -325,9 +335,10 @@ KanjiViewer = {
 			if (this.readyState == 4) {
 				if (this.status == 200) {
 					self.loadKanjiVG(xhr.responseXML);
-				}
-				if (this.status == 404) {
-					self.notFound()
+				} else if (this.status == 404) {
+					self.notFound();
+				} else {
+					self.error(this);
 				}
 			}
 		};
@@ -365,8 +376,7 @@ KanjiViewer = {
 	loadKanjiVG:function (el) {
 		clearUserMessage();
 		document.title = this.kanji + " - KanjiVG";
-		var img = document.getElementById("kanji-image");
-		img.innerHTML = '';
+		img = clearKanjiDisplay();
 		var svg = el.documentElement;
 		// Use svg.cloneNode here because it contains a reference, so
 		// if we append it then we cannot reuse it for the group
@@ -463,10 +473,14 @@ KanjiViewer = {
 		}
 	},
 	notFound:function() {
-		var userMessage = doc.getElementById("user-message");
-		userMessage.style.display = "block";
-		userMessage.innerHTML = "That character is not covered by KanjiVG. Please see <a href='https://kanjivg.tagaini.net/files.html'>this page</a> for an explanation of KanjiVG's coverage, or <a href='https://kanjivg.tagaini.net/listing.html'>this page</a> for a complete list of characters."
-	}
+		setUserMessage("That character is not covered by KanjiVG. Please see <a href='https://kanjivg.tagaini.net/files.html'>this page</a> for an explanation of KanjiVG's coverage, or <a href='https://kanjivg.tagaini.net/listing.html'>this page</a> for a complete list of characters.");
+	},
+	// General error handler for when a character doesn't appear for
+	// some other reason.
+	error:function(obj) {
+		setUserMessage("An error occurred trying to retrieve that character - " + 
+					   obj.status + ": " +  obj.statusText);
+	},
 	refreshKanji:function () {
 		if (this.file) {
 			msg("Loading file " + this.file);
@@ -558,3 +572,8 @@ function kanjiWWWJDICURL(kanji) {
 	return wwwjdicURL + hex;
 }
 
+function reset() {
+	console.log("Reset");
+	clearKanjiDisplay();
+	clearUserMessage();
+}
