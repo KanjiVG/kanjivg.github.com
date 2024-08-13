@@ -24,6 +24,12 @@ while ($html =~ m!<dt>(.*)</dt>!g) {
     }
 }
 for my $k (keys %actual) {
+    my @split = ($k =~ /([A-Z][^A-Z]+)/);
+    for (@split) {
+	if (! $has{$_}) {
+	    print "Missing component $_\n";
+	}
+    }
     if (! $has{$k}) {
 	print "$k is not in the list yet\n";
     }
