@@ -2,7 +2,7 @@ markdown: rdiscount
 title: KanjiVG
 author: Ulrich Apel
 url: https://github.com/KanjiVG/kanjivg.github.com
-year: 2024
+year: 2025
 group: https://groups.google.com/group/kanjivg
 jquery: jquery-3.7.1.min.js
 project-links:
@@ -21,6 +21,9 @@ project-links:
 - text: Listing
   url: listing.html
   icon: list
+- text: FAQ
+  url: https://github.com/KanjiVG/kanjivg/faq
+  icon: exclamation-sign
 - text: Issues
   url: https://github.com/KanjiVG/kanjivg/issues
   icon: exclamation-sign
