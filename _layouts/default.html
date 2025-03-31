@@ -58,6 +58,12 @@
                 <a href="{{ link.url }}"><i class="icon-{{ link.icon }} {{ white }}"></i>{{ link.text }}</a>
               </li>
               {%- endfor %}
+              <li class="nav-header">Source code</li>
+              {%- for link in site.source-links %}
+              <li>
+                <a href="{{ link.url }}"><i class="icon-{{ link.icon }}"></i>{{ link.text }}</a>
+              </li>
+              {%- endfor %}
               <li class="nav-header">Format</li>
               {%- for link in site.format-links %}
               {%- assign active = nil %}

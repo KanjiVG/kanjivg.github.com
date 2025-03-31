@@ -12,19 +12,20 @@ project-links:
 - text: Viewer
   url: viewer.html
   icon: picture
-- text: Download
-  url: https://github.com/KanjiVG/kanjivg/releases
-  icon: download
-- text: Repository
-  url: https://github.com/KanjiVG/kanjivg
-  icon: list
 - text: Listing
   url: listing.html
   icon: list
 - text: FAQ
-  url: https://github.com/KanjiVG/kanjivg/faq
+  url: faq.html
   icon: exclamation-sign
-- text: Issues
+source-links:
+- text: Download (at Github)
+  url: https://github.com/KanjiVG/kanjivg/releases
+  icon: download
+- text: Repository (at Github)
+  url: https://github.com/KanjiVG/kanjivg
+  icon: list
+- text: Issues (at Github)
   url: https://github.com/KanjiVG/kanjivg/issues
   icon: exclamation-sign
 format-links:
