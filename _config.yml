@@ -17,7 +17,7 @@ project-links:
   icon: list
 - text: FAQ
   url: faq.html
-  icon: exclamation-sign
+  icon: question-sign
 source-links:
 - text: Download (at Github)
   url: https://github.com/KanjiVG/kanjivg/releases
