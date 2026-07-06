@@ -5,3 +5,4 @@ _site/
 viewer.cgi
 listing.cgi
 update.pl
+link-statuses.json
