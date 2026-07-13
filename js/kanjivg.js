@@ -1,5 +1,5 @@
 // The URL of the repository
-const github = "https://github.com/KanjiVG/kanjivg/blob/master/kanji/";
+const github = "https://github.com/KanjiVG/kanjivg/blob/xmlns/kanji/";
 
 var debug = true;
 
