@@ -11,6 +11,10 @@ jQuery(document).ready(function () {
 	if (cg) {
 		jQuery('#colorGroups').prop('checked', true);
 	}
+	var st = getShowTypes();
+	if (st) {
+		jQuery('#showTypes').prop('checked', true);
+	}
 	var rad = getShowRadicals();
 	if (rad) {
 		jQuery('#radicals').prop('checked', true);

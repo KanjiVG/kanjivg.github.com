@@ -39,6 +39,14 @@ function setShowGroups(onOff) {
 	localStorage.setItem(showGroups, onOff);
 }
 
+function getShowTypes() {
+	return onOff(showTypes);
+}
+
+function setShowTypes(onOff) {
+	localStorage.setItem(showTypes, onOff);
+}
+
 const showRadicals = "show-radicals";
 
 function getShowRadicals() {
@@ -278,7 +286,6 @@ function displayGroups(svg, kanji) {
 				msg("Element = "+element+", part= "+part);
 				prevPart = elePart[element];
 				if (prevPart && prevPart < p) {
-					msg("continuing");
 					cont = true;
 				}
 				elePart[element] = p;
@@ -399,6 +406,10 @@ KanjiViewer = {
 		const texts = textBaseEl.getElementsByTagName("text");
 		// True if we display the stroke order
 		var doc = displayOrders(); 
+		// True if we display the type of the stroke
+		var st = getShowTypes();
+		const svgText = document.querySelector("svg text");
+		const svgNS = "http://www.w3.org/2000/svg";
 		var i = 0;
 		for (var path of paths) {
 			var colour = "#" + randomColour();
@@ -408,6 +419,18 @@ KanjiViewer = {
 				// labels.
 				msg("Missing label for stroke "+i);
 			} else {
+				if (st) {
+					var type = paths[i].getAttribute("kvg:type");
+					console.log("type = " + type);
+					if (type) {
+						const tspan = document.createElementNS(svgNS, "tspan");
+						tspan.textContent = type;
+						tspan.setAttribute("stroke", "black");
+						tspan.setAttribute("stroke-width", 0.25);
+						tspan.setAttribute("font-weight", "bold");
+						texts[i].appendChild(tspan);
+					}
+				}
 				if (doc) {
 					texts[i].style.fill = colour;
 				} else {
@@ -531,6 +554,11 @@ function changeNoShowSO() {
 function changeColorGroups() {
 	var cg = jQuery('#colorGroups:checked').val();
 	setShowGroups(cg);
+}
+
+function changeShowTypes() {
+	var st = jQuery('#showTypes:checked').val();
+	setShowTypes(st);
 }
 
 function changeBox() {
